@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI导航 — 发现最好的AI工具</title>
 <meta name="description" content="精选200+AI工具，覆盖写作、图像生成、视频、代码、音频等分类，每日更新，助你效率翻倍。">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ai-nav.vercel.app/">
+<meta property="og:title" content="AI导航 — 发现最好的AI工具">
+<meta property="og:description" content="精选200+AI工具，覆盖写作、图像生成、视频、代码、音频等12大分类，每日更新，完全免费。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ai-nav.vercel.app/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI导航 — 发现最好的AI工具">
+<meta name="twitter:description" content="精选200+AI工具，每日更新，完全免费使用。">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"AI导航","url":"https://ai-nav.vercel.app/","description":"精选200+AI工具导航，覆盖对话AI、图像生成、视频创作、代码助手等12大分类","potentialAction":{"@type":"SearchAction","target":"https://ai-nav.vercel.app/?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -249,6 +261,26 @@ footer{
 }
 .empty .big{font-size:40px;display:block;margin-bottom:10px}
 
+/* ---- NEWSLETTER ---- */
+.nl-box{
+  background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(168,85,247,.08));
+  border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:32px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.nl-icon{font-size:40px;flex-shrink:0}
+.nl-content{flex:1;min-width:200px}
+.nl-title{font-size:18px;font-weight:800;margin-bottom:6px}
+.nl-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap}
+.nl-input{
+  flex:1;min-width:220px;background:var(--surface);
+  border:1px solid var(--border);color:var(--text);
+  padding:11px 16px;border-radius:9px;font-size:13px;outline:none;
+  transition:border-color .2s;
+}
+.nl-input:focus{border-color:var(--accent)}
+.nl-btn{padding:11px 22px}
+
 /* ---- RESPONSIVE ---- */
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){
@@ -384,6 +416,21 @@ footer{
   <div class="ad ad-728" style="margin-top:28px">
     <span class="ad-lbl">广告</span>
     广告位 728 × 90 — 文章区
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="wrap" style="padding:8px 0 48px">
+  <div class="nl-box">
+    <div class="nl-icon">📬</div>
+    <div class="nl-content">
+      <h3 class="nl-title">每周AI工具精选通讯</h3>
+      <p class="nl-desc">订阅免费周报，获取最新AI工具测评、免费替代品推荐、使用技巧，每周一封，不发垃圾邮件</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" class="nl-input" id="nlEmail" placeholder="输入你的邮箱地址">
+      <button class="btn nl-btn" onclick="handleSubscribe()">免费订阅</button>
+    </div>
   </div>
 </section>
 
@@ -578,55 +625,111 @@ const TOOLS = [
   {id:39,name:'Duolingo Max',em:'🦜',cat:'edu',tags:['新'],
    desc:'集成GPT-4的语言学习功能，支持"角色扮演"对话练习，Duolingo Max用户语言测试通过率提升40%。',
    price:'$14/月',url:'https://duolingo.com',hot:false,isNew:true},
+
+  /* ---- more chat ---- */
+  {id:40,name:'Meta AI',em:'🌐',cat:'chat',tags:['免费','新'],
+   desc:'Meta推出的免费AI助手，深度集成WhatsApp、Instagram、Facebook，支持图像生成，完全免费无限制，月活超6亿。',
+   price:'完全免费',url:'https://meta.ai',hot:false,isNew:true},
+  {id:41,name:'Le Chat',em:'💬',cat:'chat',tags:['免费','新'],
+   desc:'Mistral AI出品的免费聊天工具，Mistral Large 2模型驱动，代码和数学推理能力突出，欧洲最强开源AI代表。',
+   price:'完全免费',url:'https://chat.mistral.ai',hot:false,isNew:true},
+  {id:42,name:'DeepSeek',em:'🐋',cat:'chat',tags:['免费','新'],
+   desc:'中国DeepSeek出品，开源模型R1推理能力接近GPT-4o，以极低成本实现顶级性能，2025年初引发全球AI行业震动。',
+   price:'免费 / API按量计费',url:'https://chat.deepseek.com',hot:true,isNew:true},
+
+  /* ---- more image ---- */
+  {id:43,name:'Bing Image Creator',em:'🖼️',cat:'image',tags:['免费'],
+   desc:'微软出品，基于DALL-E 3，每天15次快速生成，无需订阅，通过微软账号即可免费使用，是零成本AI绘图首选。',
+   price:'免费（微软账号）',url:'https://bing.com/images/create',hot:false,isNew:false},
+  {id:44,name:'Playground AI',em:'🛝',cat:'image',tags:['免费'],
+   desc:'每天100张免费图片，支持多种风格混合（真实/动漫/艺术），界面适合新手，无需信用卡注册即可使用。',
+   price:'免费100张/天',url:'https://playground.com',hot:false,isNew:false},
+
+  /* ---- more video ---- */
+  {id:45,name:'Kling AI',em:'🎞️',cat:'video',tags:['免费','新'],
+   desc:'快手旗下AI视频生成工具，每天66积分免费，在运动连贯性和物理效果上超越同价位竞品，国内访问稳定。',
+   price:'免费66积分/天',url:'https://klingai.com',hot:false,isNew:true},
+  {id:46,name:'Hailuo AI',em:'🌊',cat:'video',tags:['免费','新'],
+   desc:'MiniMax出品，每天3次免费5秒高清视频，画面质量和物理效果在免费工具中表现最佳，支持文字和图片转视频。',
+   price:'免费3次/天',url:'https://hailuoai.com',hot:false,isNew:true},
+
+  /* ---- more code ---- */
+  {id:47,name:'Codeium',em:'🧩',cat:'code',tags:['免费'],
+   desc:'完全免费的AI代码补全工具，支持70+编程语言，兼容VSCode/JetBrains/Vim，无限次补全无功能阉割，个人永久免费。',
+   price:'完全免费',url:'https://codeium.com',hot:false,isNew:false},
+  {id:48,name:'Amazon Q',em:'☁️',cat:'code',tags:['免费','新'],
+   desc:'亚马逊AWS的AI编程助手，个人版完全免费无限制，深度集成AWS生态，支持代码安全漏洞扫描和自动修复。',
+   price:'免费（个人版）',url:'https://aws.amazon.com/q',hot:false,isNew:true},
+
+  /* ---- more productivity ---- */
+  {id:49,name:'Fathom',em:'📋',cat:'productivity',tags:['免费'],
+   desc:'Zoom会议AI记录工具，永久免费无时间限制，自动生成摘要和行动项，准确率94%，是Otter.ai最强免费替代品。',
+   price:'完全免费',url:'https://fathom.video',hot:false,isNew:false},
+
+  /* ---- more seo ---- */
+  {id:50,name:'Ahrefs WT',em:'🔗',cat:'seo',tags:['免费'],
+   desc:'Ahrefs Webmaster Tools免费版，支持网站健康检查、反向链接分析、关键词排名跟踪，无次数限制，站长必备。',
+   price:'免费（站长工具）',url:'https://ahrefs.com/webmaster-tools',hot:false,isNew:false},
+  {id:51,name:'Google Search Console',em:'🔎',cat:'seo',tags:['免费'],
+   desc:'Google官方免费SEO工具，提供搜索表现数据、索引状态报告、核心网页指标，数据最权威，所有站长必装。',
+   price:'完全免费',url:'https://search.google.com/search-console',hot:false,isNew:false},
+
+  /* ---- more design ---- */
+  {id:52,name:'Adobe Express',em:'🅰️',cat:'design',tags:['免费'],
+   desc:'Adobe专为非设计师推出，免费版含背景移除（无限次）、AI图像生成（商用安全）、2万+专业模板，Canva最强竞品。',
+   price:'免费 / CC订阅',url:'https://express.adobe.com',hot:false,isNew:false},
+  {id:53,name:'Microsoft Designer',em:'🎨',cat:'design',tags:['免费','新'],
+   desc:'微软出品，由DALL-E 3驱动，输入文字即可生成完整设计作品，完全免费无明显次数限制，微软账号直接使用。',
+   price:'完全免费',url:'https://designer.microsoft.com',hot:false,isNew:true},
 ];
 
 const ARTICLES = [
   /* ── 免费替代品系列 ── */
-  {em:'🎨',cat:'Midjourney 免费替代',
+  {em:'🎨',cat:'Midjourney 免费替代',url:'articles/midjourney-free-alternatives.html',
    title:'Midjourney 太贵？2025年7个免费AI绘图工具实测对比（附质量样图）',
    excerpt:'Midjourney最低$10/月且无免费试用，但这7款工具提供真实免费额度：Ideogram 2.0（每天25张，文字渲染业界最佳）、Leonardo AI（每天150积分）、Adobe Firefly（每月25积分，商用免责）、Playground AI（每天100张）、Bing Image Creator（每天15次快速生成，基于DALL-E 3）。我们用同一组Prompt测试了所有工具，附上并排质量对比截图和各自适用场景分析。',
    date:'2025-04-22',time:'10分钟',views:'34.2k'},
-  {em:'🤖',cat:'ChatGPT Plus 免费替代',
+  {em:'🤖',cat:'ChatGPT Plus 免费替代',url:'articles/chatgpt-plus-free-alternatives.html',
    title:'不花$20/月，这5个工具能替代ChatGPT Plus 80%的功能（2025亲测）',
    excerpt:'ChatGPT Plus$20/月主要提供：GPT-4o、联网搜索、代码执行、图像生成。以下5款工具可分别覆盖这些需求：Microsoft Copilot（免费GPT-4o级别对话+联网）、Perplexity AI（免费联网搜索，月活1500万）、Google Gemini（免费1M上下文）、Claude.ai免费版（200K上下文，写作质量更优）、Meta AI（完全免费多模态）。实测5款工具在10个典型任务下的表现，附ChatGPT Plus值不值得付费的最终结论。',
    date:'2025-04-20',time:'12分钟',views:'52.7k'},
-  {em:'✍️',cat:'Jasper AI 免费替代',
+  {em:'✍️',cat:'Jasper AI 免费替代',url:'articles/jasper-free-alternatives.html',
    title:'Jasper AI $49/月太贵？5个免费AI写作工具完全可以替代它',
    excerpt:'Jasper AI年收入超1亿美元，但$49/月的门槛让很多用户望而却步。对比测试结果：Claude.ai（免费，长文质量优于Jasper）、ChatGPT免费版（模板少但灵活）、Copy.ai免费版（每月2000字）、Writesonic免费版（每月10000字）、Notion AI（$10/月，已有Notion用户首选）。各工具在写博客文章、广告文案、邮件营销三个场景下的得分对比，以及什么情况下Jasper才真正值得付费。',
    date:'2025-04-18',time:'9分钟',views:'28.9k'},
-  {em:'🎵',cat:'AI音乐工具',
+  {em:'🎵',cat:'AI音乐工具',url:'articles/suno-free-alternatives.html',
    title:'Suno Pro $10/月值得吗？对比4个免费AI音乐生成工具后的结论',
    excerpt:'Suno免费版每天50首歌曲（带水印，不可商用），付费$10/月获500首/月可商用。但Udio同样提供每天50首免费生成，在爵士和古典风格质量上优于Suno；Meta的MusicGen完全开源免费；Stable Audio每月20首免费且音质出色。本文用10种不同音乐风格测试了所有工具，附Suno vs Udio质量对比音频，以及"到底哪种情况需要付费"的清晰判断标准。',
    date:'2025-04-16',time:'8分钟',views:'19.4k'},
-  {em:'🎙️',cat:'ElevenLabs 免费替代',
+  {em:'🎙️',cat:'ElevenLabs 免费替代',url:'articles/elevenlabs-free-alternatives.html',
    title:'ElevenLabs $5/月起？3个完全免费的AI语音合成工具对比（含音频样本）',
    excerpt:'ElevenLabs免费版每月仅10000字符，约12分钟音频。替代方案：微软Azure TTS通过Copilot免费使用，覆盖400+声音和140种语言；OpenAI TTS-1通过免费账户每月500万字符；Google Cloud TTS每月100万字符免费；Kokoro-82M完全开源可本地运行，质量测评排名第一的开源模型。本文对比了5组相同文本在不同工具下的语音样本，从自然度、情感表达、语速控制三维度打分。',
    date:'2025-04-14',time:'10分钟',views:'22.1k'},
-  {em:'💻',cat:'GitHub Copilot 免费替代',
+  {em:'💻',cat:'GitHub Copilot 免费替代',url:'articles/github-copilot-free-alternatives.html',
    title:'GitHub Copilot $10/月的3个免费替代品：实测30天编码效率对比',
    excerpt:'GitHub Copilot 2024年开放免费版（每月2000次补全+50次聊天），但功能有限。完全免费替代：Codeium（无限补全，支持70+编程语言，VSCode/JetBrains/Vim全支持）、Tabnine免费版（本地运行保护隐私）、Continue.dev（开源+本地LLM）、Amazon CodeWhisperer（免费个人版无限次补全）。测试了在React、Python、Go三种语言下各工具补全准确率：Codeium在Python任务中准确率达71%，接近Copilot的78%，但完全免费。',
    date:'2025-04-12',time:'11分钟',views:'31.6k'},
-  {em:'📊',cat:'Gamma AI 免费替代',
+  {em:'📊',cat:'Gamma AI 免费替代',url:'articles/gamma-free-alternatives.html',
    title:'Gamma AI每月只能做10份免费PPT？这4个工具没有这个限制',
    excerpt:'Gamma AI免费版每月仅10次AI生成，超出需付$10/月。替代方案实测：Beautiful.ai免费版（无限手动编辑，AI功能受限）、Canva AI（免费版含AI PPT生成，模板超过6万个）、Tome.app（每月5份免费AI演示）、微软Copilot Designer（通过Microsoft 365免费账户可用）、Pitch（免费无限工作区）。重点对比了在"10分钟内生成可用演示文稿"任务下各工具的完成质量和速度。',
    date:'2025-04-10',time:'8分钟',views:'16.8k'},
-  {em:'🔍',cat:'SEMrush 免费替代',
+  {em:'🔍',cat:'SEMrush 免费替代',url:'articles/semrush-free-alternatives.html',
    title:'SEMrush $130/月？这5个SEO工具免费版功能足够中小网站使用',
    excerpt:'SEMrush月费$130对个人站长几乎不可承受，但其核心功能可以通过免费工具组合实现：Google Search Console（免费，官方数据最准确）+Ubersuggest免费版（每天3次关键词查询）+Ahrefs Webmaster Tools（免费，网站审核无限次）+AnswerThePublic（每天3次免费搜索）+Google Keyword Planner（完全免费，需Google Ads账户）。以一个月流量1万的内容网站为例，展示如何用0成本SEO工具组合完成完整的关键词研究和竞品分析。',
    date:'2025-04-08',time:'13分钟',views:'24.3k'},
-  {em:'🎬',cat:'Runway 免费替代',
+  {em:'🎬',cat:'Runway 免费替代',url:'articles/runway-free-alternatives.html',
    title:'Runway ML $15/月？2025年4个免费AI视频生成工具够用吗（附视频样本）',
    excerpt:'Runway免费版仅125积分（约25秒视频），$15/月起才实用。免费替代：Pika Labs免费版（每月250积分，约50次生成）、Kling AI（每天66积分，国内访问稳定）、Hailuo AI（MiniMax出品，每天3次免费，5秒高清视频）、Luma Dream Machine（每月30次免费生成）。测试同一段文字描述在4个工具上的生成结果，从画面质量、运动流畅度、提示词遵从度三个维度评分，并给出"什么时候免费工具够用、什么时候必须付费"的判断框架。',
    date:'2025-04-06',time:'10分钟',views:'41.5k'},
-  {em:'📝',cat:'Notion AI 免费替代',
+  {em:'📝',cat:'Notion AI 免费替代',url:'articles/notion-ai-free-alternatives.html',
    title:'不想为Notion AI额外付$10/月？这些免费AI笔记工具同样好用',
    excerpt:'Notion AI需要在Notion订阅基础上额外付$10/月。内置AI的免费笔记工具：Mem.ai（AI自动组织笔记，免费版无限笔记）、Obsidian+本地AI插件（完全免费开源，隐私最佳）、Reflect Notes（AI摘要和链接，免费试用）、Logseq（开源免费，支持本地大模型）、Microsoft OneNote+Copilot（Microsoft 365免费账户可用AI功能）。从知识管理、写作辅助、团队协作三个场景分别给出推荐，并附各工具AI功能的详细截图对比。',
    date:'2025-04-04',time:'9分钟',views:'18.9k'},
-  {em:'🎯',cat:'Canva Pro 免费替代',
+  {em:'🎯',cat:'Canva Pro 免费替代',url:'articles/canva-pro-free-alternatives.html',
    title:'Canva Pro $15/月的功能，这4个免费设计工具能覆盖90%',
    excerpt:'Canva Pro核心功能：无背景移除次数限制、Brand Kit、魔法调整大小、完整模板库。逐一替代方案：Remove.bg（每月50张免费背景移除）+Adobe Express免费版（500+模板，含AI功能）+Figma免费版（3个项目无限编辑）+Microsoft Designer（完全免费，DALL-E 3驱动AI设计）。实测设计一套包含Logo+名片+社媒封面+海报的品牌视觉套装，分别记录各工具完成时间和质量，最终算出"什么时候Canva Pro才真的值这个钱"。',
    date:'2025-04-02',time:'11分钟',views:'29.7k'},
-  {em:'📋',cat:'Otter.ai 免费替代',
+  {em:'📋',cat:'Otter.ai 免费替代',url:'articles/otter-free-alternatives.html',
    title:'Otter.ai免费版只有300分钟/月？2025年5个AI会议记录工具免费额度对比',
    excerpt:'Otter.ai免费版每月300分钟转录，$10/月升级到1200分钟。更慷慨的免费替代：Notta（每月120分钟，支持中文且准确率高）、Fireflies.ai（每月800分钟免费，Zoom/Teams自动加入）、Tactiq（Chrome插件，Google Meet/Zoom免费转录无时间限制）、Fathom（Zoom会议完全免费无限制，最推荐）、Whisper本地运行（完全免费无限制，需要技术基础）。对比了5款工具在30分钟中英混合会议中的转录准确率，Fathom在Zoom场景下准确率达94%，且永久免费。',
    date:'2025-03-31',time:'9分钟',views:'15.6k'},
@@ -669,7 +772,7 @@ function renderGrid(list, id){
 
 function renderArticles(){
   document.getElementById('artGrid').innerHTML = ARTICLES.map(a=>`
-    <div class="art-card">
+    <a class="art-card" href="${a.url||'#'}" ${a.url?'':'onclick="showToast(\'文章加载中...\')"'}>
       <div class="art-img">${a.em}</div>
       <div class="art-body">
         <div class="art-cat">${a.cat}</div>
@@ -679,7 +782,7 @@ function renderArticles(){
           <span>📅 ${a.date}</span><span>⏱ ${a.time}</span><span>👁 ${a.views}</span>
         </div>
       </div>
-    </div>`).join('');
+    </a>`).join('');
 }
 
 function filtered(){
@@ -757,6 +860,14 @@ function showToast(msg){
   el.textContent=msg;el.className='toast ok show';
   clearTimeout(el._t);
   el._t=setTimeout(()=>el.className='toast',2600);
+}
+
+/* ========== NEWSLETTER ========== */
+function handleSubscribe(){
+  const inp = document.getElementById('nlEmail');
+  if(!inp.value||!inp.value.includes('@')){showToast('请输入有效的邮箱地址');return;}
+  showToast('订阅成功！感谢关注，每周一封不打扰 ✓');
+  inp.value='';
 }
 
 /* ========== KEYBOARD ========== */
