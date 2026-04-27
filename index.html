@@ -1,168 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI导航 — 发现最好的AI工具</title>
-<meta name="description" content="精选200+AI工具，覆盖写作、图像生成、视频、代码、音频等分类，每日更新，助你效率翻倍。">
+<title>AI导航 — 发现最好的AI工具 | AI Nav</title>
+<meta name="description" content="Curated 50+ AI tools across 12 categories — ChatGPT, Midjourney, Cursor and more. Daily updates, 100% free. 精选AI工具导航，每日更新。">
+<meta name="keywords" content="AI tools, free AI tools, AI导航, ChatGPT alternative, Midjourney alternative, best AI tools 2025">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ai-nav.vercel.app/">
-<meta property="og:title" content="AI导航 — 发现最好的AI工具">
-<meta property="og:description" content="精选200+AI工具，覆盖写作、图像生成、视频、代码、音频等12大分类，每日更新，完全免费。">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/">
+<link rel="alternate" hreflang="x-default" href="https://ai-nav.vercel.app/">
+<meta property="og:title" content="AI Nav — Discover the Best AI Tools">
+<meta property="og:description" content="50+ curated AI tools across 12 categories. Daily updates, 100% free.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ai-nav.vercel.app/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AI导航 — 发现最好的AI工具">
-<meta name="twitter:description" content="精选200+AI工具，每日更新，完全免费使用。">
+<meta name="twitter:title" content="AI Nav — Discover the Best AI Tools">
+<meta name="twitter:description" content="50+ curated AI tools, daily updates, 100% free.">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"AI导航","url":"https://ai-nav.vercel.app/","description":"精选200+AI工具导航，覆盖对话AI、图像生成、视频创作、代码助手等12大分类","potentialAction":{"@type":"SearchAction","target":"https://ai-nav.vercel.app/?q={search_term_string}","query-input":"required name=search_term_string"}}
+{"@context":"https://schema.org","@type":"WebSite","name":"AI导航","alternateName":"AI Nav","url":"https://ai-nav.vercel.app/","description":"Curated AI tools directory — 50+ tools across 12 categories","potentialAction":{"@type":"SearchAction","target":"https://ai-nav.vercel.app/?q={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0d0d0d;
-  --surface:#181818;
-  --surface2:#222222;
-  --border:#2c2c2c;
-  --accent:#6366f1;
-  --accent-h:#4f46e5;
-  --text:#e5e7eb;
-  --muted:#9ca3af;
-  --dim:#5c6370;
-  --green:#10b981;
-  --red:#ef4444;
-  --ad-bg:rgba(99,102,241,0.05);
-  --ad-border:rgba(99,102,241,0.25);
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222222;--border:#2c2c2c;
+  --accent:#6366f1;--accent-h:#4f46e5;--text:#e5e7eb;--muted:#9ca3af;
+  --dim:#5c6370;--green:#10b981;--red:#ef4444;
+  --ad-bg:rgba(99,102,241,0.05);--ad-border:rgba(99,102,241,0.25);
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 a{color:inherit;text-decoration:none}
-
-/* ---- SCROLLBAR ---- */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
-/* ---- HEADER ---- */
+/* HEADER */
 header{
-  position:sticky;top:0;z-index:200;
-  height:58px;
-  background:rgba(13,13,13,.92);
-  backdrop-filter:blur(12px);
+  position:sticky;top:0;z-index:200;height:58px;
+  background:rgba(13,13,13,.92);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 28px;
-  gap:16px;
+  padding:0 28px;gap:12px;
 }
-.logo{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:800;white-space:nowrap}
+.logo{display:flex;align-items:center;gap:9px;font-size:18px;font-weight:800;white-space:nowrap;flex-shrink:0}
 .logo-icon{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:16px}
 .logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .h-search{position:relative;flex:0 0 auto}
-.h-search input{
-  width:220px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  color:var(--text);
-  padding:7px 14px 7px 36px;
-  border-radius:8px;font-size:13px;outline:none;
-  transition:border-color .2s,width .2s;
-}
-.h-search input:focus{border-color:var(--accent);width:260px}
-.h-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:14px}
+.h-search input{width:210px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 14px 7px 34px;border-radius:8px;font-size:13px;outline:none;transition:border-color .2s,width .2s}
+.h-search input:focus{border-color:var(--accent);width:250px}
+.h-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:13px}
 nav{display:flex;gap:4px}
 nav a{font-size:13px;color:var(--muted);padding:6px 11px;border-radius:7px;transition:all .2s}
 nav a:hover{color:var(--text);background:var(--surface)}
+/* LANGUAGE TOGGLE */
+.lang-btn{
+  background:var(--surface2);border:1px solid var(--border);color:var(--muted);
+  padding:5px 11px;border-radius:7px;font-size:12px;font-weight:600;
+  cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent)}
 
-/* ---- HERO ---- */
+/* HERO */
 .hero{text-align:center;padding:56px 24px 36px;max-width:720px;margin:0 auto}
 .hero h1{font-size:clamp(26px,5vw,50px);font-weight:900;line-height:1.15;margin-bottom:14px}
 .hero h1 .hl{background:linear-gradient(135deg,#818cf8,#c084fc,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--muted);font-size:15px;margin-bottom:28px}
 .hero-search{display:flex;max-width:520px;margin:0 auto;gap:8px}
-.hero-search input{
-  flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);
-  padding:13px 20px;border-radius:10px;font-size:15px;outline:none;transition:border-color .2s;
-}
+.hero-search input{flex:1;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:13px 20px;border-radius:10px;font-size:15px;outline:none;transition:border-color .2s}
 .hero-search input:focus{border-color:var(--accent)}
-.btn{
-  background:var(--accent);color:#fff;border:none;
-  padding:13px 22px;border-radius:10px;font-size:14px;font-weight:600;
-  cursor:pointer;transition:background .2s;white-space:nowrap;
-}
+.btn{background:var(--accent);color:#fff;border:none;padding:13px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
 .btn:hover{background:var(--accent-h)}
 .stats{display:flex;justify-content:center;gap:36px;margin-top:32px;flex-wrap:wrap}
 .stat-num{font-size:21px;font-weight:800}
 .stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}
 
-/* ---- AD SLOT ---- */
-.ad{
-  background:var(--ad-bg);
-  border:1px dashed var(--ad-border);
-  border-radius:12px;
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--dim);font-size:12px;
-  margin:20px auto;
-}
-.ad-lbl{
-  position:absolute;top:7px;left:11px;
-  font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1.2px;
-}
+/* AD */
+.ad{background:var(--ad-bg);border:1px dashed var(--ad-border);border-radius:12px;position:relative;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:12px;margin:20px auto}
+.ad-lbl{position:absolute;top:7px;left:11px;font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1.2px}
 .ad-728{max-width:1200px;height:96px}
 .ad-native{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1200px;height:auto;background:none;border:none;padding:0}
-.ad-native .ad-unit{
-  background:var(--ad-bg);border:1px dashed var(--ad-border);border-radius:12px;
-  height:260px;display:flex;align-items:center;justify-content:center;
-  color:var(--dim);font-size:12px;position:relative;
-}
+.ad-native .ad-unit{background:var(--ad-bg);border:1px dashed var(--ad-border);border-radius:12px;height:260px;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:12px;position:relative}
 
-/* ---- CONTAINER ---- */
+/* LAYOUT */
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* ---- TABS ---- */
+/* TABS */
 .tabs{display:flex;gap:7px;flex-wrap:wrap;padding:18px 0 14px;border-bottom:1px solid var(--border);margin-bottom:28px}
-.tab{
-  padding:7px 15px;border-radius:8px;font-size:13px;
-  cursor:pointer;border:1px solid var(--border);color:var(--muted);
-  background:transparent;transition:all .2s;
-}
+.tab{padding:7px 15px;border-radius:8px;font-size:13px;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:transparent;transition:all .2s}
 .tab:hover{border-color:var(--accent);color:var(--text)}
 .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
 
-/* ---- SECTION HEADER ---- */
+/* SECTION HEADER */
 .sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
 .sec-title{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
 .view-all{font-size:13px;color:var(--accent);cursor:pointer}
 .view-all:hover{text-decoration:underline}
 
-/* ---- TOOL GRID ---- */
-.tool-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
-  gap:14px;margin-bottom:36px;
-}
-.tool-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:18px;cursor:pointer;position:relative;overflow:hidden;
-  transition:transform .2s,border-color .2s,box-shadow .2s;
-}
-.tool-card:hover{
-  border-color:var(--accent);transform:translateY(-2px);
-  box-shadow:0 8px 28px rgba(99,102,241,.13);
-}
-.tool-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(99,102,241,.06),transparent 60%);
-  opacity:0;transition:opacity .2s;pointer-events:none;
-}
+/* TOOL GRID */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:36px}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(99,102,241,.13)}
+.tool-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.06),transparent 60%);opacity:0;transition:opacity .2s;pointer-events:none}
 .tool-card:hover::after{opacity:1}
 .tc-head{display:flex;align-items:flex-start;gap:13px;margin-bottom:10px}
-.tc-logo{
-  width:46px;height:46px;flex-shrink:0;
-  border-radius:10px;background:var(--surface2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:22px;
-}
+.tc-logo{width:46px;height:46px;flex-shrink:0;border-radius:10px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:22px}
 .tc-meta{flex:1;min-width:0}
 .tc-name{font-size:15px;font-weight:700;margin-bottom:4px}
 .tags{display:flex;gap:5px;flex-wrap:wrap}
@@ -171,184 +115,121 @@ nav a:hover{color:var(--text);background:var(--surface)}
 .tag.hot{background:rgba(239,68,68,.1);color:var(--red);border-color:rgba(239,68,68,.2)}
 .tag.new{background:rgba(99,102,241,.1);color:#a5b4fc;border-color:rgba(99,102,241,.2)}
 .tc-desc{font-size:12.5px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.tc-foot{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-top:13px;padding-top:13px;border-top:1px solid var(--border);
-}
+.tc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:13px;border-top:1px solid var(--border)}
 .tc-price{font-size:12.5px;font-weight:700}
 .tc-price.fp{color:var(--green)}
-.btn-sm{
-  background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:5px 13px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .2s;
-}
+.btn-sm{background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:5px 13px;border-radius:6px;font-size:12px;cursor:pointer;transition:all .2s}
 .btn-sm:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* ---- ARTICLES ---- */
+/* ARTICLES — FIX: display:block for <a> tag */
 .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
 .art-card{
+  display:block;color:inherit; /* critical: <a> needs these */
   background:var(--surface);border:1px solid var(--border);border-radius:12px;
   overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s;
 }
 .art-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.art-img{
-  height:150px;display:flex;align-items:center;justify-content:center;
-  font-size:52px;
-  background:linear-gradient(135deg,var(--surface2),var(--border));
-}
+.art-img{height:150px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,var(--surface2),var(--border))}
 .art-body{padding:15px}
 .art-cat{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:7px}
 .art-title{font-size:14px;font-weight:700;line-height:1.45;margin-bottom:8px}
 .art-excerpt{font-size:12px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:11px}
 .art-meta{display:flex;gap:10px;font-size:11px;color:var(--dim)}
 
-/* ---- MODAL ---- */
-.overlay{
-  position:fixed;inset:0;z-index:500;
-  background:rgba(0,0,0,.82);
-  display:none;align-items:center;justify-content:center;padding:20px;
-}
+/* MODAL */
+.overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;padding:20px}
 .overlay.open{display:flex}
-.modal{
-  background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;
-  position:relative;
-}
-.modal-close{
-  position:absolute;top:14px;right:14px;
-  background:var(--surface2);border:1px solid var(--border);color:var(--muted);
-  width:30px;height:30px;border-radius:7px;cursor:pointer;
-  font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;
-}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:28px;position:relative}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--surface2);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .modal-close:hover{background:var(--red);border-color:var(--red);color:#fff}
 
-/* ---- FOOTER ---- */
-footer{
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:42px 28px 28px;margin-top:64px;
-}
-.footer-grid{
-  max-width:1200px;margin:0 auto;
-  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:28px;
-}
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:42px 28px 28px;margin-top:64px}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:28px}
 .fb-desc{font-size:13px;color:var(--muted);margin-top:11px;line-height:1.65}
 .fc h4{font-size:13px;font-weight:700;margin-bottom:14px}
 .fc ul{list-style:none}
 .fc ul li{margin-bottom:9px}
 .fc ul li a{font-size:12.5px;color:var(--muted);transition:color .2s}
 .fc ul li a:hover{color:var(--accent)}
-.footer-bot{
-  max-width:1200px;margin:0 auto;
-  padding-top:20px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:var(--dim);flex-wrap:wrap;gap:8px;
-}
+.footer-bot{max-width:1200px;margin:0 auto;padding-top:20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--dim);flex-wrap:wrap;gap:8px}
 
-/* ---- TOAST ---- */
-.toast{
-  position:fixed;bottom:22px;right:22px;z-index:9999;
-  background:var(--surface);border:1px solid var(--border);border-radius:10px;
-  padding:12px 18px;font-size:13px;
-  transform:translateY(80px);opacity:0;transition:all .3s;
-  pointer-events:none;max-width:280px;
-}
+/* TOAST */
+.toast{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:13px;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;max-width:280px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.ok{border-left:3px solid var(--green)}
 
-/* ---- EMPTY STATE ---- */
-.empty{
-  grid-column:1/-1;text-align:center;padding:48px 20px;
-  color:var(--muted);font-size:14px;
-}
+/* EMPTY STATE */
+.empty{grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--muted);font-size:14px}
 .empty .big{font-size:40px;display:block;margin-bottom:10px}
 
-/* ---- NEWSLETTER ---- */
-.nl-box{
-  background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(168,85,247,.08));
-  border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:32px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
-}
+/* NEWSLETTER */
+.nl-box{background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(168,85,247,.08));border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .nl-icon{font-size:40px;flex-shrink:0}
 .nl-content{flex:1;min-width:200px}
 .nl-title{font-size:18px;font-weight:800;margin-bottom:6px}
 .nl-desc{font-size:13px;color:var(--muted);line-height:1.6}
 .nl-form{display:flex;gap:8px;flex-wrap:wrap}
-.nl-input{
-  flex:1;min-width:220px;background:var(--surface);
-  border:1px solid var(--border);color:var(--text);
-  padding:11px 16px;border-radius:9px;font-size:13px;outline:none;
-  transition:border-color .2s;
-}
+.nl-input{flex:1;min-width:220px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:9px;font-size:13px;outline:none;transition:border-color .2s}
 .nl-input:focus{border-color:var(--accent)}
 .nl-btn{padding:11px 22px}
 
-/* ---- RESPONSIVE ---- */
+/* RESPONSIVE */
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){
   .footer-grid{grid-template-columns:1fr}
   .hero-search{flex-direction:column}
-  .h-search input{width:150px}
+  .h-search input{width:130px}
+  .h-search input:focus{width:160px}
   nav{display:none}
   .stats{gap:20px}
   .ad-native{grid-template-columns:1fr}
-  header{padding:0 16px}
+  header{padding:0 14px;gap:8px}
   .wrap{padding:0 16px}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">
+  <a href="/" class="logo" style="text-decoration:none">
     <div class="logo-icon">✦</div>
-    <span class="logo-text">AI导航</span>
-  </div>
+    <span class="logo-text" id="siteName">AI导航</span>
+  </a>
   <div class="h-search">
     <span class="h-search-icon">🔍</span>
     <input type="text" id="hSearch" placeholder="搜索AI工具..." oninput="doSearch(this.value)">
   </div>
-  <nav>
+  <nav id="mainNav">
     <a href="#tools">工具库</a>
     <a href="#articles">文章</a>
-    <a href="#submit">提交工具</a>
-    <a href="#ad-contact">广告合作</a>
+    <a href="mailto:sovincents69@gmail.com?subject=Submit+AI+Tool">提交工具</a>
+    <a href="mailto:sovincents69@gmail.com?subject=Advertising+Inquiry">广告合作</a>
   </nav>
+  <button class="lang-btn" id="langBtn" onclick="toggleLang()" title="Switch language / 切换语言">🌐 EN</button>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>发现最好的<br><span class="hl">AI 工具</span></h1>
-  <p>精选 200+ AI工具 · 覆盖12大分类 · 每日更新 · 完全免费使用</p>
+  <h1 id="heroH1">发现最好的<br><span class="hl">AI 工具</span></h1>
+  <p id="heroSub">精选 50+ AI工具 · 覆盖12大分类 · 每日更新 · 完全免费使用</p>
   <div class="hero-search">
     <input type="text" id="heroSearch" placeholder="搜索 ChatGPT、Midjourney、Cursor..." oninput="doSearch(this.value)">
-    <button class="btn" onclick="doSearch(document.getElementById('heroSearch').value)">搜索</button>
+    <button class="btn" id="searchBtn" onclick="doSearch(document.getElementById('heroSearch').value)">搜索</button>
   </div>
   <div class="stats">
-    <div><div class="stat-num">200+</div><div class="stat-lbl">收录工具</div></div>
-    <div><div class="stat-num">12</div><div class="stat-lbl">工具分类</div></div>
-    <div><div class="stat-num">每日</div><div class="stat-lbl">更新</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-lbl">免费访问</div></div>
+    <div><div class="stat-num">50+</div><div class="stat-lbl" id="statTools">收录工具</div></div>
+    <div><div class="stat-num">12</div><div class="stat-lbl" id="statCats">工具分类</div></div>
+    <div><div class="stat-num">13</div><div class="stat-lbl" id="statArts">深度文章</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-lbl" id="statFree">免费访问</div></div>
   </div>
 </section>
 
-<!-- TOP AD (728×90) -->
 <div class="wrap">
-  <div class="ad ad-728">
-    <span class="ad-lbl">广告</span>
-    <!-- 替换为 Google AdSense 代码:
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-    广告位 728 × 90 — 首屏黄金位置
-  </div>
+  <div class="ad ad-728"><span class="ad-lbl">广告</span>广告位 728×90 — 首屏</div>
 </div>
 
-<!-- MAIN TOOLS -->
 <section class="wrap" id="tools">
-
-  <!-- CATEGORY TABS -->
-  <div class="tabs" id="tabs">
+  <div class="tabs" id="tabsRow">
     <button class="tab active" onclick="setCategory('all',this)">🔥 全部</button>
     <button class="tab" onclick="setCategory('chat',this)">💬 对话AI</button>
     <button class="tab" onclick="setCategory('write',this)">✍️ 写作</button>
@@ -363,421 +244,586 @@ footer{
     <button class="tab" onclick="setCategory('edu',this)">📚 教育学习</button>
   </div>
 
-  <!-- HOT TOOLS -->
   <div class="sec-hdr">
-    <div class="sec-title">🔥 热门工具</div>
-    <span class="view-all" onclick="showToast('完整工具库建设中，敬请期待')">查看全部 →</span>
+    <div class="sec-title" id="secHot">🔥 热门工具</div>
+    <span class="view-all" id="viewAll1" onclick="setCategory('all',document.querySelector('.tab'))">查看全部 →</span>
   </div>
   <div class="tool-grid" id="grid1"></div>
 
-  <!-- ▼▼▼ MIDDLE AD — 内容中间广告 (效果最佳) ▼▼▼ -->
-  <div class="ad ad-728" style="margin:8px 0 28px">
-    <span class="ad-lbl">广告</span>
-    <!-- 内容中间广告位 — CTR通常比顶部高2-3倍 -->
-    广告位 728 × 90 — 内容中间（推荐）
-  </div>
+  <div class="ad ad-728" style="margin:8px 0 28px"><span class="ad-lbl">广告</span>广告位 728×90 — 内容中间</div>
 
-  <!-- NEW TOOLS -->
   <div class="sec-hdr">
-    <div class="sec-title">✨ 最新收录</div>
-    <span class="view-all" onclick="showToast('完整工具库建设中，敬请期待')">查看全部 →</span>
+    <div class="sec-title" id="secNew">✨ 最新收录</div>
+    <span class="view-all" id="viewAll2" onclick="setCategory('all',document.querySelector('.tab'))">查看全部 →</span>
   </div>
   <div class="tool-grid" id="grid2"></div>
 
-  <!-- ▼▼▼ DOUBLE 300×250 AD — 内容中间双列 ▼▼▼ -->
   <div class="ad-native" style="margin:8px 0 36px">
-    <div class="ad-unit">
-      <span class="ad-lbl">广告</span>
-      300 × 250 — 内容中间左
-    </div>
-    <div class="ad-unit">
-      <span class="ad-lbl">广告</span>
-      300 × 250 — 内容中间右
-    </div>
+    <div class="ad-unit"><span class="ad-lbl">广告</span>300×250</div>
+    <div class="ad-unit"><span class="ad-lbl">广告</span>300×250</div>
   </div>
 
-  <!-- MORE TOOLS -->
   <div class="sec-hdr">
-    <div class="sec-title">💎 精选推荐</div>
+    <div class="sec-title" id="secPick">💎 精选推荐</div>
   </div>
   <div class="tool-grid" id="grid3"></div>
-
 </section>
 
-<!-- ARTICLES -->
 <section class="wrap" id="articles" style="padding-top:20px">
   <div class="sec-hdr">
-    <div class="sec-title">📖 AI工具深度文章</div>
-    <span class="view-all">全部文章 →</span>
+    <div class="sec-title" id="secArts">📖 AI工具深度文章</div>
+    <a class="view-all" id="artsAll" href="articles/best-free-ai-tools-2025.html">全部文章 →</a>
   </div>
   <div class="art-grid" id="artGrid"></div>
-
-  <!-- ▼▼▼ ARTICLE SECTION AD ▼▼▼ -->
-  <div class="ad ad-728" style="margin-top:28px">
-    <span class="ad-lbl">广告</span>
-    广告位 728 × 90 — 文章区
-  </div>
+  <div class="ad ad-728" style="margin-top:28px"><span class="ad-lbl">广告</span>广告位 728×90 — 文章区</div>
 </section>
 
-<!-- NEWSLETTER -->
 <section class="wrap" style="padding:8px 0 48px">
   <div class="nl-box">
     <div class="nl-icon">📬</div>
     <div class="nl-content">
-      <h3 class="nl-title">每周AI工具精选通讯</h3>
-      <p class="nl-desc">订阅免费周报，获取最新AI工具测评、免费替代品推荐、使用技巧，每周一封，不发垃圾邮件</p>
+      <h3 class="nl-title" id="nlTitle">每周AI工具精选通讯</h3>
+      <p class="nl-desc" id="nlDesc">订阅免费周报，获取最新AI工具测评、免费替代品推荐、使用技巧，每周一封，不发垃圾邮件</p>
     </div>
     <div class="nl-form">
       <input type="email" class="nl-input" id="nlEmail" placeholder="输入你的邮箱地址">
-      <button class="btn nl-btn" onclick="handleSubscribe()">免费订阅</button>
+      <button class="btn nl-btn" id="nlBtn" onclick="handleSubscribe()">免费订阅</button>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="logo"><div class="logo-icon">✦</div><span class="logo-text">AI导航</span></div>
-      <p class="fb-desc">发现、比较和使用最好的AI工具。<br>每日更新，覆盖全球200+优质AI产品。</p>
+      <p class="fb-desc" id="footerDesc">发现、比较和使用最好的AI工具。<br>每日更新，覆盖全球50+优质AI产品。</p>
     </div>
     <div class="fc">
-      <h4>分类</h4>
+      <h4 id="fcCats">分类</h4>
       <ul>
-        <li><a href="#">对话AI</a></li><li><a href="#">图像生成</a></li>
-        <li><a href="#">视频创作</a></li><li><a href="#">代码助手</a></li>
-        <li><a href="#">写作工具</a></li>
+        <li><a href="#tools" onclick="setCategory('chat',document.querySelectorAll('.tab')[1])">对话AI</a></li>
+        <li><a href="#tools" onclick="setCategory('image',document.querySelectorAll('.tab')[3])">图像生成</a></li>
+        <li><a href="#tools" onclick="setCategory('video',document.querySelectorAll('.tab')[4])">视频创作</a></li>
+        <li><a href="#tools" onclick="setCategory('code',document.querySelectorAll('.tab')[5])">代码助手</a></li>
+        <li><a href="#tools" onclick="setCategory('write',document.querySelectorAll('.tab')[2])">写作工具</a></li>
       </ul>
     </div>
     <div class="fc">
-      <h4>内容</h4>
+      <h4 id="fcContent">内容</h4>
       <ul>
-        <li><a href="#">最新工具</a></li><li><a href="#">工具对比</a></li>
-        <li><a href="#">使用教程</a></li><li><a href="#">行业报告</a></li>
-        <li><a href="#" id="submit">提交工具</a></li>
+        <li><a href="articles/best-free-ai-tools-2025.html">最新文章</a></li>
+        <li><a href="articles/chatgpt-plus-free-alternatives.html">工具对比</a></li>
+        <li><a href="articles/github-copilot-free-alternatives.html">代码工具</a></li>
+        <li><a href="articles/midjourney-free-alternatives.html">图像工具</a></li>
+        <li><a href="mailto:sovincents69@gmail.com?subject=Submit+AI+Tool" id="footSubmit">提交工具</a></li>
       </ul>
     </div>
     <div class="fc">
-      <h4>关于</h4>
+      <h4 id="fcAbout">关于</h4>
       <ul>
-        <li><a href="#">关于我们</a></li>
-        <li><a href="#" id="ad-contact">广告合作</a></li>
-        <li><a href="#">联系我们</a></li><li><a href="/privacy.html">隐私政策</a></li>
-        <li><a href="#">服务条款</a></li>
+        <li><a href="mailto:sovincents69@gmail.com" id="footContact">联系我们</a></li>
+        <li><a href="mailto:sovincents69@gmail.com?subject=Advertising" id="footAds">广告合作</a></li>
+        <li><a href="/privacy.html" id="footPrivacy">隐私政策</a></li>
+        <li><a href="/privacy.html" id="footTerms">服务条款</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bot">
-    <span>© 2025 AI导航. All rights reserved.</span>
-    <span>收录 200+ AI工具 · 每日更新 · 完全免费</span>
+    <span id="footerCopy">© 2025 AI导航. All rights reserved.</span>
+    <span id="footerSub">收录 50+ AI工具 · 每日更新 · 完全免费</span>
   </div>
 </footer>
 
-<!-- TOOL MODAL -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div id="modalBody"></div>
   </div>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-/* ========== DATA ========== */
+/* ─── i18n ─────────────────────────────────────────────────── */
+const LANG = {
+  zh:{
+    siteName:'AI导航',
+    heroH1:'发现最好的<br><span class="hl">AI 工具</span>',
+    heroSub:'精选 50+ AI工具 · 覆盖12大分类 · 每日更新 · 完全免费使用',
+    searchPh:'搜索 ChatGPT、Midjourney、Cursor...',
+    hdrPh:'搜索AI工具...',
+    searchBtn:'搜索',
+    statTools:'收录工具',statCats:'工具分类',statArts:'深度文章',statFree:'免费访问',
+    navTools:'工具库',navArts:'文章',navSubmit:'提交工具',navAds:'广告合作',
+    tabs:['🔥 全部','💬 对话AI','✍️ 写作','🎨 图像生成','🎬 视频创作','💻 代码助手','🎵 音频工具','⚡ 效率工具','📈 SEO营销','🎯 设计工具','📊 数据分析','📚 教育学习'],
+    secHot:'🔥 热门工具',secNew:'✨ 最新收录',secPick:'💎 精选推荐',
+    viewAll:'查看全部 →',
+    secArts:'📖 AI工具深度文章',artsAll:'全部文章 →',
+    visitBtn:'访问 →',modalPrice:'定价',modalCat:'分类',modalVisit:'访问',modalSuffix:'官网 →',
+    empty:'没有找到相关工具，换个关键词试试',
+    tagFree:'免费',tagHot:'热门',tagNew:'新',
+    nlTitle:'每周AI工具精选通讯',
+    nlDesc:'订阅免费周报，获取最新AI工具测评、免费替代品推荐、使用技巧，每周一封，不发垃圾邮件',
+    nlPh:'输入你的邮箱地址',nlBtn:'免费订阅',
+    nlOk:'订阅成功！感谢关注 ✓',nlErr:'请输入有效邮箱地址',
+    fcCats:'分类',fcContent:'内容',fcAbout:'关于',
+    footerDesc:'发现、比较和使用最好的AI工具。<br>每日更新，覆盖全球50+优质AI产品。',
+    footerCopy:'© 2025 AI导航. All rights reserved.',
+    footerSub:'收录 50+ AI工具 · 每日更新 · 完全免费',
+    toastGoto:'正在跳转到',
+    catMap:{chat:'对话AI',write:'写作工具',image:'图像生成',video:'视频创作',code:'代码助手',audio:'音频工具',productivity:'效率工具',seo:'SEO营销',design:'设计工具',data:'数据分析',edu:'教育学习'},
+  },
+  en:{
+    siteName:'AI Nav',
+    heroH1:'Discover the Best<br><span class="hl">AI Tools</span>',
+    heroSub:'50+ curated AI tools · 12 categories · Daily updates · 100% free',
+    searchPh:'Search ChatGPT, Midjourney, Cursor...',
+    hdrPh:'Search AI tools...',
+    searchBtn:'Search',
+    statTools:'Tools Listed',statCats:'Categories',statArts:'Articles',statFree:'Free Access',
+    navTools:'Tools',navArts:'Articles',navSubmit:'Submit Tool',navAds:'Advertise',
+    tabs:['🔥 All','💬 Chat AI','✍️ Writing','🎨 Image Gen','🎬 Video','💻 Coding','🎵 Audio','⚡ Productivity','📈 SEO','🎯 Design','📊 Analytics','📚 Education'],
+    secHot:'🔥 Popular Tools',secNew:'✨ Recently Added',secPick:'💎 Editor\'s Picks',
+    viewAll:'View all →',
+    secArts:'📖 AI Tool Deep Dives',artsAll:'All articles →',
+    visitBtn:'Visit →',modalPrice:'Pricing',modalCat:'Category',modalVisit:'Visit',modalSuffix:'Website →',
+    empty:'No tools found. Try a different keyword.',
+    tagFree:'Free',tagHot:'Popular',tagNew:'New',
+    nlTitle:'Weekly AI Tools Newsletter',
+    nlDesc:'Get the best new AI tools, free alternatives and tips — one email per week, no spam',
+    nlPh:'Enter your email address',nlBtn:'Subscribe Free',
+    nlOk:'Subscribed! One email a week, no spam ✓',nlErr:'Please enter a valid email address',
+    fcCats:'Categories',fcContent:'Content',fcAbout:'About',
+    footerDesc:'Discover, compare and use the best AI tools.<br>Daily updates, 50+ curated AI products worldwide.',
+    footerCopy:'© 2025 AI Nav. All rights reserved.',
+    footerSub:'50+ AI Tools · Daily Updates · 100% Free',
+    toastGoto:'Opening',
+    catMap:{chat:'Chat AI',write:'Writing',image:'Image Gen',video:'Video',code:'Coding',audio:'Audio',productivity:'Productivity',seo:'SEO',design:'Design',data:'Analytics',edu:'Education'},
+  }
+};
+
+let curLang = localStorage.getItem('aiNavLang') || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+
+function L(key){ return LANG[curLang][key] || LANG.zh[key] || key; }
+
+function applyLang(){
+  const l = LANG[curLang];
+  document.getElementById('htmlRoot').lang = curLang==='zh'?'zh-CN':'en';
+  document.getElementById('langBtn').textContent = curLang==='zh'?'🌐 EN':'🌐 中文';
+  document.getElementById('siteName').textContent = l.siteName;
+  document.getElementById('heroH1').innerHTML = l.heroH1;
+  document.getElementById('heroSub').textContent = l.heroSub;
+  document.getElementById('heroSearch').placeholder = l.searchPh;
+  document.getElementById('hSearch').placeholder = l.hdrPh;
+  document.getElementById('searchBtn').textContent = l.searchBtn;
+  document.getElementById('statTools').textContent = l.statTools;
+  document.getElementById('statCats').textContent = l.statCats;
+  document.getElementById('statArts').textContent = l.statArts;
+  document.getElementById('statFree').textContent = l.statFree;
+  // nav
+  const navLinks = document.querySelectorAll('#mainNav a');
+  const navKeys=['navTools','navArts','navSubmit','navAds'];
+  navLinks.forEach((a,i)=>{ if(navKeys[i]) a.textContent=l[navKeys[i]]; });
+  // tabs
+  document.querySelectorAll('#tabsRow .tab').forEach((btn,i)=>{ btn.textContent=l.tabs[i]; });
+  document.getElementById('secHot').textContent = l.secHot;
+  document.getElementById('secNew').textContent = l.secNew;
+  document.getElementById('secPick').textContent = l.secPick;
+  document.getElementById('viewAll1').textContent = l.viewAll;
+  document.getElementById('viewAll2').textContent = l.viewAll;
+  document.getElementById('secArts').textContent = l.secArts;
+  document.getElementById('artsAll').textContent = l.artsAll;
+  document.getElementById('nlTitle').textContent = l.nlTitle;
+  document.getElementById('nlDesc').textContent = l.nlDesc;
+  document.getElementById('nlEmail').placeholder = l.nlPh;
+  document.getElementById('nlBtn').textContent = l.nlBtn;
+  document.getElementById('fcCats').textContent = l.fcCats;
+  document.getElementById('fcContent').textContent = l.fcContent;
+  document.getElementById('fcAbout').textContent = l.fcAbout;
+  document.getElementById('footerDesc').innerHTML = l.footerDesc;
+  document.getElementById('footerCopy').textContent = l.footerCopy;
+  document.getElementById('footerSub').textContent = l.footerSub;
+  // re-render dynamic content
+  refresh();
+  renderArticles();
+}
+
+function toggleLang(){
+  curLang = curLang==='zh' ? 'en' : 'zh';
+  localStorage.setItem('aiNavLang', curLang);
+  applyLang();
+}
+
+/* ─── TOOL DATA ──────────────────────────────────────────────── */
 const TOOLS = [
-  /* ---- chat ---- */
+  /* chat */
   {id:1,name:'ChatGPT',em:'🤖',cat:'chat',tags:['热门','免费'],
    desc:'OpenAI开发的对话AI，月活用户3.7亿，支持文本生成、代码编写、数据分析，是目前全球使用最广泛的AI工具。',
-   price:'免费 / $20/月',url:'https://chat.openai.com',hot:true,isNew:false},
+   en_desc:"OpenAI's flagship AI assistant with 370M monthly users. Handles text, code, data analysis and image generation. The most widely-used AI tool in the world.",
+   price:'免费 / $20/mo',url:'https://chat.openai.com',hot:true,isNew:false},
   {id:2,name:'Claude',em:'🧠',cat:'chat',tags:['热门','免费'],
    desc:'Anthropic出品，支持200K超长上下文，以严谨和安全著称。在写作和分析任务中性能优异，隐私保护更完善。',
-   price:'免费 / $20/月',url:'https://claude.ai',hot:true,isNew:false},
+   en_desc:"Anthropic's AI with 200K token context. Excels at writing, long-form analysis and coding. Known for accuracy, safety and thoughtful responses.",
+   price:'免费 / $20/mo',url:'https://claude.ai',hot:true,isNew:false},
   {id:3,name:'Gemini',em:'✨',cat:'chat',tags:['免费','新'],
    desc:'Google DeepMind开发，深度集成Google生态（Gmail、Docs、Search），支持多模态输入，1M上下文窗口。',
-   price:'免费 / $20/月',url:'https://gemini.google.com',hot:false,isNew:true},
+   en_desc:"Google DeepMind's AI with deep Google Workspace integration (Gmail, Docs, Drive). Multimodal inputs, 1M token context window.",
+   price:'免费 / $20/mo',url:'https://gemini.google.com',hot:false,isNew:true},
   {id:4,name:'Perplexity AI',em:'🔍',cat:'chat',tags:['免费'],
    desc:'AI驱动的实时搜索引擎，联网回答并附带引用来源，月活用户超1500万，被誉为"Google最强挑战者"。',
-   price:'免费 / $20/月',url:'https://perplexity.ai',hot:true,isNew:false},
+   en_desc:'AI-powered search engine that answers questions with cited real-time sources. 15M+ monthly users — called the strongest Google challenger.',
+   price:'免费 / $20/mo',url:'https://perplexity.ai',hot:true,isNew:false},
   {id:5,name:'Grok',em:'⚡',cat:'chat',tags:['新'],
    desc:'xAI（马斯克）开发，实时接入X平台数据，风格幽默，2025年推出Grok-3后性能大幅提升，基准测试超越GPT-4o。',
-   price:'$8/月 (X Premium)',url:'https://x.com/i/grok',hot:false,isNew:true},
+   en_desc:"xAI (Elon Musk) chatbot with real-time X (Twitter) data. Grok-3 in 2025 outperforms GPT-4o on several benchmarks.",
+   price:'$8/mo (X Premium)',url:'https://x.com/i/grok',hot:false,isNew:true},
+  {id:40,name:'DeepSeek',em:'🐋',cat:'chat',tags:['免费','新'],
+   desc:'中国DeepSeek出品，开源模型R1推理能力接近GPT-4o，以极低成本实现顶级性能，2025年初引发全球AI行业震动。',
+   en_desc:'Chinese AI startup whose open-source R1 model matches GPT-4o at a fraction of the cost. Shocked the global AI industry in early 2025.',
+   price:'免费 / API pay-as-go',url:'https://chat.deepseek.com',hot:true,isNew:true},
+  {id:41,name:'Meta AI',em:'🌐',cat:'chat',tags:['免费','新'],
+   desc:'Meta推出的免费AI助手，深度集成WhatsApp、Instagram、Facebook，支持图像生成，完全免费无限制。',
+   en_desc:"Meta's free AI built into WhatsApp, Instagram and Facebook. Supports image generation with no usage limits.",
+   price:'完全免费',url:'https://meta.ai',hot:false,isNew:true},
+  {id:42,name:'Le Chat',em:'💬',cat:'chat',tags:['免费','新'],
+   desc:'Mistral AI出品的免费聊天工具，Mistral Large 2模型驱动，代码和数学推理能力突出，欧洲最强开源AI代表。',
+   en_desc:"Mistral AI's free chat tool powered by Mistral Large 2. Stands out for code and math reasoning — Europe's strongest open AI.",
+   price:'完全免费',url:'https://chat.mistral.ai',hot:false,isNew:true},
 
-  /* ---- write ---- */
+  /* write */
   {id:6,name:'Jasper AI',em:'📝',cat:'write',tags:['热门'],
    desc:'专业AI写作平台，服务10万+品牌客户，提供50+内容模板，支持SEO优化写作，内容质量高于通用AI助手。',
-   price:'$49/月起',url:'https://jasper.ai',hot:true,isNew:false},
+   en_desc:'Professional AI writing platform serving 100K+ brands. 50+ content templates with built-in SEO optimization.',
+   price:'$49/mo+',url:'https://jasper.ai',hot:true,isNew:false},
   {id:7,name:'Copy.ai',em:'✍️',cat:'write',tags:['免费'],
    desc:'面向营销团队的AI写作工具，一键生成广告文案、邮件序列、社媒内容，已帮助1500万用户完成内容创作。',
-   price:'免费 / $49/月',url:'https://copy.ai',hot:false,isNew:false},
+   en_desc:'AI writing tool for marketing teams. One-click ad copy, email sequences and social content. 15M+ users.',
+   price:'免费 / $49/mo',url:'https://copy.ai',hot:false,isNew:false},
   {id:8,name:'Notion AI',em:'📓',cat:'write',tags:['热门'],
    desc:'嵌入Notion的AI助手，支持写作润色、内容摘要、翻译、头脑风暴，2024年新增AI数据库查询功能。',
-   price:'$10/月（附加）',url:'https://notion.so',hot:true,isNew:false},
+   en_desc:"AI assistant embedded inside Notion. Handles writing polish, summarization, translation and brainstorming.",
+   price:'$10/mo (add-on)',url:'https://notion.so',hot:true,isNew:false},
   {id:9,name:'Writesonic',em:'🖊️',cat:'write',tags:['免费'],
    desc:'多语言AI写作平台，支持25+语言，内置Surfer SEO集成，自动优化文章关键词密度，适合内容营销团队。',
-   price:'免费 / $16/月',url:'https://writesonic.com',hot:false,isNew:false},
+   en_desc:'Multilingual AI writing in 25+ languages with built-in Surfer SEO integration for content marketers.',
+   price:'免费 / $16/mo',url:'https://writesonic.com',hot:false,isNew:false},
 
-  /* ---- image ---- */
+  /* image */
   {id:10,name:'Midjourney',em:'🎨',cat:'image',tags:['热门'],
    desc:'业界顶级AI绘画工具，月活超1600万，V6版本图像质量媲美专业摄影，是商业设计师首选AI图像工具。',
-   price:'$10/月起',url:'https://midjourney.com',hot:true,isNew:false},
+   en_desc:'Industry-leading AI art generator with 16M+ monthly users. V6 produces photorealistic quality — the go-to tool for commercial designers.',
+   price:'$10/mo+',url:'https://midjourney.com',hot:true,isNew:false},
   {id:11,name:'DALL-E 3',em:'🖼️',cat:'image',tags:['热门'],
    desc:'OpenAI最新图像模型，集成于ChatGPT Plus，对文字描述的理解准确度比DALL-E 2提升了3倍以上。',
-   price:'含于ChatGPT Plus',url:'https://openai.com/dall-e-3',hot:true,isNew:false},
+   en_desc:"OpenAI's latest image model inside ChatGPT Plus. Understands prompts 3× more accurately than DALL-E 2.",
+   price:'Included in ChatGPT Plus',url:'https://openai.com/dall-e-3',hot:true,isNew:false},
   {id:12,name:'Stable Diffusion',em:'🌈',cat:'image',tags:['免费'],
    desc:'开源图像生成模型，全球下载量超1亿次，可本地运行保护隐私，拥有庞大的LoRA/ControlNet扩展生态。',
-   price:'免费（开源）',url:'https://stability.ai',hot:true,isNew:false},
+   en_desc:'Open-source image model with 100M+ downloads. Runs locally for full privacy with a huge LoRA/ControlNet ecosystem.',
+   price:'免费 (open source)',url:'https://stability.ai',hot:true,isNew:false},
   {id:13,name:'Adobe Firefly',em:'🔥',cat:'image',tags:['免费','新'],
    desc:'Adobe出品，商用版权安全（训练数据来自授权图库），深度集成Photoshop和Illustrator，支持生成填充和文字效果。',
-   price:'免费 / CC订阅',url:'https://firefly.adobe.com',hot:false,isNew:true},
+   en_desc:"Adobe's commercially safe image generator trained on licensed stock. Deep Photoshop and Illustrator integration.",
+   price:'免费 / CC subscription',url:'https://firefly.adobe.com',hot:false,isNew:true},
   {id:14,name:'Ideogram 2.0',em:'💡',cat:'image',tags:['免费','新'],
    desc:'擅长在图像中生成清晰准确文字，弥补了AI绘图最大短板，每天25张免费，适合海报、封面、Logo设计。',
-   price:'免费 / $8/月',url:'https://ideogram.ai',hot:false,isNew:true},
+   en_desc:"Best AI for images with accurate text — solving AI art's biggest weakness. Free 25 images/day, great for posters and logos.",
+   price:'免费 / $8/mo',url:'https://ideogram.ai',hot:false,isNew:true},
   {id:15,name:'Leonardo AI',em:'🦁',cat:'image',tags:['免费'],
    desc:'游戏资产生成专家，支持角色一致性设计，每天150免费积分，拥有300万+注册用户，风格多样。',
-   price:'免费 / $12/月',url:'https://leonardo.ai',hot:false,isNew:false},
-
-  /* ---- video ---- */
-  {id:16,name:'Runway Gen-3',em:'🎬',cat:'video',tags:['热门'],
-   desc:'AI视频生成标杆工具，Gen-3 Alpha质量大幅提升，好莱坞制作公司已开始将其用于特效制作。',
-   price:'$15/月起',url:'https://runwayml.com',hot:true,isNew:false},
-  {id:17,name:'HeyGen',em:'👤',cat:'video',tags:['热门'],
-   desc:'AI数字人视频平台，支持100+语言配音和口型同步，企业级客户超5万家，估值已达4.4亿美元。',
-   price:'$29/月起',url:'https://heygen.com',hot:true,isNew:false},
-  {id:18,name:'Pika 2.0',em:'🎥',cat:'video',tags:['免费','新'],
-   desc:'2024年融资8000万美元的AI视频新秀，Pika 2.0支持更流畅的动作和场景切换，操作简单直观。',
-   price:'免费 / $8/月',url:'https://pika.art',hot:false,isNew:true},
-  {id:19,name:'Sora',em:'🌊',cat:'video',tags:['新'],
-   desc:'OpenAI视频生成模型，可生成60秒高质量视频，物理引擎逼真，包含在ChatGPT Pro订阅中。',
-   price:'含于ChatGPT Pro',url:'https://openai.com/sora',hot:false,isNew:true},
-  {id:20,name:'CapCut AI',em:'✂️',cat:'video',tags:['免费','热门'],
-   desc:'字节跳动旗下剪辑工具，AI功能包括自动字幕、背景移除、AI特效，月活超5亿，是目前最流行的移动端视频工具。',
-   price:'免费 / $10/月',url:'https://capcut.com',hot:true,isNew:false},
-
-  /* ---- code ---- */
-  {id:21,name:'GitHub Copilot',em:'💻',cat:'code',tags:['热门'],
-   desc:'GitHub与OpenAI联合开发，覆盖150万付费用户，研究表明使用Copilot的开发者编码速度提升55%。',
-   price:'$10/月',url:'https://github.com/features/copilot',hot:true,isNew:false},
-  {id:22,name:'Cursor',em:'🖱️',cat:'code',tags:['热门','新'],
-   desc:'AI代码编辑器，2024年年末获1亿美元融资，估值达26亿美元，全代码库理解能力远超普通AI补全工具。',
-   price:'免费 / $20/月',url:'https://cursor.sh',hot:true,isNew:true},
-  {id:23,name:'Windsurf',em:'🏄',cat:'code',tags:['新'],
-   desc:'Codeium出品的AI IDE，Cascade智能体可跨文件自主完成复杂任务，免费额度比Cursor更慷慨。',
-   price:'免费 / $15/月',url:'https://codeium.com/windsurf',hot:false,isNew:true},
-  {id:24,name:'Tabnine',em:'⌨️',cat:'code',tags:['免费'],
-   desc:'支持30+编程语言，可完全本地运行保护代码隐私，适合企业内网环境，有SOC 2 Type 2认证。',
-   price:'免费 / $12/月',url:'https://tabnine.com',hot:false,isNew:false},
-
-  /* ---- audio ---- */
-  {id:25,name:'ElevenLabs',em:'🎙️',cat:'audio',tags:['热门'],
-   desc:'AI语音合成顶级平台，支持32种语言，声音自然度接近真人，被《时代》评为2024年最佳AI公司之一。',
-   price:'免费 / $5/月起',url:'https://elevenlabs.io',hot:true,isNew:false},
-  {id:26,name:'Suno v4',em:'🎵',cat:'audio',tags:['热门','免费'],
-   desc:'AI音乐生成工具，v4版本质量大幅提升，输入歌词和风格描述即可生成完整歌曲，每天50首免费。',
-   price:'免费 / $10/月',url:'https://suno.ai',hot:true,isNew:false},
-  {id:27,name:'Udio',em:'🎶',cat:'audio',tags:['免费','新'],
-   desc:'与Suno并列的顶级AI音乐平台，在Jazz和古典音乐生成质量上略优，支持长达12分钟的完整歌曲。',
-   price:'免费 / $10/月',url:'https://udio.com',hot:false,isNew:true},
-  {id:28,name:'Whisper',em:'🔊',cat:'audio',tags:['免费'],
-   desc:'OpenAI开源语音识别模型，支持99种语言，词错率低至3%，下载量超2000万，可本地离线运行。',
-   price:'免费（开源）',url:'https://openai.com/research/whisper',hot:false,isNew:false},
-
-  /* ---- productivity ---- */
-  {id:29,name:'Gamma AI',em:'📊',cat:'productivity',tags:['免费','热门'],
-   desc:'AI演示文稿工具，输入主题30秒生成精美PPT，月活用户超400万，支持自定义品牌主题和导出为PPT/PDF。',
-   price:'免费 / $10/月',url:'https://gamma.app',hot:true,isNew:false},
-  {id:30,name:'Otter.ai',em:'📋',cat:'productivity',tags:['热门','免费'],
-   desc:'AI会议记录工具，实时转录并生成摘要和行动项，支持Zoom/Teams/Meet集成，企业用户超100万。',
-   price:'免费 / $10/月',url:'https://otter.ai',hot:true,isNew:false},
-  {id:31,name:'Zapier AI',em:'⚡',cat:'productivity',tags:['热门'],
-   desc:'AI驱动自动化工具，连接7000+应用，用自然语言描述工作流即可自动搭建，无需代码，月活超200万。',
-   price:'免费 / $20/月',url:'https://zapier.com',hot:false,isNew:false},
-
-  /* ---- seo ---- */
-  {id:32,name:'Surfer SEO',em:'🏄',cat:'seo',tags:['热门'],
-   desc:'AI内容SEO优化标杆工具，实时对比TOP20竞品，给出NLP关键词建议，使用后平均排名提升68%。',
-   price:'$89/月起',url:'https://surferseo.com',hot:true,isNew:false},
-  {id:33,name:'SEMrush AI',em:'📈',cat:'seo',tags:['热门'],
-   desc:'整合AI写作功能的综合SEO平台，拥有250亿+关键词数据库，服务1000万+营销专业人士。',
-   price:'$130/月起',url:'https://semrush.com',hot:true,isNew:false},
-
-  /* ---- design ---- */
-  {id:34,name:'Canva AI',em:'🎯',cat:'design',tags:['热门','免费'],
-   desc:'全球最受欢迎的设计工具，月活1.7亿，AI功能包括文字生图、背景移除、魔法编辑、AI演示文稿。',
-   price:'免费 / $15/月',url:'https://canva.com',hot:true,isNew:false},
-  {id:35,name:'Figma AI',em:'🎨',cat:'design',tags:['新'],
-   desc:'Figma 2024年推出原生AI功能，支持自动布局建议、内容填充、原型测试，设计团队协作效率大幅提升。',
-   price:'含于Figma订阅',url:'https://figma.com',hot:false,isNew:true},
-
-  /* ---- data ---- */
-  {id:36,name:'Julius AI',em:'📊',cat:'data',tags:['免费'],
-   desc:'对话式数据分析工具，上传CSV/Excel/数据库，用自然语言提问即可生成图表和洞察，无需SQL知识。',
-   price:'免费 / $20/月',url:'https://julius.ai',hot:false,isNew:false},
-  {id:37,name:'Consensus',em:'🔬',cat:'data',tags:['免费'],
-   desc:'AI学术搜索引擎，从2亿+学术论文中提炼证据，用AI摘要替代繁琐阅读，科研人员和学生必备。',
-   price:'免费 / $9/月',url:'https://consensus.app',hot:false,isNew:false},
-
-  /* ---- edu ---- */
-  {id:38,name:'Khan Academy AI',em:'📚',cat:'edu',tags:['免费'],
-   desc:'Khan Academy AI辅导老师Khanmigo，个性化K-12辅导，被美国超2万所学校采用，完全免费。',
-   price:'免费',url:'https://khanacademy.org',hot:false,isNew:false},
-  {id:39,name:'Duolingo Max',em:'🦜',cat:'edu',tags:['新'],
-   desc:'集成GPT-4的语言学习功能，支持"角色扮演"对话练习，Duolingo Max用户语言测试通过率提升40%。',
-   price:'$14/月',url:'https://duolingo.com',hot:false,isNew:true},
-
-  /* ---- more chat ---- */
-  {id:40,name:'Meta AI',em:'🌐',cat:'chat',tags:['免费','新'],
-   desc:'Meta推出的免费AI助手，深度集成WhatsApp、Instagram、Facebook，支持图像生成，完全免费无限制，月活超6亿。',
-   price:'完全免费',url:'https://meta.ai',hot:false,isNew:true},
-  {id:41,name:'Le Chat',em:'💬',cat:'chat',tags:['免费','新'],
-   desc:'Mistral AI出品的免费聊天工具，Mistral Large 2模型驱动，代码和数学推理能力突出，欧洲最强开源AI代表。',
-   price:'完全免费',url:'https://chat.mistral.ai',hot:false,isNew:true},
-  {id:42,name:'DeepSeek',em:'🐋',cat:'chat',tags:['免费','新'],
-   desc:'中国DeepSeek出品，开源模型R1推理能力接近GPT-4o，以极低成本实现顶级性能，2025年初引发全球AI行业震动。',
-   price:'免费 / API按量计费',url:'https://chat.deepseek.com',hot:true,isNew:true},
-
-  /* ---- more image ---- */
+   en_desc:'Game asset generation specialist with character consistency. Free 150 credits/day, 3M+ registered users.',
+   price:'免费 / $12/mo',url:'https://leonardo.ai',hot:false,isNew:false},
   {id:43,name:'Bing Image Creator',em:'🖼️',cat:'image',tags:['免费'],
    desc:'微软出品，基于DALL-E 3，每天15次快速生成，无需订阅，通过微软账号即可免费使用，是零成本AI绘图首选。',
-   price:'免费（微软账号）',url:'https://bing.com/images/create',hot:false,isNew:false},
+   en_desc:'Microsoft-powered by DALL-E 3. Free 15 fast generations/day with any Microsoft account — best zero-cost AI image tool.',
+   price:'免费 (Microsoft account)',url:'https://bing.com/images/create',hot:false,isNew:false},
   {id:44,name:'Playground AI',em:'🛝',cat:'image',tags:['免费'],
    desc:'每天100张免费图片，支持多种风格混合（真实/动漫/艺术），界面适合新手，无需信用卡注册即可使用。',
-   price:'免费100张/天',url:'https://playground.com',hot:false,isNew:false},
+   en_desc:'Free 100 images/day with mixed-style support (realistic/anime/art). Beginner-friendly, no credit card required.',
+   price:'免费100张/day',url:'https://playground.com',hot:false,isNew:false},
 
-  /* ---- more video ---- */
+  /* video */
+  {id:16,name:'Runway Gen-3',em:'🎬',cat:'video',tags:['热门'],
+   desc:'AI视频生成标杆工具，Gen-3 Alpha质量大幅提升，好莱坞制作公司已开始将其用于特效制作。',
+   en_desc:"Hollywood's AI video tool of choice. Gen-3 Alpha quality leap has studios using it in real productions.",
+   price:'$15/mo+',url:'https://runwayml.com',hot:true,isNew:false},
+  {id:17,name:'HeyGen',em:'👤',cat:'video',tags:['热门'],
+   desc:'AI数字人视频平台，支持100+语言配音和口型同步，企业级客户超5万家，估值已达4.4亿美元。',
+   en_desc:'AI avatar video platform with 100+ language lip-sync dubbing. 50K+ enterprise clients, $440M valuation.',
+   price:'$29/mo+',url:'https://heygen.com',hot:true,isNew:false},
+  {id:18,name:'Pika 2.0',em:'🎥',cat:'video',tags:['免费','新'],
+   desc:'2024年融资8000万美元的AI视频新秀，Pika 2.0支持更流畅的动作和场景切换，操作简单直观。',
+   en_desc:'AI video startup that raised $80M in 2024. Pika 2.0 brings smoother motion and scene transitions.',
+   price:'免费 / $8/mo',url:'https://pika.art',hot:false,isNew:true},
+  {id:19,name:'Sora',em:'🌊',cat:'video',tags:['新'],
+   desc:'OpenAI视频生成模型，可生成60秒高质量视频，物理引擎逼真，包含在ChatGPT Pro订阅中。',
+   en_desc:"OpenAI's video model generating up to 60-second realistic videos. Included in ChatGPT Pro subscription.",
+   price:'Included in ChatGPT Pro',url:'https://openai.com/sora',hot:false,isNew:true},
+  {id:20,name:'CapCut AI',em:'✂️',cat:'video',tags:['免费','热门'],
+   desc:'字节跳动旗下剪辑工具，AI功能包括自动字幕、背景移除、AI特效，月活超5亿，最流行的移动端视频工具。',
+   en_desc:"ByteDance's video editor with AI subtitles, background removal and effects. 500M+ monthly users worldwide.",
+   price:'免费 / $10/mo',url:'https://capcut.com',hot:true,isNew:false},
   {id:45,name:'Kling AI',em:'🎞️',cat:'video',tags:['免费','新'],
-   desc:'快手旗下AI视频生成工具，每天66积分免费，在运动连贯性和物理效果上超越同价位竞品，国内访问稳定。',
-   price:'免费66积分/天',url:'https://klingai.com',hot:false,isNew:true},
+   desc:'快手旗下AI视频生成工具，每天66积分免费，在运动连贯性和物理效果上超越同价位竞品。',
+   en_desc:'Kuaishou AI video tool. Free 66 credits/day. Outperforms similarly-priced competitors on motion coherence.',
+   price:'免费66积分/day',url:'https://klingai.com',hot:false,isNew:true},
   {id:46,name:'Hailuo AI',em:'🌊',cat:'video',tags:['免费','新'],
-   desc:'MiniMax出品，每天3次免费5秒高清视频，画面质量和物理效果在免费工具中表现最佳，支持文字和图片转视频。',
-   price:'免费3次/天',url:'https://hailuoai.com',hot:false,isNew:true},
+   desc:'MiniMax出品，每天3次免费5秒高清视频，画面质量和物理效果在免费工具中表现最佳。',
+   en_desc:'MiniMax AI video tool. Free 3 generations/day of 5-second HD video — best quality among free tools.',
+   price:'免费3次/day',url:'https://hailuoai.com',hot:false,isNew:true},
 
-  /* ---- more code ---- */
+  /* code */
+  {id:21,name:'GitHub Copilot',em:'💻',cat:'code',tags:['热门'],
+   desc:'GitHub与OpenAI联合开发，覆盖150万付费用户，研究表明使用Copilot的开发者编码速度提升55%。',
+   en_desc:'GitHub + OpenAI coding assistant with 1.5M paid users. Studies show developers code 55% faster with Copilot.',
+   price:'免费 / $10/mo',url:'https://github.com/features/copilot',hot:true,isNew:false},
+  {id:22,name:'Cursor',em:'🖱️',cat:'code',tags:['热门','新'],
+   desc:'AI代码编辑器，2024年年末获1亿美元融资，估值达26亿美元，全代码库理解能力远超普通AI补全工具。',
+   en_desc:'AI-native code editor. Raised $100M at a $2.6B valuation in 2024. Full codebase understanding beats basic AI completion.',
+   price:'免费 / $20/mo',url:'https://cursor.sh',hot:true,isNew:true},
+  {id:23,name:'Windsurf',em:'🏄',cat:'code',tags:['新'],
+   desc:'Codeium出品的AI IDE，Cascade智能体可跨文件自主完成复杂任务，免费额度比Cursor更慷慨。',
+   en_desc:"Codeium's AI IDE. The Cascade agent completes complex tasks across files autonomously — more generous free tier than Cursor.",
+   price:'免费 / $15/mo',url:'https://codeium.com/windsurf',hot:false,isNew:true},
+  {id:24,name:'Tabnine',em:'⌨️',cat:'code',tags:['免费'],
+   desc:'支持30+编程语言，可完全本地运行保护代码隐私，适合企业内网环境，有SOC 2 Type 2认证。',
+   en_desc:'Code completion in 30+ languages with fully local mode for code privacy. SOC 2 Type 2 certified for enterprises.',
+   price:'免费 / $12/mo',url:'https://tabnine.com',hot:false,isNew:false},
   {id:47,name:'Codeium',em:'🧩',cat:'code',tags:['免费'],
-   desc:'完全免费的AI代码补全工具，支持70+编程语言，兼容VSCode/JetBrains/Vim，无限次补全无功能阉割，个人永久免费。',
+   desc:'完全免费的AI代码补全工具，支持70+编程语言，兼容VSCode/JetBrains/Vim，无限次补全，个人永久免费。',
+   en_desc:'Completely free AI code completion. 70+ languages, VSCode/JetBrains/Vim support. Unlimited completions forever.',
    price:'完全免费',url:'https://codeium.com',hot:false,isNew:false},
   {id:48,name:'Amazon Q',em:'☁️',cat:'code',tags:['免费','新'],
    desc:'亚马逊AWS的AI编程助手，个人版完全免费无限制，深度集成AWS生态，支持代码安全漏洞扫描和自动修复。',
-   price:'免费（个人版）',url:'https://aws.amazon.com/q',hot:false,isNew:true},
+   en_desc:"Amazon AWS's AI coding assistant. Free individual tier with no limits. Deep AWS integration + security vulnerability scanning.",
+   price:'免费 (individual)',url:'https://aws.amazon.com/q',hot:false,isNew:true},
 
-  /* ---- more productivity ---- */
+  /* audio */
+  {id:25,name:'ElevenLabs',em:'🎙️',cat:'audio',tags:['热门'],
+   desc:'AI语音合成顶级平台，支持32种语言，声音自然度接近真人，被《时代》评为2024年最佳AI公司之一。',
+   en_desc:'Top AI voice synthesis platform supporting 32 languages. Near-human naturalness — Time Magazine\'s Best AI Company 2024.',
+   price:'免费 / $5/mo+',url:'https://elevenlabs.io',hot:true,isNew:false},
+  {id:26,name:'Suno v4',em:'🎵',cat:'audio',tags:['热门','免费'],
+   desc:'AI音乐生成工具，v4版本质量大幅提升，输入歌词和风格描述即可生成完整歌曲，每天50首免费。',
+   en_desc:'AI music generator — describe a style and lyrics and get a full song in seconds. Free 50 songs/day, v4 quality.',
+   price:'免费 / $10/mo',url:'https://suno.ai',hot:true,isNew:false},
+  {id:27,name:'Udio',em:'🎶',cat:'audio',tags:['免费','新'],
+   desc:'与Suno并列的顶级AI音乐平台，在Jazz和古典音乐生成质量上略优，支持长达12分钟的完整歌曲。',
+   en_desc:'Top AI music platform rivaling Suno. Slightly better at Jazz and classical. Supports full 12-minute songs.',
+   price:'免费 / $10/mo',url:'https://udio.com',hot:false,isNew:true},
+  {id:28,name:'Whisper',em:'🔊',cat:'audio',tags:['免费'],
+   desc:'OpenAI开源语音识别模型，支持99种语言，词错率低至3%，下载量超2000万，可本地离线运行。',
+   en_desc:"OpenAI's open-source speech recognition. 99 languages, 3% word error rate, 20M+ downloads. Runs fully offline.",
+   price:'免费 (open source)',url:'https://openai.com/research/whisper',hot:false,isNew:false},
+
+  /* productivity */
+  {id:29,name:'Gamma AI',em:'📊',cat:'productivity',tags:['免费','热门'],
+   desc:'AI演示文稿工具，输入主题30秒生成精美PPT，月活用户超400万，支持自定义品牌主题和导出为PPT/PDF。',
+   en_desc:'AI presentation tool — type a topic and get a beautiful deck in 30 seconds. 4M+ monthly users.',
+   price:'免费 / $10/mo',url:'https://gamma.app',hot:true,isNew:false},
+  {id:30,name:'Otter.ai',em:'📋',cat:'productivity',tags:['热门','免费'],
+   desc:'AI会议记录工具，实时转录并生成摘要和行动项，支持Zoom/Teams/Meet集成，企业用户超100万。',
+   en_desc:'AI meeting recorder with real-time transcription, summaries and action items. Zoom/Teams/Meet integration.',
+   price:'免费 / $10/mo',url:'https://otter.ai',hot:true,isNew:false},
+  {id:31,name:'Zapier AI',em:'⚡',cat:'productivity',tags:['热门'],
+   desc:'AI驱动自动化工具，连接7000+应用，用自然语言描述工作流即可自动搭建，无需代码，月活超200万。',
+   en_desc:'AI-powered automation connecting 7000+ apps. Describe a workflow in plain English — no code needed.',
+   price:'免费 / $20/mo',url:'https://zapier.com',hot:false,isNew:false},
   {id:49,name:'Fathom',em:'📋',cat:'productivity',tags:['免费'],
-   desc:'Zoom会议AI记录工具，永久免费无时间限制，自动生成摘要和行动项，准确率94%，是Otter.ai最强免费替代品。',
+   desc:'Zoom会议AI记录工具，永久免费无时间限制，自动生成摘要和行动项，准确率94%，Otter.ai最强免费替代品。',
+   en_desc:'AI meeting notes for Zoom — free forever, unlimited. Auto-generates summaries and action items at 94% accuracy.',
    price:'完全免费',url:'https://fathom.video',hot:false,isNew:false},
 
-  /* ---- more seo ---- */
+  /* seo */
+  {id:32,name:'Surfer SEO',em:'🏄',cat:'seo',tags:['热门'],
+   desc:'AI内容SEO优化标杆工具，实时对比TOP20竞品，给出NLP关键词建议，使用后平均排名提升68%。',
+   en_desc:'Benchmark AI SEO tool. Real-time comparison to top 20 competitors with NLP keyword suggestions. Average 68% rank improvement.',
+   price:'$89/mo+',url:'https://surferseo.com',hot:true,isNew:false},
+  {id:33,name:'SEMrush AI',em:'📈',cat:'seo',tags:['热门'],
+   desc:'整合AI写作功能的综合SEO平台，拥有250亿+关键词数据库，服务1000万+营销专业人士。',
+   en_desc:'All-in-one SEO platform with 25B+ keyword database. Serves 10M+ marketing professionals worldwide.',
+   price:'$130/mo+',url:'https://semrush.com',hot:true,isNew:false},
   {id:50,name:'Ahrefs WT',em:'🔗',cat:'seo',tags:['免费'],
-   desc:'Ahrefs Webmaster Tools免费版，支持网站健康检查、反向链接分析、关键词排名跟踪，无次数限制，站长必备。',
-   price:'免费（站长工具）',url:'https://ahrefs.com/webmaster-tools',hot:false,isNew:false},
+   desc:'Ahrefs Webmaster Tools免费版，支持网站健康检查、反向链接分析、关键词排名跟踪，无次数限制。',
+   en_desc:'Ahrefs Webmaster Tools free tier. Unlimited site audits, backlink analysis and keyword rank tracking.',
+   price:'免费 (webmaster)',url:'https://ahrefs.com/webmaster-tools',hot:false,isNew:false},
   {id:51,name:'Google Search Console',em:'🔎',cat:'seo',tags:['免费'],
-   desc:'Google官方免费SEO工具，提供搜索表现数据、索引状态报告、核心网页指标，数据最权威，所有站长必装。',
+   desc:'Google官方免费SEO工具，提供搜索表现数据、索引状态报告、核心网页指标，数据最权威。',
+   en_desc:"Google's free official SEO tool. Search performance data, index status, Core Web Vitals — the most authoritative source.",
    price:'完全免费',url:'https://search.google.com/search-console',hot:false,isNew:false},
 
-  /* ---- more design ---- */
+  /* design */
+  {id:34,name:'Canva AI',em:'🎯',cat:'design',tags:['热门','免费'],
+   desc:'全球最受欢迎的设计工具，月活1.7亿，AI功能包括文字生图、背景移除、魔法编辑、AI演示文稿。',
+   en_desc:"World's most popular design tool with 170M monthly users. AI features: image gen, background removal, Magic Resize.",
+   price:'免费 / $15/mo',url:'https://canva.com',hot:true,isNew:false},
+  {id:35,name:'Figma AI',em:'🎨',cat:'design',tags:['新'],
+   desc:'Figma 2024年推出原生AI功能，支持自动布局建议、内容填充、原型测试，设计团队协作效率大幅提升。',
+   en_desc:'Figma launched native AI in 2024 — auto-layout suggestions, content fill, and prototype testing for design teams.',
+   price:'Included in Figma plan',url:'https://figma.com',hot:false,isNew:true},
   {id:52,name:'Adobe Express',em:'🅰️',cat:'design',tags:['免费'],
-   desc:'Adobe专为非设计师推出，免费版含背景移除（无限次）、AI图像生成（商用安全）、2万+专业模板，Canva最强竞品。',
-   price:'免费 / CC订阅',url:'https://express.adobe.com',hot:false,isNew:false},
-  {id:53,name:'Microsoft Designer',em:'🎨',cat:'design',tags:['免费','新'],
-   desc:'微软出品，由DALL-E 3驱动，输入文字即可生成完整设计作品，完全免费无明显次数限制，微软账号直接使用。',
+   desc:'Adobe专为非设计师推出，免费版含背景移除（无限次）、AI图像生成（商用安全）、2万+专业模板。',
+   en_desc:"Adobe's tool for non-designers. Free tier: unlimited background removal, commercially-safe AI image gen, 20K+ templates.",
+   price:'免费 / CC subscription',url:'https://express.adobe.com',hot:false,isNew:false},
+  {id:53,name:'Microsoft Designer',em:'🪟',cat:'design',tags:['免费','新'],
+   desc:'微软出品，由DALL-E 3驱动，输入文字即可生成完整设计作品，完全免费无明显次数限制。',
+   en_desc:'Microsoft design tool powered by DALL-E 3. Type a description and get a complete design — completely free.',
    price:'完全免费',url:'https://designer.microsoft.com',hot:false,isNew:true},
+
+  /* data */
+  {id:36,name:'Julius AI',em:'📊',cat:'data',tags:['免费'],
+   desc:'对话式数据分析工具，上传CSV/Excel/数据库，用自然语言提问即可生成图表和洞察，无需SQL知识。',
+   en_desc:'Conversational data analysis. Upload CSV/Excel, ask questions in plain English, get charts and insights — no SQL needed.',
+   price:'免费 / $20/mo',url:'https://julius.ai',hot:false,isNew:false},
+  {id:37,name:'Consensus',em:'🔬',cat:'data',tags:['免费'],
+   desc:'AI学术搜索引擎，从2亿+学术论文中提炼证据，用AI摘要替代繁琐阅读，科研人员和学生必备。',
+   en_desc:'AI academic search engine. Extracts evidence from 200M+ research papers with AI summaries instead of full reads.',
+   price:'免费 / $9/mo',url:'https://consensus.app',hot:false,isNew:false},
+
+  /* edu */
+  {id:38,name:'Khan Academy AI',em:'📚',cat:'edu',tags:['免费'],
+   desc:'Khan Academy AI辅导老师Khanmigo，个性化K-12辅导，被美国超2万所学校采用，完全免费。',
+   en_desc:"Khan Academy's AI tutor Khanmigo. Personalized K-12 tutoring adopted by 20K+ US schools. Completely free.",
+   price:'完全免费',url:'https://khanacademy.org',hot:false,isNew:false},
+  {id:39,name:'Duolingo Max',em:'🦜',cat:'edu',tags:['新'],
+   desc:'集成GPT-4的语言学习功能，支持"角色扮演"对话练习，Duolingo Max用户语言测试通过率提升40%。',
+   en_desc:'GPT-4 powered language learning with roleplay conversation practice. Max subscribers pass language tests 40% more often.',
+   price:'$14/mo',url:'https://duolingo.com',hot:false,isNew:true},
 ];
 
+/* ─── ARTICLE DATA ───────────────────────────────────────────── */
 const ARTICLES = [
-  /* ── 免费替代品系列 ── */
-  {em:'🎨',cat:'Midjourney 免费替代',url:'articles/midjourney-free-alternatives.html',
-   title:'Midjourney 太贵？2025年7个免费AI绘图工具实测对比（附质量样图）',
-   excerpt:'Midjourney最低$10/月且无免费试用，但这7款工具提供真实免费额度：Ideogram 2.0（每天25张，文字渲染业界最佳）、Leonardo AI（每天150积分）、Adobe Firefly（每月25积分，商用免责）、Playground AI（每天100张）、Bing Image Creator（每天15次快速生成，基于DALL-E 3）。我们用同一组Prompt测试了所有工具，附上并排质量对比截图和各自适用场景分析。',
-   date:'2025-04-22',time:'10分钟',views:'34.2k'},
-  {em:'🤖',cat:'ChatGPT Plus 免费替代',url:'articles/chatgpt-plus-free-alternatives.html',
-   title:'不花$20/月，这5个工具能替代ChatGPT Plus 80%的功能（2025亲测）',
-   excerpt:'ChatGPT Plus$20/月主要提供：GPT-4o、联网搜索、代码执行、图像生成。以下5款工具可分别覆盖这些需求：Microsoft Copilot（免费GPT-4o级别对话+联网）、Perplexity AI（免费联网搜索，月活1500万）、Google Gemini（免费1M上下文）、Claude.ai免费版（200K上下文，写作质量更优）、Meta AI（完全免费多模态）。实测5款工具在10个典型任务下的表现，附ChatGPT Plus值不值得付费的最终结论。',
-   date:'2025-04-20',time:'12分钟',views:'52.7k'},
-  {em:'✍️',cat:'Jasper AI 免费替代',url:'articles/jasper-free-alternatives.html',
+  {em:'🎨',cat:'Midjourney 免费替代',en_cat:'Midjourney Alternatives',
+   url:'articles/midjourney-free-alternatives.html',
+   title:'Midjourney 太贵？2025年7个免费AI绘图工具实测对比',
+   en_title:'7 Free Midjourney Alternatives Tested in 2025 (Ranked)',
+   excerpt:'Midjourney最低$10/月且无免费试用，但这7款工具提供真实免费额度：Ideogram 2.0（每天25张）、Leonardo AI（每天150积分）、Adobe Firefly（商用免责）、Playground AI（每天100张）、Bing Image Creator（基于DALL-E 3）。',
+   en_excerpt:'Midjourney starts at $10/mo with no free trial, but 7 tools offer real free tiers: Ideogram 2.0 (25/day), Leonardo AI (150 credits/day), Adobe Firefly (commercially safe), Playground AI (100/day), Bing Image Creator (DALL-E 3).',
+   date:'2025-04-22',time:'10 min',views:'34.2k'},
+  {em:'🤖',cat:'ChatGPT Plus 免费替代',en_cat:'ChatGPT Plus Alternatives',
+   url:'articles/chatgpt-plus-free-alternatives.html',
+   title:'不花$20/月，这5个工具能替代ChatGPT Plus 80%的功能',
+   en_title:'5 Free Tools That Replace 80% of ChatGPT Plus Features',
+   excerpt:'ChatGPT Plus$20/月主要提供：GPT-4o、联网搜索、代码执行、图像生成。替代方案：Microsoft Copilot（免费GPT-4o+联网）、Perplexity AI（免费联网搜索）、Google Gemini（免费1M上下文）。',
+   en_excerpt:"ChatGPT Plus costs $20/mo for GPT-4o, web search and image generation. Free alternatives: Microsoft Copilot (GPT-4o + web), Perplexity AI (real-time search), Google Gemini (1M context free).",
+   date:'2025-04-20',time:'12 min',views:'52.7k'},
+  {em:'✍️',cat:'Jasper AI 免费替代',en_cat:'Jasper AI Alternatives',
+   url:'articles/jasper-free-alternatives.html',
    title:'Jasper AI $49/月太贵？5个免费AI写作工具完全可以替代它',
-   excerpt:'Jasper AI年收入超1亿美元，但$49/月的门槛让很多用户望而却步。对比测试结果：Claude.ai（免费，长文质量优于Jasper）、ChatGPT免费版（模板少但灵活）、Copy.ai免费版（每月2000字）、Writesonic免费版（每月10000字）、Notion AI（$10/月，已有Notion用户首选）。各工具在写博客文章、广告文案、邮件营销三个场景下的得分对比，以及什么情况下Jasper才真正值得付费。',
-   date:'2025-04-18',time:'9分钟',views:'28.9k'},
-  {em:'🎵',cat:'AI音乐工具',url:'articles/suno-free-alternatives.html',
+   en_title:'Jasper AI Too Expensive? 5 Free Writing Tools That Replace It',
+   excerpt:'Jasper AI$49/月门槛高，对比测试：Claude.ai（免费，长文质量优于Jasper）、ChatGPT免费版、Copy.ai免费版（每月2000字）、Writesonic免费版（每月10000字）、Notion AI（$10/月）。',
+   en_excerpt:"Jasper AI at $49/mo is steep. Tested free alternatives: Claude.ai (free, outperforms Jasper on long-form), Copy.ai (2K words/mo free), Writesonic (10K words/mo free), Notion AI ($10/mo add-on).",
+   date:'2025-04-18',time:'9 min',views:'28.9k'},
+  {em:'🎵',cat:'AI音乐工具',en_cat:'AI Music Tools',
+   url:'articles/suno-free-alternatives.html',
    title:'Suno Pro $10/月值得吗？对比4个免费AI音乐生成工具后的结论',
-   excerpt:'Suno免费版每天50首歌曲（带水印，不可商用），付费$10/月获500首/月可商用。但Udio同样提供每天50首免费生成，在爵士和古典风格质量上优于Suno；Meta的MusicGen完全开源免费；Stable Audio每月20首免费且音质出色。本文用10种不同音乐风格测试了所有工具，附Suno vs Udio质量对比音频，以及"到底哪种情况需要付费"的清晰判断标准。',
-   date:'2025-04-16',time:'8分钟',views:'19.4k'},
-  {em:'🎙️',cat:'ElevenLabs 免费替代',url:'articles/elevenlabs-free-alternatives.html',
-   title:'ElevenLabs $5/月起？3个完全免费的AI语音合成工具对比（含音频样本）',
-   excerpt:'ElevenLabs免费版每月仅10000字符，约12分钟音频。替代方案：微软Azure TTS通过Copilot免费使用，覆盖400+声音和140种语言；OpenAI TTS-1通过免费账户每月500万字符；Google Cloud TTS每月100万字符免费；Kokoro-82M完全开源可本地运行，质量测评排名第一的开源模型。本文对比了5组相同文本在不同工具下的语音样本，从自然度、情感表达、语速控制三维度打分。',
-   date:'2025-04-14',time:'10分钟',views:'22.1k'},
-  {em:'💻',cat:'GitHub Copilot 免费替代',url:'articles/github-copilot-free-alternatives.html',
+   en_title:'Is Suno Pro Worth $10/Month? We Tested 4 Free AI Music Tools',
+   excerpt:'Suno免费版每天50首（带水印），付费$10/月获500首可商用。对比：Udio同样每天50首免费，Jazz和古典质量更优；Meta MusicGen完全开源免费；Stable Audio每月20首免费。',
+   en_excerpt:'Suno free gives 50 songs/day (watermarked). Paid is $10/mo for 500 commercial songs. Udio matches with 50 free/day and better Jazz quality. MusicGen is open-source free.',
+   date:'2025-04-16',time:'8 min',views:'19.4k'},
+  {em:'🎙️',cat:'ElevenLabs 免费替代',en_cat:'ElevenLabs Alternatives',
+   url:'articles/elevenlabs-free-alternatives.html',
+   title:'ElevenLabs $5/月起？3个完全免费的AI语音合成工具对比',
+   en_title:'3 Completely Free ElevenLabs Alternatives (With Audio Samples)',
+   excerpt:'ElevenLabs免费版每月仅10000字符（约12分钟音频）。替代方案：微软Azure TTS（400+声音，140种语言）、OpenAI TTS-1（每月500万字符）、Kokoro-82M（开源本地运行，评测第一）。',
+   en_excerpt:"ElevenLabs free tier is only 10K characters/mo (~12 min audio). Alternatives: Azure TTS (400+ voices, 140 languages), OpenAI TTS-1 (5M chars/mo), Kokoro-82M (open-source local, #1 in benchmarks).",
+   date:'2025-04-14',time:'10 min',views:'22.1k'},
+  {em:'💻',cat:'GitHub Copilot 免费替代',en_cat:'GitHub Copilot Alternatives',
+   url:'articles/github-copilot-free-alternatives.html',
    title:'GitHub Copilot $10/月的3个免费替代品：实测30天编码效率对比',
-   excerpt:'GitHub Copilot 2024年开放免费版（每月2000次补全+50次聊天），但功能有限。完全免费替代：Codeium（无限补全，支持70+编程语言，VSCode/JetBrains/Vim全支持）、Tabnine免费版（本地运行保护隐私）、Continue.dev（开源+本地LLM）、Amazon CodeWhisperer（免费个人版无限次补全）。测试了在React、Python、Go三种语言下各工具补全准确率：Codeium在Python任务中准确率达71%，接近Copilot的78%，但完全免费。',
-   date:'2025-04-12',time:'11分钟',views:'31.6k'},
-  {em:'📊',cat:'Gamma AI 免费替代',url:'articles/gamma-free-alternatives.html',
+   en_title:'3 Free GitHub Copilot Alternatives: 30-Day Efficiency Test',
+   excerpt:'Copilot 2024年开放免费版（每月2000次补全+50次聊天）但功能有限。完全免费替代：Codeium（70+语言无限补全）、Tabnine免费版（本地运行）、Amazon Q（免费无限制）。',
+   en_excerpt:'Copilot free tier: 2000 completions + 50 chats/mo (limited). Fully free alternatives: Codeium (70+ langs, unlimited), Tabnine free (runs locally), Amazon Q (free, unlimited).',
+   date:'2025-04-12',time:'11 min',views:'31.6k'},
+  {em:'📊',cat:'Gamma AI 免费替代',en_cat:'Gamma AI Alternatives',
+   url:'articles/gamma-free-alternatives.html',
    title:'Gamma AI每月只能做10份免费PPT？这4个工具没有这个限制',
-   excerpt:'Gamma AI免费版每月仅10次AI生成，超出需付$10/月。替代方案实测：Beautiful.ai免费版（无限手动编辑，AI功能受限）、Canva AI（免费版含AI PPT生成，模板超过6万个）、Tome.app（每月5份免费AI演示）、微软Copilot Designer（通过Microsoft 365免费账户可用）、Pitch（免费无限工作区）。重点对比了在"10分钟内生成可用演示文稿"任务下各工具的完成质量和速度。',
-   date:'2025-04-10',time:'8分钟',views:'16.8k'},
-  {em:'🔍',cat:'SEMrush 免费替代',url:'articles/semrush-free-alternatives.html',
+   en_title:"Gamma AI's 10-PPT Monthly Limit? These 4 Tools Have No Such Restriction",
+   excerpt:'Gamma AI免费版每月仅10次AI生成，超出需$10/月。替代方案：Canva AI（免费50次/月）、微软Copilot PPT（无限次）、Tome（每月5份免费）、Beautiful.ai（手动制作免费）。',
+   en_excerpt:"Gamma free is 10 AI generations/mo, then $10/mo. Alternatives: Canva AI (50 free/mo), Microsoft Copilot for PowerPoint (unlimited), Tome (5/mo free), Beautiful.ai (free manual).",
+   date:'2025-04-10',time:'8 min',views:'16.8k'},
+  {em:'🔍',cat:'SEMrush 免费替代',en_cat:'SEMrush Alternatives',
+   url:'articles/semrush-free-alternatives.html',
    title:'SEMrush $130/月？这5个SEO工具免费版功能足够中小网站使用',
-   excerpt:'SEMrush月费$130对个人站长几乎不可承受，但其核心功能可以通过免费工具组合实现：Google Search Console（免费，官方数据最准确）+Ubersuggest免费版（每天3次关键词查询）+Ahrefs Webmaster Tools（免费，网站审核无限次）+AnswerThePublic（每天3次免费搜索）+Google Keyword Planner（完全免费，需Google Ads账户）。以一个月流量1万的内容网站为例，展示如何用0成本SEO工具组合完成完整的关键词研究和竞品分析。',
-   date:'2025-04-08',time:'13分钟',views:'24.3k'},
-  {em:'🎬',cat:'Runway 免费替代',url:'articles/runway-free-alternatives.html',
-   title:'Runway ML $15/月？2025年4个免费AI视频生成工具够用吗（附视频样本）',
-   excerpt:'Runway免费版仅125积分（约25秒视频），$15/月起才实用。免费替代：Pika Labs免费版（每月250积分，约50次生成）、Kling AI（每天66积分，国内访问稳定）、Hailuo AI（MiniMax出品，每天3次免费，5秒高清视频）、Luma Dream Machine（每月30次免费生成）。测试同一段文字描述在4个工具上的生成结果，从画面质量、运动流畅度、提示词遵从度三个维度评分，并给出"什么时候免费工具够用、什么时候必须付费"的判断框架。',
-   date:'2025-04-06',time:'10分钟',views:'41.5k'},
-  {em:'📝',cat:'Notion AI 免费替代',url:'articles/notion-ai-free-alternatives.html',
+   en_title:'SEMrush $130/Month? 5 Free SEO Tools Good Enough for Small Sites',
+   excerpt:'SEMrush月费$130对个人站长不可承受，核心功能可通过免费组合实现：Google Search Console+Ubersuggest免费版+Ahrefs Webmaster Tools+AnswerThePublic+Google Keyword Planner。',
+   en_excerpt:'SEMrush at $130/mo is unaffordable for individuals. Free stack: Google Search Console + Ubersuggest (3 queries/day) + Ahrefs Webmaster Tools + AnswerThePublic + Google Keyword Planner.',
+   date:'2025-04-08',time:'13 min',views:'24.3k'},
+  {em:'🎬',cat:'Runway 免费替代',en_cat:'Runway Alternatives',
+   url:'articles/runway-free-alternatives.html',
+   title:'Runway ML $15/月？2025年4个免费AI视频生成工具够用吗',
+   en_title:'Runway ML $15/Month? Are 4 Free AI Video Tools Good Enough? (2025)',
+   excerpt:'Runway免费版仅125积分（约25秒视频）。免费替代：Pika Labs（每月250积分）、Kling AI（每天66积分）、Hailuo AI（每天3次5秒高清）、Luma Dream Machine（每月30次）。',
+   en_excerpt:"Runway free is only 125 credits (~25 sec of video). Free alternatives: Pika Labs (250 credits/mo), Kling AI (66 credits/day), Hailuo AI (3 × 5-sec HD/day), Luma Dream Machine (30/mo).",
+   date:'2025-04-06',time:'10 min',views:'41.5k'},
+  {em:'📝',cat:'Notion AI 免费替代',en_cat:'Notion AI Alternatives',
+   url:'articles/notion-ai-free-alternatives.html',
    title:'不想为Notion AI额外付$10/月？这些免费AI笔记工具同样好用',
-   excerpt:'Notion AI需要在Notion订阅基础上额外付$10/月。内置AI的免费笔记工具：Mem.ai（AI自动组织笔记，免费版无限笔记）、Obsidian+本地AI插件（完全免费开源，隐私最佳）、Reflect Notes（AI摘要和链接，免费试用）、Logseq（开源免费，支持本地大模型）、Microsoft OneNote+Copilot（Microsoft 365免费账户可用AI功能）。从知识管理、写作辅助、团队协作三个场景分别给出推荐，并附各工具AI功能的详细截图对比。',
-   date:'2025-04-04',time:'9分钟',views:'18.9k'},
-  {em:'🎯',cat:'Canva Pro 免费替代',url:'articles/canva-pro-free-alternatives.html',
+   en_title:"Don't Want to Pay Extra $10/Month for Notion AI? Try These Instead",
+   excerpt:'Notion AI需在订阅基础上额外付$10/月。免费替代：Mem.ai（AI自动组织笔记）、Obsidian+本地AI插件（完全免费，隐私最佳）、Logseq（开源免费）、Microsoft OneNote+Copilot（免费）。',
+   en_excerpt:'Notion AI is $10/mo on top of your subscription. Free alternatives: Mem.ai (AI auto-organizes notes), Obsidian + local AI plugin (fully free, best privacy), Logseq (open source), OneNote + Copilot.',
+   date:'2025-04-04',time:'9 min',views:'18.9k'},
+  {em:'🎯',cat:'Canva Pro 免费替代',en_cat:'Canva Pro Alternatives',
+   url:'articles/canva-pro-free-alternatives.html',
    title:'Canva Pro $15/月的功能，这4个免费设计工具能覆盖90%',
-   excerpt:'Canva Pro核心功能：无背景移除次数限制、Brand Kit、魔法调整大小、完整模板库。逐一替代方案：Remove.bg（每月50张免费背景移除）+Adobe Express免费版（500+模板，含AI功能）+Figma免费版（3个项目无限编辑）+Microsoft Designer（完全免费，DALL-E 3驱动AI设计）。实测设计一套包含Logo+名片+社媒封面+海报的品牌视觉套装，分别记录各工具完成时间和质量，最终算出"什么时候Canva Pro才真的值这个钱"。',
-   date:'2025-04-02',time:'11分钟',views:'29.7k'},
-  {em:'📋',cat:'Otter.ai 免费替代',url:'articles/otter-free-alternatives.html',
-   title:'Otter.ai免费版只有300分钟/月？2025年5个AI会议记录工具免费额度对比',
-   excerpt:'Otter.ai免费版每月300分钟转录，$10/月升级到1200分钟。更慷慨的免费替代：Notta（每月120分钟，支持中文且准确率高）、Fireflies.ai（每月800分钟免费，Zoom/Teams自动加入）、Tactiq（Chrome插件，Google Meet/Zoom免费转录无时间限制）、Fathom（Zoom会议完全免费无限制，最推荐）、Whisper本地运行（完全免费无限制，需要技术基础）。对比了5款工具在30分钟中英混合会议中的转录准确率，Fathom在Zoom场景下准确率达94%，且永久免费。',
-   date:'2025-03-31',time:'9分钟',views:'15.6k'},
+   en_title:'4 Free Design Tools That Cover 90% of Canva Pro Features',
+   excerpt:'Canva Pro核心功能：无限背景移除、Brand Kit、魔法调整大小。逐一替代：Remove.bg（50张/月免费）+Adobe Express（背景移除无限次）+Figma免费版（3个项目）+Microsoft Designer（DALL-E 3）。',
+   en_excerpt:"Canva Pro's key features: unlimited background removal, Brand Kit, Magic Resize. Free stack: Remove.bg (50/mo) + Adobe Express (unlimited BG removal) + Figma free (3 projects) + Microsoft Designer.",
+   date:'2025-04-02',time:'11 min',views:'29.7k'},
+  {em:'📋',cat:'Otter.ai 免费替代',en_cat:'Otter.ai Alternatives',
+   url:'articles/otter-free-alternatives.html',
+   title:'Otter.ai免费版只有300分钟/月？2025年5个AI会议记录工具对比',
+   en_title:'Otter.ai Free Only 300 Min/Month? 5 Better Free Meeting Tools (2025)',
+   excerpt:'Otter.ai免费版每月300分钟，替代方案：Fathom（Zoom完全免费无限制，准确率94%）、Fireflies.ai（800分钟/月免费）、Tactiq（Chrome插件转录无限制）、Notta（中文识别最准）。',
+   en_excerpt:"Otter.ai free is 300 min/mo. Alternatives: Fathom (Zoom, completely free, 94% accuracy), Fireflies.ai (800 min/mo free), Tactiq (Chrome extension, unlimited transcription), Notta (best for Chinese).",
+   date:'2025-03-31',time:'9 min',views:'15.6k'},
 ];
 
-/* ========== STATE ========== */
-let curCat = 'all', curQ = '';
+/* ─── STATE ─────────────────────────────────────────────────── */
+let curCat='all', curQ='';
 
-/* ========== RENDER TOOLS ========== */
-function tagClass(t){ return t==='免费'?'free':t==='热门'?'hot':t==='新'?'new':'' }
-function catName(c){
-  return {chat:'对话AI',write:'写作工具',image:'图像生成',video:'视频创作',code:'代码助手',
-          audio:'音频工具',productivity:'效率工具',seo:'SEO营销',design:'设计工具',
-          data:'数据分析',edu:'教育学习'}[c]||c;
+/* ─── HELPERS ───────────────────────────────────────────────── */
+const TAG_MAP={'热门':'hot','免费':'free','新':'new','Popular':'hot','Free':'free','New':'new'};
+function tagClass(t){ return TAG_MAP[t]||''; }
+function tagLabel(t){
+  const map={'热门':'tagHot','免费':'tagFree','新':'tagNew'};
+  return map[t]?L(map[t]):t;
 }
+function isFree(price){ return price.includes('免费')||price.toLowerCase().startsWith('free')||price.includes('完全'); }
+function catName(c){ return (L('catMap')[c])||c; }
 
-function renderGrid(list, id){
-  const el = document.getElementById(id);
+/* ─── RENDER TOOLS ──────────────────────────────────────────── */
+function renderGrid(list,id){
+  const el=document.getElementById(id);
   if(!el) return;
   if(!list.length){
-    el.innerHTML='<div class="empty"><span class="big">🔍</span>没有找到相关工具，换个关键词试试</div>';
+    el.innerHTML=`<div class="empty"><span class="big">🔍</span>${L('empty')}</div>`;
     return;
   }
-  el.innerHTML = list.map(t=>`
+  el.innerHTML=list.map(t=>`
     <div class="tool-card" onclick="openModal(${t.id})">
       <div class="tc-head">
         <div class="tc-logo">${t.em}</div>
         <div class="tc-meta">
           <div class="tc-name">${t.name}</div>
-          <div class="tags">${t.tags.map(g=>`<span class="tag ${tagClass(g)}">${g}</span>`).join('')}</div>
+          <div class="tags">${t.tags.map(g=>`<span class="tag ${tagClass(g)}">${tagLabel(g)}</span>`).join('')}</div>
         </div>
       </div>
-      <p class="tc-desc">${t.desc}</p>
+      <p class="tc-desc">${curLang==='en'&&t.en_desc?t.en_desc:t.desc}</p>
       <div class="tc-foot">
-        <span class="tc-price ${t.price.startsWith('免费')?'fp':''}">${t.price}</span>
-        <button class="btn-sm" onclick="event.stopPropagation();go('${t.url}','${t.name}')">访问 →</button>
+        <span class="tc-price ${isFree(t.price)?'fp':''}">${t.price}</span>
+        <button class="btn-sm" onclick="event.stopPropagation();go('${t.url}','${t.name}')">${L('visitBtn')}</button>
       </div>
     </div>`).join('');
 }
 
 function renderArticles(){
-  document.getElementById('artGrid').innerHTML = ARTICLES.map(a=>`
-    <a class="art-card" href="${a.url||'#'}" ${a.url?'':'onclick="showToast(\'文章加载中...\')"'}>
+  document.getElementById('artGrid').innerHTML=ARTICLES.map(a=>`
+    <a class="art-card" href="${a.url||'#'}">
       <div class="art-img">${a.em}</div>
       <div class="art-body">
-        <div class="art-cat">${a.cat}</div>
-        <div class="art-title">${a.title}</div>
-        <div class="art-excerpt">${a.excerpt}</div>
+        <div class="art-cat">${curLang==='en'&&a.en_cat?a.en_cat:a.cat}</div>
+        <div class="art-title">${curLang==='en'&&a.en_title?a.en_title:a.title}</div>
+        <div class="art-excerpt">${curLang==='en'&&a.en_excerpt?a.en_excerpt:a.excerpt}</div>
         <div class="art-meta">
           <span>📅 ${a.date}</span><span>⏱ ${a.time}</span><span>👁 ${a.views}</span>
         </div>
@@ -787,90 +833,95 @@ function renderArticles(){
 
 function filtered(){
   return TOOLS.filter(t=>{
-    const mc = curCat==='all'||t.cat===curCat;
-    const mq = !curQ||t.name.toLowerCase().includes(curQ)||t.desc.includes(curQ)||t.cat.includes(curQ);
+    const mc=curCat==='all'||t.cat===curCat;
+    const mq=!curQ||
+      t.name.toLowerCase().includes(curQ)||
+      t.desc.toLowerCase().includes(curQ)||
+      (t.en_desc&&t.en_desc.toLowerCase().includes(curQ))||
+      t.cat.includes(curQ)||
+      (curLang==='en'&&catName(t.cat).toLowerCase().includes(curQ));
     return mc&&mq;
   });
 }
 
 function refresh(){
-  const f = filtered();
-  const hot  = f.filter(t=>t.hot).slice(0,6);
-  const nw   = f.filter(t=>t.isNew&&!hot.includes(t)).slice(0,6);
-  const rest = f.filter(t=>!hot.includes(t)&&!nw.includes(t)).slice(0,6);
-  renderGrid(hot.length?hot:f.slice(0,9), 'grid1');
-  renderGrid(nw.length?nw:f.slice(9,15), 'grid2');
+  const f=filtered();
+  const hot=f.filter(t=>t.hot).slice(0,6);
+  const nw=f.filter(t=>t.isNew&&!hot.includes(t)).slice(0,6);
+  const rest=f.filter(t=>!hot.includes(t)&&!nw.includes(t)).slice(0,6);
+  renderGrid(hot.length?hot:f.slice(0,9),'grid1');
+  renderGrid(nw.length?nw:f.slice(9,15),'grid2');
   renderGrid(rest.length?rest:f.slice(15,21),'grid3');
 }
 
-/* ========== INTERACTIONS ========== */
+/* ─── CATEGORY / SEARCH ─────────────────────────────────────── */
 function setCategory(c,el){
   curCat=c;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
+  if(el) el.classList.add('active');
   refresh();
+  document.getElementById('tools').scrollIntoView({behavior:'smooth'});
 }
 
 function doSearch(q){
-  curQ = q.trim().toLowerCase();
-  document.getElementById('hSearch').value = q;
-  document.getElementById('heroSearch').value = q;
+  curQ=q.trim().toLowerCase();
+  document.getElementById('hSearch').value=q;
+  document.getElementById('heroSearch').value=q;
   refresh();
 }
 
-/* ========== MODAL ========== */
+/* ─── MODAL ─────────────────────────────────────────────────── */
 function openModal(id){
-  const t = TOOLS.find(x=>x.id===id);
+  const t=TOOLS.find(x=>x.id===id);
   if(!t) return;
+  const desc=curLang==='en'&&t.en_desc?t.en_desc:t.desc;
   document.getElementById('modalBody').innerHTML=`
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px">
       <div style="width:62px;height:62px;background:var(--surface2);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:30px;border:1px solid var(--border);flex-shrink:0">${t.em}</div>
       <div>
         <h2 style="font-size:21px;font-weight:800;margin-bottom:5px">${t.name}</h2>
-        <div class="tags">${t.tags.map(g=>`<span class="tag ${tagClass(g)}">${g}</span>`).join('')}</div>
+        <div class="tags">${t.tags.map(g=>`<span class="tag ${tagClass(g)}">${tagLabel(g)}</span>`).join('')}</div>
       </div>
     </div>
-    <p style="color:var(--muted);line-height:1.72;font-size:14px;margin-bottom:22px">${t.desc}</p>
+    <p style="color:var(--muted);line-height:1.72;font-size:14px;margin-bottom:22px">${desc}</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px">
       <div style="background:var(--surface2);border-radius:9px;padding:14px">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">定价</div>
-        <div style="font-weight:700;font-size:15px;color:${t.price.startsWith('免费')?'var(--green)':'var(--text)'}">${t.price}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${L('modalPrice')}</div>
+        <div style="font-weight:700;font-size:15px;color:${isFree(t.price)?'var(--green)':'var(--text)'}">${t.price}</div>
       </div>
       <div style="background:var(--surface2);border-radius:9px;padding:14px">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">分类</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:4px">${L('modalCat')}</div>
         <div style="font-weight:700;font-size:15px">${catName(t.cat)}</div>
       </div>
     </div>
     <button class="btn" style="width:100%;padding:14px;font-size:15px" onclick="go('${t.url}','${t.name}')">
-      访问 ${t.name} 官网 →
+      ${L('modalVisit')} ${t.name} ${L('modalSuffix')}
     </button>`;
   document.getElementById('overlay').classList.add('open');
 }
 
-function closeModal(){ document.getElementById('overlay').classList.remove('open') }
+function closeModal(){ document.getElementById('overlay').classList.remove('open'); }
 
-function go(url, name){
-  showToast('正在跳转到 '+name+' ...');
+function go(url,name){
+  showToast(L('toastGoto')+' '+name+' ...');
   setTimeout(()=>window.open(url,'_blank'),400);
 }
 
-/* ========== TOAST ========== */
+/* ─── TOAST ─────────────────────────────────────────────────── */
 function showToast(msg){
   const el=document.getElementById('toast');
   el.textContent=msg;el.className='toast ok show';
-  clearTimeout(el._t);
-  el._t=setTimeout(()=>el.className='toast',2600);
+  clearTimeout(el._t);el._t=setTimeout(()=>el.className='toast',2600);
 }
 
-/* ========== NEWSLETTER ========== */
+/* ─── NEWSLETTER ─────────────────────────────────────────────── */
 function handleSubscribe(){
-  const inp = document.getElementById('nlEmail');
-  if(!inp.value||!inp.value.includes('@')){showToast('请输入有效的邮箱地址');return;}
-  showToast('订阅成功！感谢关注，每周一封不打扰 ✓');
-  inp.value='';
+  const inp=document.getElementById('nlEmail');
+  if(!inp.value||!inp.value.includes('@')){showToast(L('nlErr'));return;}
+  showToast(L('nlOk'));inp.value='';
 }
 
-/* ========== KEYBOARD ========== */
+/* ─── KEYBOARD ───────────────────────────────────────────────── */
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape') closeModal();
   if(e.key==='/'&&document.activeElement.tagName!=='INPUT'){
@@ -878,9 +929,8 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-/* ========== INIT ========== */
-refresh();
-renderArticles();
+/* ─── INIT ───────────────────────────────────────────────────── */
+applyLang(); // sets lang, renders tools+articles
 </script>
 </body>
 </html>
