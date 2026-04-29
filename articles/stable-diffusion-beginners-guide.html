@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stable Diffusion 新手完全指南 2025：免费本地AI绘图，从安装到出图 | AI Nav</title>
+<meta name="description" content="Stable Diffusion完整新手教程：免费本地运行AI绘图，SD 3.5 Large参数/显存要求、最强提示词技巧、ControlNet精准控制，附Windows一键安装包。">
+<meta name="keywords" content="Stable Diffusion教程,Stable Diffusion新手,SD免费AI绘图,AUTOMATIC1111,ComfyUI,Stable Diffusion提示词,AI画图本地部署">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/stable-diffusion-beginners-guide.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/stable-diffusion-beginners-guide.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/stable-diffusion-beginners-guide.html">
+<meta property="og:title" content="Stable Diffusion 新手完全指南 2025：免费本地AI绘图">
+<meta property="og:description" content="Stable Diffusion完整新手教程：免费本地运行AI绘图，SD 3.5参数/显存要求、最强提示词技巧、ControlNet精准控制，附一键安装包。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/stable-diffusion-beginners-guide.html">
+<meta property="og:image" content="https://ai-nav.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stable Diffusion 新手完全指南 2025：免费本地AI绘图">
+<meta name="twitter:description" content="免费本地AI绘图完整教程，SD 3.5、ControlNet、提示词技巧全解析。">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Stable Diffusion 新手完全指南 2025：免费本地AI绘图，从安装到出图","description":"Stable Diffusion完整新手教程：免费本地运行AI绘图，SD 3.5参数/显存要求、最强提示词技巧、ControlNet精准控制","datePublished":"2025-04-28","dateModified":"2025-04-28","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--accent-h:#4f46e5;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--yellow:#f59e0b;--red:#ef4444;--blue:#3b82f6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:rgba(13,13,13,.95);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--text);text-decoration:none}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted)}
+.breadcrumb a:hover{color:var(--text)}
+h1{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.25;margin-bottom:16px}
+.meta{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-bottom:32px;flex-wrap:wrap}
+.meta span{display:flex;align-items:center;gap:4px}
+.intro-box{background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.08));border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:20px 24px;margin-bottom:36px;font-size:15px;line-height:1.7}
+h2{font-size:22px;font-weight:800;margin:40px 0 16px;color:#a5b4fc}
+h3{font-size:17px;font-weight:700;margin:28px 0 12px;color:var(--text)}
+p{margin-bottom:16px;color:#d1d5db}
+ul,ol{padding-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;color:#d1d5db}
+strong{color:var(--text);font-weight:700}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0}
+.spec-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center}
+.spec-card .spec-name{font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.spec-card .spec-val{font-size:18px;font-weight:800;color:var(--accent)}
+.spec-card .spec-sub{font-size:12px;color:var(--muted);margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:var(--surface2);color:var(--muted);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171}
+.badge-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.badge-purple{background:rgba(168,85,247,.15);color:#c084fc}
+.step-block{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 20px;margin:16px 0}
+.step-num{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.step-title{font-size:15px;font-weight:700;margin-bottom:8px}
+.code-block{background:#111;border:1px solid #333;border-radius:8px;padding:14px 16px;font-family:'Fira Code',Consolas,monospace;font-size:13px;color:#a5f3fc;overflow-x:auto;margin:12px 0;line-height:1.6}
+.prompt-box{background:#0f0f1a;border:1px solid rgba(99,102,241,.35);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 16px;font-family:Consolas,'Courier New',monospace;font-size:13px;color:#c7d2fe;line-height:1.7;margin:12px 0;white-space:pre-wrap}
+.tip-box{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:16px 20px;margin:16px 0}
+.tip-box .tip-label{font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.warn-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:16px 20px;margin:16px 0}
+.warn-box .warn-label{font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.comparison-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin:12px 0}
+.comparison-card h4{font-size:15px;font-weight:700;margin-bottom:12px}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.tag-green{background:rgba(16,185,129,.15);color:#34d399}
+.tag-red{background:rgba(239,68,68,.15);color:#f87171}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px;max-width:860px;margin:0 auto}
+footer a{color:var(--muted);margin:0 10px}
+footer a:hover{color:var(--text)}
+@media(max-width:600px){.spec-grid{grid-template-columns:1fr 1fr}table{font-size:13px}th,td{padding:8px 10px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🧭</div>
+    <span class="logo-text">AI Nav</span>
+  </a>
+  <nav style="display:flex;gap:8px">
+    <a href="/" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px;transition:all .2s" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">首页</a>
+    <a href="/about.html" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px;transition:all .2s" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">关于</a>
+  </nav>
+</header>
+
+<div class="main">
+  <div class="breadcrumb">
+    <a href="/">AI Nav</a> › <a href="/">AI工具指南</a> › Stable Diffusion 新手教程
+  </div>
+
+  <h1>Stable Diffusion 新手完全指南 2025：免费本地AI绘图，从安装到出图</h1>
+
+  <div class="meta">
+    <span>📅 2025-04-28</span>
+    <span>⏱ 阅读约 14 分钟</span>
+    <span>👁 19.4k 次阅读</span>
+    <span>🏷 AI绘图 · 免费工具 · 新手教程</span>
+  </div>
+
+  <div class="intro-box">
+    <strong>Stable Diffusion是目前最强大的免费开源AI绘图模型</strong>，由Stability AI于2022年发布。与Midjourney（$10/月）、DALL-E（需ChatGPT Plus）不同，Stable Diffusion可以完全<strong>免费下载到本地运行</strong>——只要你有一张6GB以上显存的显卡，就能生成无限张图片，无任何内容审查。<br><br>
+    本指南基于 <strong>Stable Diffusion 3.5</strong> 和主流UI界面 AUTOMATIC1111、ComfyUI，涵盖安装、提示词技巧、ControlNet精准控制等完整流程。
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>📊 Stable Diffusion 各版本对比一览</h2>
+  <p>Stable Diffusion发展到2025年已有多个主要版本，选哪个取决于你的硬件配置和需求：</p>
+
+  <table>
+    <thead>
+      <tr><th>模型版本</th><th>参数量</th><th>最低显存</th><th>推荐显存</th><th>优势</th><th>适合人群</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>SD 1.5</strong></td>
+        <td>860M</td>
+        <td>4 GB</td>
+        <td>6 GB</td>
+        <td>生态最丰富，LoRA模型最多（C站10万+）</td>
+        <td><span class="badge badge-green">入门首选</span></td>
+      </tr>
+      <tr>
+        <td><strong>SDXL</strong></td>
+        <td>3.5B</td>
+        <td>6 GB</td>
+        <td>8 GB</td>
+        <td>原生1024×1024，细节更丰富</td>
+        <td><span class="badge badge-blue">主流选择</span></td>
+      </tr>
+      <tr>
+        <td><strong>SD 3 Medium</strong></td>
+        <td>2B</td>
+        <td>6 GB</td>
+        <td>8 GB</td>
+        <td>文字渲染大幅改善，三文本编码器</td>
+        <td><span class="badge badge-blue">平衡之选</span></td>
+      </tr>
+      <tr>
+        <td><strong>SD 3.5 Large</strong></td>
+        <td>8B</td>
+        <td>10 GB</td>
+        <td>16 GB</td>
+        <td>画质最强，多模态引导，商业可用</td>
+        <td><span class="badge badge-purple">高端首选</span></td>
+      </tr>
+      <tr>
+        <td><strong>SD 3.5 Large Turbo</strong></td>
+        <td>8B</td>
+        <td>10 GB</td>
+        <td>12 GB</td>
+        <td>4步采样，速度提升3×，质量接近Large</td>
+        <td><span class="badge badge-yellow">速度优先</span></td>
+      </tr>
+      <tr>
+        <td><strong>FLUX.1 Schnell</strong></td>
+        <td>12B</td>
+        <td>8 GB</td>
+        <td>12 GB</td>
+        <td>Apache 2.0商用，真实感最强，4步出图</td>
+        <td><span class="badge badge-purple">2024新星</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 2025年推荐</div>
+    如果你的显卡是 <strong>RTX 3060（12GB）或以上</strong>，优先尝试 <strong>FLUX.1 Schnell</strong>（Apache 2.0许可证，完全商用，真实感业界最强）。如果只有8GB显存，选 <strong>SDXL + Juggernaut XL</strong> 模型，综合表现最佳。6GB及以下选 <strong>SD 1.5</strong>，LoRA和风格模型生态最丰富。
+  </div>
+
+  <h2>💻 最低硬件要求</h2>
+
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-name">最低配置</div>
+      <div class="spec-val">4 GB</div>
+      <div class="spec-sub">VRAM，SD 1.5可用</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-name">推荐配置</div>
+      <div class="spec-val">8 GB</div>
+      <div class="spec-sub">VRAM，SDXL流畅运行</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-name">高端配置</div>
+      <div class="spec-val">12 GB+</div>
+      <div class="spec-sub">VRAM，FLUX.1/SD 3.5</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-name">CPU模式</div>
+      <div class="spec-val">16 GB</div>
+      <div class="spec-sub">RAM，无显卡可用（极慢）</div>
+    </div>
+  </div>
+
+  <p>没有独立显卡也可以在云端运行：<strong>Google Colab</strong>（T4 15GB免费额度，每月约15小时）、<strong>Kaggle</strong>（P100 30h/周免费）、<strong>RunPod</strong>（按需收费，RTX 3090约$0.44/小时）。</p>
+
+  <h2>🖥️ UI界面选哪个：AUTOMATIC1111 vs ComfyUI vs Forge</h2>
+
+  <div class="comparison-card">
+    <h4>AUTOMATIC1111 WebUI（推荐新手）</h4>
+    <p>GitHub Stars：<strong>142,000+</strong>（2025年3月），最成熟的SD界面，插件生态最丰富（Extensions 1,200+）。界面直观，新手2小时内可掌握基本操作。</p>
+    <div class="tag-row">
+      <span class="tag tag-green">✓ 新手友好</span>
+      <span class="tag tag-green">✓ 插件最多</span>
+      <span class="tag tag-green">✓ 教程资源丰富</span>
+      <span class="tag tag-red">✗ 速度较慢</span>
+      <span class="tag tag-red">✗ 显存利用率低</span>
+    </div>
+  </div>
+
+  <div class="comparison-card">
+    <h4>ComfyUI（推荐进阶用户）</h4>
+    <p>节点式工作流界面，GitHub Stars：<strong>58,000+</strong>。可视化数据流让复杂工作流（ControlNet+Lora+upscale）一目了然。速度比A1111快约20-30%，显存占用更低。</p>
+    <div class="tag-row">
+      <span class="tag tag-green">✓ 速度更快</span>
+      <span class="tag tag-green">✓ 工作流可复用</span>
+      <span class="tag tag-green">✓ FLUX支持最好</span>
+      <span class="tag tag-red">✗ 学习曲线陡</span>
+      <span class="tag tag-red">✗ 不适合零基础</span>
+    </div>
+  </div>
+
+  <div class="comparison-card">
+    <h4>SD.Next / Forge（推荐中级）</h4>
+    <p>基于A1111界面但大幅优化后端，显存优化使4GB显卡能运行SDXL。Forge是A1111的分支，同样兼容大部分A1111扩展，2024年成为很多用户的迁移首选。</p>
+    <div class="tag-row">
+      <span class="tag tag-green">✓ 低显存友好</span>
+      <span class="tag tag-green">✓ 兼容A1111插件</span>
+      <span class="tag tag-green">✓ 速度比A1111快</span>
+      <span class="tag tag-red">✗ 社区相对小</span>
+    </div>
+  </div>
+
+  <h2>⚡ Windows 一键安装（AUTOMATIC1111）</h2>
+
+  <div class="step-block">
+    <div class="step-num">Step 1</div>
+    <div class="step-title">安装 Python 3.10</div>
+    <p>前往 <a href="https://www.python.org/downloads/release/python-31011/" target="_blank" rel="noopener">python.org</a> 下载 Python 3.10.x（<strong>不要用3.11/3.12</strong>，部分扩展不兼容）。安装时勾选 <strong>"Add Python to PATH"</strong>。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 2</div>
+    <div class="step-title">安装 Git</div>
+    <p>前往 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a> 下载安装 Git for Windows，所有选项保持默认。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 3</div>
+    <div class="step-title">克隆 AUTOMATIC1111 仓库</div>
+    <p>打开命令提示符（Win+R → cmd），运行：</p>
+    <div class="code-block">cd C:\
+git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+cd stable-diffusion-webui</div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 4</div>
+    <div class="step-title">下载模型文件（.safetensors）</div>
+    <p>从 <a href="https://civitai.com" target="_blank" rel="noopener">Civitai</a> 或 <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a> 下载 .safetensors 文件，放入：</p>
+    <div class="code-block">C:\stable-diffusion-webui\models\Stable-diffusion\</div>
+    <p><strong>推荐入门模型：</strong></p>
+    <ul>
+      <li><strong>Realistic Vision V6.0</strong>（SD 1.5基础，真实人像，CivitAI下载量第一）</li>
+      <li><strong>Juggernaut XL v9</strong>（SDXL基础，综合最强，5.86GB）</li>
+      <li><strong>DreamShaper XL</strong>（SDXL基础，写实与艺术均衡，免费商用）</li>
+    </ul>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 5</div>
+    <div class="step-title">启动 WebUI</div>
+    <p>双击运行 <code>webui-user.bat</code>，首次启动会自动下载必要依赖（约需10-20分钟）。完成后浏览器自动打开 <code>http://127.0.0.1:7860</code>。</p>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ 常见问题</div>
+    <strong>显存不足</strong>：在 webui-user.bat 中 set COMMANDLINE_ARGS= 后添加 <code>--medvram</code>（6GB）或 <code>--lowvram</code>（4GB）。<br>
+    <strong>AMD显卡</strong>：添加 <code>--use-directml</code> 参数。<br>
+    <strong>网络超时</strong>：设置镜像源 <code>set HF_ENDPOINT=https://hf-mirror.com</code>。
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>✍️ 提示词（Prompt）核心技巧</h2>
+  <p>提示词质量直接决定出图效果。SD提示词分为<strong>正向提示词</strong>（想要什么）和<strong>负向提示词</strong>（不要什么）两部分。</p>
+
+  <h3>提示词结构模板</h3>
+  <div class="prompt-box">【画质标签】, 【主体描述】, 【场景环境】, 【光线氛围】, 【摄影风格】, 【艺术风格】</div>
+
+  <h3>高质量正向提示词示例（写实人像）</h3>
+  <div class="prompt-box">masterpiece, best quality, ultra-detailed, 8k, RAW photo,
+1girl, 25 years old, long black hair, (wearing white dress:1.2),
+standing in a sunlit cafe, warm bokeh background,
+golden hour lighting, soft shadows,
+shot by Canon EOS R5, 85mm lens, f/1.4 aperture,
+photorealistic, hyperrealistic</div>
+
+  <h3>黄金负向提示词（通用）</h3>
+  <div class="prompt-box">lowres, bad anatomy, bad hands, missing fingers, extra fingers,
+ugly, worst quality, low quality, normal quality,
+blurry, out of focus, noise, jpeg artifacts,
+deformed, mutated, extra limbs, watermark, text, logo,
+(nsfw:1.5), username, signature</div>
+
+  <h3>关键提示词技巧</h3>
+  <ul>
+    <li><strong>权重调整</strong>：用 <code>(关键词:1.3)</code> 增强某特征（1.0为默认，1.5为上限），<code>(关键词:0.8)</code> 减弱。如 <code>(red hair:1.4)</code> 加强红发效果。</li>
+    <li><strong>AND语法</strong>：<code>prompt A AND prompt B</code> 融合两种风格，每部分权重可单独设置。</li>
+    <li><strong>提示词分段</strong>：逗号分隔，前面的词权重高于后面的词。重要特征放在最前面。</li>
+    <li><strong>LoRA触发词</strong>：使用LoRA模型时必须加入对应触发词（每个LoRA页面都有标注）。</li>
+    <li><strong>中文不支持</strong>：SD提示词必须使用英文，中文会被忽略或产生随机效果。</li>
+  </ul>
+
+  <h3>采样器（Sampler）选择</h3>
+  <table>
+    <thead>
+      <tr><th>采样器</th><th>推荐步数</th><th>速度</th><th>特点</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>DPM++ 2M Karras</strong></td><td>20-25步</td><td>快</td><td>最流行，质量稳定，推荐新手</td></tr>
+      <tr><td><strong>Euler a</strong></td><td>20-30步</td><td>快</td><td>富有创意，步数增加图像变化大</td></tr>
+      <tr><td><strong>DDIM</strong></td><td>20-30步</td><td>中</td><td>确定性高，适合img2img微调</td></tr>
+      <tr><td><strong>DPM++ SDE Karras</strong></td><td>15-20步</td><td>慢</td><td>细节最丰富，步数少仍有效果</td></tr>
+      <tr><td><strong>LCM</strong></td><td>4-8步</td><td>极快</td><td>配合LCM LoRA使用，4步出图</td></tr>
+    </tbody>
+  </table>
+
+  <h2>🎛️ ControlNet：精准控制画面构图</h2>
+  <p>ControlNet 是 SD 最重要的扩展之一，允许你通过骨骼、边缘、深度图等精准控制AI生成内容的姿势和构图，解决了AI绘图"无法精确控制"的核心痛点。</p>
+
+  <h3>主要 ControlNet 模式</h3>
+  <table>
+    <thead>
+      <tr><th>模式</th><th>输入</th><th>控制效果</th><th>典型应用</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>OpenPose</strong></td>
+        <td>人物图片</td>
+        <td>提取骨骼姿势，换人物/服装</td>
+        <td>固定动作生成不同人物</td>
+      </tr>
+      <tr>
+        <td><strong>Canny</strong></td>
+        <td>任意图片</td>
+        <td>边缘线检测，保持物体轮廓</td>
+        <td>产品换背景、建筑重绘</td>
+      </tr>
+      <tr>
+        <td><strong>Depth</strong></td>
+        <td>任意图片</td>
+        <td>提取深度信息，保持空间关系</td>
+        <td>室内设计重绘、风景重绘</td>
+      </tr>
+      <tr>
+        <td><strong>Lineart</strong></td>
+        <td>线稿/草图</td>
+        <td>精准上色，保持线条</td>
+        <td>漫画线稿上色</td>
+      </tr>
+      <tr>
+        <td><strong>IP-Adapter</strong></td>
+        <td>参考图片</td>
+        <td>提取图像风格/人物特征</td>
+        <td>人物一致性保持（换场景）</td>
+      </tr>
+      <tr>
+        <td><strong>Inpaint</strong></td>
+        <td>图片+蒙版</td>
+        <td>局部重绘，保留其余区域</td>
+        <td>修复瑕疵、替换局部元素</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 ControlNet 安装方法</div>
+    在 A1111 界面点击 <strong>Extensions → Install from URL</strong>，输入：<br>
+    <code>https://github.com/Mikubill/sd-webui-controlnet</code><br>
+    安装后重启WebUI，再从 Hugging Face 下载对应的 ControlNet 模型文件（.safetensors）放入 <code>models/ControlNet/</code> 文件夹。
+  </div>
+
+  <h2>🎨 LoRA模型：5分钟换风格</h2>
+  <p>LoRA（Low-Rank Adaptation）是SD生态中最重要的微调模型格式，文件小（10-200MB），可在不改变基础模型的情况下快速切换画风、人物、风格。<strong>Civitai</strong> 目前有超过 <strong>15万个</strong> LoRA模型可免费下载。</p>
+
+  <h3>使用方法</h3>
+  <p>1. 下载 .safetensors 格式的LoRA文件，放入 <code>models/Lora/</code> 文件夹</p>
+  <p>2. 在提示词中加入 <code>&lt;lora:模型名称:0.8&gt;</code>（权重建议0.6-1.0）</p>
+  <p>3. 加入该LoRA的触发词（在下载页面查看）</p>
+
+  <h3>高质量推荐 LoRA（SD 1.5 / SDXL）</h3>
+  <ul>
+    <li><strong>Detail Tweaker LoRA</strong>：增强细节丰富度，任何模型通用，权重0.5-1.0</li>
+    <li><strong>Colorwater</strong>：水彩画风格，画面柔和梦幻</li>
+    <li><strong>GTA5 Artwork</strong>：GTA5游戏插画风格，颜色鲜明</li>
+    <li><strong>Epinoiseoffset</strong>：提升明暗对比，修复过曝问题</li>
+    <li><strong>Film Grain LoRA</strong>：添加胶片质感噪点，复古摄影风</li>
+  </ul>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>📐 关键参数设置指南</h2>
+
+  <table>
+    <thead>
+      <tr><th>参数</th><th>推荐范围</th><th>作用</th><th>说明</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Steps（步数）</strong></td>
+        <td>20-30</td>
+        <td>采样次数</td>
+        <td>步数越多越精细但更慢。超过30步质量提升微乎其微。</td>
+      </tr>
+      <tr>
+        <td><strong>CFG Scale</strong></td>
+        <td>6-8</td>
+        <td>提示词遵循度</td>
+        <td>越高越严格遵循提示词但会过饱和。5-7为创意，7-9为精确。</td>
+      </tr>
+      <tr>
+        <td><strong>分辨率</strong></td>
+        <td>512×512 / 1024×1024</td>
+        <td>输出尺寸</td>
+        <td>SD 1.5用512，SDXL用1024。超出训练分辨率会产生人脸畸变。</td>
+      </tr>
+      <tr>
+        <td><strong>Seed</strong></td>
+        <td>-1（随机）</td>
+        <td>随机种子</td>
+        <td>固定seed可复现相同图片，-1每次生成不同结果。</td>
+      </tr>
+      <tr>
+        <td><strong>Denoising Strength</strong></td>
+        <td>0.5-0.75</td>
+        <td>img2img修改程度</td>
+        <td>0=不改变原图，1=完全重绘。0.5-0.7保留原图轮廓微调细节。</td>
+      </tr>
+      <tr>
+        <td><strong>Hires Fix</strong></td>
+        <td>开启</td>
+        <td>高清放大</td>
+        <td>先生成低分辨率再高清修复，避免直接生成高分辨率的人脸崩坏问题。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>🔗 必备资源汇总</h2>
+
+  <h3>模型下载</h3>
+  <ul>
+    <li><a href="https://civitai.com" target="_blank" rel="noopener"><strong>Civitai</strong></a>：全球最大SD模型社区，15万+ 模型，支持按类型/基础模型/评分筛选</li>
+    <li><a href="https://huggingface.co/models?search=stable-diffusion" target="_blank" rel="noopener"><strong>Hugging Face</strong></a>：官方研究级模型，SD 3.5/FLUX等最新模型首发平台</li>
+    <li><a href="https://openart.ai/promptbook" target="_blank" rel="noopener"><strong>OpenArt Prompt Book</strong></a>：免费提示词参考手册，1500+ 风格示例</li>
+  </ul>
+
+  <h3>在线运行（无需本地GPU）</h3>
+  <ul>
+    <li><a href="https://colab.research.google.com" target="_blank" rel="noopener"><strong>Google Colab</strong></a>：T4 GPU 15GB显存，每月约15小时免费额度，支持A1111/ComfyUI</li>
+    <li><a href="https://www.kaggle.com/code" target="_blank" rel="noopener"><strong>Kaggle Notebooks</strong></a>：P100 16GB显存，每周30小时免费</li>
+    <li><a href="https://massed.ai" target="_blank" rel="noopener"><strong>Massed Compute</strong></a>：专为SD设计的云端运行，$10存款赠$5用量</li>
+  </ul>
+
+  <h3>学习资源</h3>
+  <ul>
+    <li><a href="https://www.reddit.com/r/StableDiffusion/" target="_blank" rel="noopener"><strong>r/StableDiffusion</strong></a>：Reddit社区，170万成员，每日更新技巧和作品</li>
+    <li><a href="https://civitai.com/articles" target="_blank" rel="noopener"><strong>Civitai 文章</strong></a>：模型教程、工作流分享</li>
+    <li><strong>YouTube频道</strong>：Olivio Sarikas、Sebastian Kamph，中文推荐「秋叶aaaki」</li>
+  </ul>
+
+  <h2>❓ 常见问题</h2>
+
+  <h3>Q：Mac能运行Stable Diffusion吗？</h3>
+  <p>可以。Apple Silicon（M1/M2/M3）有专用的优化版本，推荐使用 <strong>AUTOMATIC1111 for Apple Silicon</strong> 或 <strong>Diffusers</strong> 库。M1 Pro/Max以上表现较好，M1基础版较慢。Metal GPU加速已经相对成熟，8GB统一内存能运行SD 1.5，16GB以上可以运行SDXL。</p>
+
+  <h3>Q：生成的图片可以商用吗？</h3>
+  <p>取决于你使用的模型许可证：<strong>FLUX.1 Schnell</strong>（Apache 2.0，完全商用）、<strong>SD 1.5</strong>（CreativeML Open RAIL-M，商用需标注）、部分Civitai模型禁止商用（查看各模型License页面）。商业项目建议优先选用 Apache 2.0 许可证模型。</p>
+
+  <h3>Q：和Midjourney比，Stable Diffusion的优缺点？</h3>
+  <table>
+    <thead>
+      <tr><th>维度</th><th>Stable Diffusion</th><th>Midjourney</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>价格</td><td><span class="badge badge-green">完全免费（本地）</span></td><td><span class="badge badge-red">$10/月起，无免费试用</span></td></tr>
+      <tr><td>画质上限</td><td>8分（高手调教后可媲美）</td><td><span class="badge badge-green">9分（艺术风格最强）</span></td></tr>
+      <tr><td>新手友好度</td><td><span class="badge badge-red">低（需要配置环境）</span></td><td><span class="badge badge-green">高（Discord一条命令出图）</span></td></tr>
+      <tr><td>精准控制</td><td><span class="badge badge-green">强（ControlNet精准控制）</span></td><td>弱（有限的姿势控制）</td></tr>
+      <tr><td>内容限制</td><td><span class="badge badge-green">本地无审查</span></td><td>严格内容审查</td></tr>
+      <tr><td>自定义训练</td><td><span class="badge badge-green">支持（DreamBooth/LoRA）</span></td><td>不支持</td></tr>
+    </tbody>
+  </table>
+
+  <h2>🚀 推荐新手第一周学习路线</h2>
+
+  <div class="step-block">
+    <div class="step-num">Day 1-2</div>
+    <div class="step-title">安装 + 基础出图</div>
+    <p>按照上方安装教程完成环境配置，下载 Realistic Vision V6 模型，用默认参数生成第一张图，熟悉界面布局（正/负向提示词、步数、CFG）。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Day 3-4</div>
+    <div class="step-title">提示词深挖</div>
+    <p>学习权重调整 <code>(词:1.3)</code>，收集黄金负向提示词，参考 Civitai 作品的提示词，用相同参数复现并理解每个词的作用。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Day 5-6</div>
+    <div class="step-title">LoRA + 换风格</div>
+    <p>从 Civitai 下载2-3个LoRA，学习触发词用法，尝试同一主体在不同风格LoRA下的出图效果对比。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Day 7</div>
+    <div class="step-title">img2img + 高清放大</div>
+    <p>学习 img2img（对已有图片二次创作），开启 Hires Fix 将512×512放大到1024×1024，体验画质提升。</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 总结</div>
+    Stable Diffusion 的学习曲线比 Midjourney 陡，但一旦掌握，你将拥有几乎无限的创作自由度：本地无限生成、完全定制模型、精准控制构图。2025年推荐新手路线：<strong>AUTOMATIC1111 + Juggernaut XL + DPM++ 2M Karras + ControlNet Pose</strong>，这个组合能覆盖80%的日常需求。
+  </div>
+
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid #2c2c2c">
+    <h3 style="margin-bottom:16px;font-size:16px;color:#9ca3af">相关文章</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <a href="/articles/best-ai-image-generators-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🎨 2025最强AI图像生成器对比</div>
+        <div style="font-size:13px;color:#9ca3af">Midjourney vs FLUX vs Ideogram vs DALL-E 3</div>
+      </a>
+      <a href="/articles/midjourney-free-alternatives.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🆓 7个免费Midjourney替代工具</div>
+        <div style="font-size:13px;color:#9ca3af">Ideogram、Leonardo AI、Adobe Firefly实测对比</div>
+      </a>
+      <a href="/articles/best-free-ai-tools-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🚀 2025年15个完全免费AI工具</div>
+        <div style="font-size:13px;color:#9ca3af">无需信用卡，覆盖绘图、写作、编程全场景</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/">首页</a>
+  <a href="/about.html">关于</a>
+  <a href="/privacy.html">隐私政策</a>
+  <p style="margin-top:16px;font-size:12px">© 2025 AI Nav · 本文仅供参考，工具功能以官方页面为准</p>
+</footer>
+</body>
+</html>
