@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude API 完整使用指南 2025：从入门到实战，含价格/模型选择/提示词优化 | AI Nav</title>
+<meta name="description" content="Claude API 2025完整教程：Haiku/Sonnet/Opus价格对比，Python/JavaScript代码示例，提示缓存节省60%费用，流式输出、工具调用、视觉API实战，速率限制与最佳实践。">
+<meta name="keywords" content="Claude API教程,Anthropic API,Claude API价格,Claude API Python,claude-3-5-sonnet,提示缓存,Tool Use API">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/claude-api-guide-2025.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/claude-api-guide-2025.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/claude-api-guide-2025.html">
+<meta property="og:title" content="Claude API 完整使用指南 2025：价格/模型/代码示例">
+<meta property="og:description" content="Claude API完整教程，Python/JS代码示例，提示缓存节省60%费用，工具调用实战。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/claude-api-guide-2025.html">
+<meta property="og:image" content="https://ai-nav.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude API 完整使用指南 2025">
+<meta name="twitter:description" content="从入门到实战，价格对比、代码示例、提示缓存、工具调用全解析。">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Claude API 完整使用指南 2025：从入门到实战","description":"Claude API完整教程，Python/JS代码示例，提示缓存节省60%费用，工具调用实战","datePublished":"2025-04-29","dateModified":"2025-04-29","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--yellow:#f59e0b;--red:#ef4444;--blue:#3b82f6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:rgba(13,13,13,.95);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--text);text-decoration:none}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted)}
+h1{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.25;margin-bottom:16px}
+.meta{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-bottom:32px;flex-wrap:wrap}
+.intro-box{background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.08));border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:20px 24px;margin-bottom:36px;font-size:15px;line-height:1.7}
+h2{font-size:22px;font-weight:800;margin:40px 0 16px;color:#a5b4fc}
+h3{font-size:17px;font-weight:700;margin:24px 0 10px}
+p{margin-bottom:16px;color:#d1d5db}
+ul,ol{padding-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;color:#d1d5db}
+strong{color:var(--text);font-weight:700}
+.code-block{background:#0a0a14;border:1px solid #2a2a3e;border-radius:10px;padding:16px 18px;font-family:'Fira Code',Consolas,monospace;font-size:13px;line-height:1.7;overflow-x:auto;margin:14px 0;position:relative}
+.code-block .lang{position:absolute;top:8px;right:12px;font-size:10px;color:#5c6880;font-weight:600;text-transform:uppercase}
+.kw{color:#c792ea}
+.str{color:#c3e88d}
+.cm{color:#546e7a;font-style:italic}
+.fn{color:#82aaff}
+.num{color:#f78c6c}
+.var{color:#eeffff}
+.op{color:#89ddff}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:var(--surface2);color:var(--muted);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171}
+.badge-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.badge-purple{background:rgba(168,85,247,.15);color:#c084fc}
+.tip-box{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:14px 18px;margin:14px 0}
+.tip-box .tip-label{font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.warn-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:14px 18px;margin:14px 0}
+.warn-box .warn-label{font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.cost-calc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0}
+.cost-calc h4{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--muted)}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px}
+.cost-row:last-child{border-bottom:none;font-weight:700;color:var(--text)}
+.cost-row .label{color:var(--muted)}
+.cost-row .val{font-weight:600}
+.cost-row.total .val{color:#34d399;font-size:15px}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px;max-width:860px;margin:0 auto}
+footer a{color:var(--muted);margin:0 10px}
+footer a:hover{color:var(--text)}
+@media(max-width:600px){table{font-size:13px}th,td{padding:8px 10px}.code-block{font-size:12px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🧭</div>
+    <span class="logo-text">AI Nav</span>
+  </a>
+  <nav style="display:flex;gap:8px">
+    <a href="/" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">首页</a>
+    <a href="/about.html" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">关于</a>
+  </nav>
+</header>
+
+<div class="main">
+  <div class="breadcrumb">
+    <a href="/">AI Nav</a> › <a href="/">AI开发指南</a> › Claude API 教程
+  </div>
+
+  <h1>Claude API 完整使用指南 2025：从入门到实战，含价格/模型/代码示例</h1>
+
+  <div class="meta">
+    <span>📅 2025-04-29</span>
+    <span>⏱ 阅读约 15 分钟</span>
+    <span>👁 14.6k 次阅读</span>
+    <span>🏷 API开发 · Anthropic · Python/JS</span>
+  </div>
+
+  <div class="intro-box">
+    <strong>Claude API</strong>（Anthropic Messages API）是目前开发者在写作质量、长上下文处理和指令遵守方面评价最高的商业 LLM API 之一。截至2025年4月，最新主力模型是 <strong>claude-3-5-sonnet-20241022</strong>，HumanEval 92%，SWE-bench 49%。<br><br>
+    本指南覆盖：模型选择与定价、Python/JavaScript 快速入门、<strong>提示缓存（节省最多60%费用）</strong>、流式输出、工具调用（Function Calling）、视觉API，以及速率限制和最佳实践。
+  </div>
+
+  <h2>📊 模型选择与价格（2025年4月）</h2>
+
+  <table>
+    <thead>
+      <tr><th>模型</th><th>Input价格</th><th>Output价格</th><th>上下文</th><th>最适合场景</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>claude-3-5-sonnet-20241022</strong></td>
+        <td>$3 /1M tokens</td>
+        <td>$15 /1M tokens</td>
+        <td>200K</td>
+        <td><span class="badge badge-green">主力推荐</span> 写作、代码、分析</td>
+      </tr>
+      <tr>
+        <td><strong>claude-3-5-haiku-20241022</strong></td>
+        <td>$0.80 /1M</td>
+        <td>$4 /1M</td>
+        <td>200K</td>
+        <td><span class="badge badge-blue">高性价比</span> 高频调用、分类、摘要</td>
+      </tr>
+      <tr>
+        <td><strong>claude-3-opus-20240229</strong></td>
+        <td>$15 /1M</td>
+        <td>$75 /1M</td>
+        <td>200K</td>
+        <td>最复杂推理任务（Sonnet已覆盖大部分场景）</td>
+      </tr>
+      <tr>
+        <td><strong>claude-3-haiku-20240307</strong></td>
+        <td>$0.25 /1M</td>
+        <td>$1.25 /1M</td>
+        <td>200K</td>
+        <td>极低成本批量处理（旧版）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 模型选择建议</div>
+    <strong>90% 的场景选 claude-3-5-sonnet</strong>：质量最好，价格合理（$3/$15 per 1M tokens）。<br>
+    <strong>高频低复杂度任务选 claude-3-5-haiku</strong>：分类、意图识别、短文本摘要，成本是 Sonnet 的 26%，速度更快。<br>
+    <strong>不需要选 Opus</strong>：3.5 Sonnet 在绝大多数基准上已超过 Claude 3 Opus，且价格只有 1/5。
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>🚀 快速入门（5分钟）</h2>
+
+  <h3>安装 SDK</h3>
+  <div class="code-block">
+    <span class="lang">bash</span>
+<span class="cm"># Python</span>
+pip install anthropic
+
+<span class="cm"># JavaScript/Node.js</span>
+npm install @anthropic-ai/sdk
+  </div>
+
+  <h3>Python 最简示例</h3>
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="kw">import</span> <span class="var">anthropic</span>
+
+<span class="var">client</span> <span class="op">=</span> <span class="var">anthropic</span>.<span class="fn">Anthropic</span>(
+    <span class="var">api_key</span><span class="op">=</span><span class="str">"YOUR_API_KEY"</span>  <span class="cm"># 或设置环境变量 ANTHROPIC_API_KEY</span>
+)
+
+<span class="var">message</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">1024</span>,
+    <span class="var">messages</span><span class="op">=</span>[
+        {<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"用Python写一个二分查找函数，包含注释"</span>}
+    ]
+)
+
+<span class="fn">print</span>(<span class="var">message</span>.<span class="var">content</span>[<span class="num">0</span>].<span class="var">text</span>)
+<span class="cm"># 打印 token 使用量</span>
+<span class="fn">print</span>(<span class="var">f</span><span class="str">"Input tokens: {message.usage.input_tokens}"</span>)
+<span class="fn">print</span>(<span class="var">f</span><span class="str">"Output tokens: {message.usage.output_tokens}"</span>)
+  </div>
+
+  <h3>JavaScript 示例</h3>
+  <div class="code-block">
+    <span class="lang">javascript</span>
+<span class="kw">import</span> <span class="var">Anthropic</span> <span class="kw">from</span> <span class="str">'@anthropic-ai/sdk'</span>;
+
+<span class="kw">const</span> <span class="var">client</span> <span class="op">=</span> <span class="kw">new</span> <span class="fn">Anthropic</span>({
+  <span class="var">apiKey</span>: <span class="var">process</span>.<span class="var">env</span>.<span class="var">ANTHROPIC_API_KEY</span>
+});
+
+<span class="kw">const</span> <span class="var">message</span> <span class="op">=</span> <span class="kw">await</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>({
+  <span class="var">model</span>: <span class="str">'claude-3-5-sonnet-20241022'</span>,
+  <span class="var">max_tokens</span>: <span class="num">1024</span>,
+  <span class="var">messages</span>: [{ <span class="var">role</span>: <span class="str">'user'</span>, <span class="var">content</span>: <span class="str">'Hello, Claude!'</span> }]
+});
+
+<span class="var">console</span>.<span class="fn">log</span>(<span class="var">message</span>.<span class="var">content</span>[<span class="num">0</span>].<span class="var">text</span>);
+  </div>
+
+  <h2>💾 提示缓存（最重要的省钱技巧）</h2>
+  <p>提示缓存（Prompt Caching）是 Claude API 独有的功能，可以将固定的系统提示或文档缓存在服务端，之后相同前缀的请求 <strong>缓存命中时费用降低 90%</strong>，写入缓存费用为普通费率的 1.25×，但超过5分钟未使用缓存会失效。</p>
+
+  <h3>典型节省场景</h3>
+  <ul>
+    <li><strong>长系统提示</strong>：包含详细指令的system prompt（1000+ tokens），每次请求都重复发送</li>
+    <li><strong>文档分析</strong>：上传同一份PDF多次提问，文档内容只需发送一次</li>
+    <li><strong>代码库问答</strong>：将整个代码仓库内容缓存，多轮对话中反复引用</li>
+    <li><strong>Few-shot示例</strong>：大量示例的prompt，缓存后多次使用</li>
+  </ul>
+
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="cm"># 提示缓存示例 — 缓存长系统提示</span>
+<span class="var">message</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">1024</span>,
+    <span class="var">system</span><span class="op">=</span>[
+        {
+            <span class="str">"type"</span>: <span class="str">"text"</span>,
+            <span class="str">"text"</span>: <span class="str">"你是一个专业的代码审查员..."</span> <span class="op">+</span> <span class="var">long_guidelines</span>,  <span class="cm"># 数千字指南</span>
+            <span class="str">"cache_control"</span>: {<span class="str">"type"</span>: <span class="str">"ephemeral"</span>}  <span class="cm"># 标记此块为缓存目标</span>
+        }
+    ],
+    <span class="var">messages</span><span class="op">=</span>[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: user_code}]
+)
+
+<span class="cm"># 查看缓存使用情况</span>
+<span class="fn">print</span>(<span class="var">message</span>.<span class="var">usage</span>.<span class="var">cache_creation_input_tokens</span>)  <span class="cm"># 首次写入</span>
+<span class="fn">print</span>(<span class="var">message</span>.<span class="var">usage</span>.<span class="var">cache_read_input_tokens</span>)     <span class="cm"># 后续命中</span>
+  </div>
+
+  <div class="cost-calc">
+    <h4>💰 成本计算示例（系统提示 10,000 tokens，每天 1000 次请求）</h4>
+    <div class="cost-row"><span class="label">无缓存：10K × $3/1M × 1000次</span><span class="val">$30/天</span></div>
+    <div class="cost-row"><span class="label">有缓存：首次写入 10K × $3.75/1M</span><span class="val">$0.038（一次性）</span></div>
+    <div class="cost-row"><span class="label">缓存命中：10K × $0.30/1M × 999次</span><span class="val">$3/天</span></div>
+    <div class="cost-row total"><span class="label">节省</span><span class="val">90% ≈ $27/天 = $810/月</span></div>
+  </div>
+
+  <h2>🌊 流式输出（Streaming）</h2>
+  <p>对于需要实时显示响应的应用（聊天界面、代码生成），流式输出可以大幅提升用户体验，不需要等待完整响应。</p>
+
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="cm"># 流式输出 — 实时打印每个 token</span>
+<span class="kw">with</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">stream</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">1024</span>,
+    <span class="var">messages</span><span class="op">=</span>[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"写一篇关于机器学习的500字文章"</span>}]
+) <span class="kw">as</span> <span class="var">stream</span>:
+    <span class="kw">for</span> <span class="var">text</span> <span class="kw">in</span> <span class="var">stream</span>.<span class="fn">text_stream</span>():
+        <span class="fn">print</span>(<span class="var">text</span>, <span class="var">end</span><span class="op">=</span><span class="str">""</span>, <span class="var">flush</span><span class="op">=</span><span class="kw">True</span>)
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>🔧 工具调用（Tool Use / Function Calling）</h2>
+  <p>工具调用让 Claude 可以调用你定义的函数，实现真正的 AI Agent 能力：查询数据库、调用外部API、执行代码等。</p>
+
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="cm"># 定义工具</span>
+<span class="var">tools</span> <span class="op">=</span> [
+    {
+        <span class="str">"name"</span>: <span class="str">"get_weather"</span>,
+        <span class="str">"description"</span>: <span class="str">"获取指定城市的当前天气"</span>,
+        <span class="str">"input_schema"</span>: {
+            <span class="str">"type"</span>: <span class="str">"object"</span>,
+            <span class="str">"properties"</span>: {
+                <span class="str">"city"</span>: {
+                    <span class="str">"type"</span>: <span class="str">"string"</span>,
+                    <span class="str">"description"</span>: <span class="str">"城市名称，如'北京'或'Singapore'"</span>
+                }
+            },
+            <span class="str">"required"</span>: [<span class="str">"city"</span>]
+        }
+    }
+]
+
+<span class="cm"># 发送请求，Claude 决定是否调用工具</span>
+<span class="var">response</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">1024</span>,
+    <span class="var">tools</span><span class="op">=</span><span class="var">tools</span>,
+    <span class="var">messages</span><span class="op">=</span>[{<span class="str">"role"</span>: <span class="str">"user"</span>, <span class="str">"content"</span>: <span class="str">"新加坡今天天气怎么样？"</span>}]
+)
+
+<span class="cm"># 检查是否需要调用工具</span>
+<span class="kw">if</span> <span class="var">response</span>.<span class="var">stop_reason</span> <span class="op">==</span> <span class="str">"tool_use"</span>:
+    <span class="var">tool_use</span> <span class="op">=</span> <span class="var">response</span>.<span class="var">content</span>[<span class="num">-1</span>]
+    <span class="fn">print</span>(<span class="var">f</span><span class="str">"Claude 调用工具: {tool_use.name}"</span>)
+    <span class="fn">print</span>(<span class="var">f</span><span class="str">"参数: {tool_use.input}"</span>)
+    <span class="cm"># → 此处执行实际的天气查询，将结果返回给 Claude</span>
+  </div>
+
+  <h2>👁️ 视觉 API（图片分析）</h2>
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="kw">import</span> <span class="var">base64</span>
+
+<span class="cm"># 方式一：Base64 编码（本地图片）</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"screenshot.png"</span>, <span class="str">"rb"</span>) <span class="kw">as</span> <span class="var">f</span>:
+    <span class="var">image_data</span> <span class="op">=</span> <span class="var">base64</span>.<span class="fn">b64encode</span>(<span class="var">f</span>.<span class="fn">read</span>()).<span class="fn">decode</span>()
+
+<span class="var">message</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">1024</span>,
+    <span class="var">messages</span><span class="op">=</span>[{
+        <span class="str">"role"</span>: <span class="str">"user"</span>,
+        <span class="str">"content"</span>: [
+            {
+                <span class="str">"type"</span>: <span class="str">"image"</span>,
+                <span class="str">"source"</span>: {
+                    <span class="str">"type"</span>: <span class="str">"base64"</span>,
+                    <span class="str">"media_type"</span>: <span class="str">"image/png"</span>,
+                    <span class="str">"data"</span>: <span class="var">image_data</span>
+                }
+            },
+            {<span class="str">"type"</span>: <span class="str">"text"</span>, <span class="str">"text"</span>: <span class="str">"请描述这张截图的内容，提取所有文字"</span>}
+        ]
+    }]
+)
+<span class="fn">print</span>(<span class="var">message</span>.<span class="var">content</span>[<span class="num">0</span>].<span class="var">text</span>)
+
+<span class="cm"># 方式二：URL（直接传网络图片）</span>
+<span class="var">message</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+    <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+    <span class="var">max_tokens</span><span class="op">=</span><span class="num">512</span>,
+    <span class="var">messages</span><span class="op">=</span>[{
+        <span class="str">"role"</span>: <span class="str">"user"</span>,
+        <span class="str">"content"</span>: [
+            {<span class="str">"type"</span>: <span class="str">"image"</span>, <span class="str">"source"</span>: {<span class="str">"type"</span>: <span class="str">"url"</span>, <span class="str">"url"</span>: <span class="str">"https://example.com/chart.png"</span>}},
+            {<span class="str">"type"</span>: <span class="str">"text"</span>, <span class="str">"text"</span>: <span class="str">"分析这个图表的趋势"</span>}
+        ]
+    }]
+)
+  </div>
+
+  <h2>⚡ 速率限制与最佳实践</h2>
+
+  <h3>速率限制（免费/Build/Scale层）</h3>
+  <table>
+    <thead>
+      <tr><th>层级</th><th>RPM（请求/分钟）</th><th>TPM（tokens/分钟）</th><th>TPD（tokens/天）</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Free（$0）</strong></td><td>5</td><td>25,000</td><td>—</td></tr>
+      <tr><td><strong>Build（充值$5+）</strong></td><td>50</td><td>50,000</td><td>1,000,000</td></tr>
+      <tr><td><strong>Scale（充值$500+）</strong></td><td>1,000</td><td>80,000</td><td>不限</td></tr>
+      <tr><td><strong>Enterprise</strong></td><td>自定义</td><td>自定义</td><td>自定义</td></tr>
+    </tbody>
+  </table>
+
+  <h3>生产环境最佳实践</h3>
+  <ul>
+    <li><strong>设置合理的 max_tokens</strong>：不要设置过高（如100000），实际需要多少设多少，节省成本</li>
+    <li><strong>使用 system prompt</strong>：将固定指令放入 system 字段，比放在 user 消息中更清晰且可缓存</li>
+    <li><strong>实现指数退避重试</strong>：遇到 429/529 错误时，用 2^n 秒等待后重试</li>
+    <li><strong>启用提示缓存</strong>：凡是固定超过 1024 tokens 的内容都应标记 cache_control</li>
+    <li><strong>批处理 API</strong>：非实时任务使用 Batch API，成本降低 50%，适合离线处理大量文档</li>
+    <li><strong>监控 token 使用</strong>：在 usage 字段记录每次请求的 input/output tokens，及时发现异常</li>
+  </ul>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ 常见错误</div>
+    <strong>401 Unauthorized</strong>：API Key 无效或未设置环境变量。<br>
+    <strong>400 Bad Request</strong>：消息格式错误，检查 role 字段（必须是 "user" 或 "assistant" 交替）。<br>
+    <strong>529 Overloaded</strong>：服务器过载，建议30秒后重试，生产环境实现自动重试逻辑。<br>
+    <strong>context_length_exceeded</strong>：请求超过 200K token 限制，需要拆分输入。
+  </div>
+
+  <h2>💡 实战：完整的文档问答系统（30行代码）</h2>
+  <div class="code-block">
+    <span class="lang">python</span>
+<span class="kw">import</span> <span class="var">anthropic</span>
+
+<span class="var">client</span> <span class="op">=</span> <span class="var">anthropic</span>.<span class="fn">Anthropic</span>()
+
+<span class="kw">def</span> <span class="fn">document_qa</span>(<span class="var">document</span>: <span class="var">str</span>, <span class="var">question</span>: <span class="var">str</span>) <span class="op">-></span> <span class="var">str</span>:
+    <span class="str">"""基于文档内容回答问题，使用提示缓存降低成本"""</span>
+    <span class="var">response</span> <span class="op">=</span> <span class="var">client</span>.<span class="var">messages</span>.<span class="fn">create</span>(
+        <span class="var">model</span><span class="op">=</span><span class="str">"claude-3-5-sonnet-20241022"</span>,
+        <span class="var">max_tokens</span><span class="op">=</span><span class="num">512</span>,
+        <span class="var">system</span><span class="op">=</span><span class="str">"你是文档问答助手。只基于提供的文档内容回答，如果文档中没有相关信息，请明确说明。"</span>,
+        <span class="var">messages</span><span class="op">=</span>[
+            {
+                <span class="str">"role"</span>: <span class="str">"user"</span>,
+                <span class="str">"content"</span>: [
+                    <span class="cm"># 文档内容 — 标记为缓存（多次提问时只发送一次）</span>
+                    {
+                        <span class="str">"type"</span>: <span class="str">"text"</span>,
+                        <span class="str">"text"</span>: <span class="var">f</span><span class="str">"&lt;document&gt;\n{document}\n&lt;/document&gt;"</span>,
+                        <span class="str">"cache_control"</span>: {<span class="str">"type"</span>: <span class="str">"ephemeral"</span>}
+                    },
+                    <span class="cm"># 具体问题 — 每次不同，不缓存</span>
+                    {<span class="str">"type"</span>: <span class="str">"text"</span>, <span class="str">"text"</span>: <span class="var">question</span>}
+                ]
+            }
+        ]
+    )
+    <span class="kw">return</span> <span class="var">response</span>.<span class="var">content</span>[<span class="num">0</span>].<span class="var">text</span>
+
+<span class="cm"># 使用示例</span>
+<span class="var">doc</span> <span class="op">=</span> <span class="fn">open</span>(<span class="str">"report.txt"</span>).<span class="fn">read</span>()
+<span class="fn">print</span>(<span class="fn">document_qa</span>(<span class="var">doc</span>, <span class="str">"这份报告的核心结论是什么？"</span>))
+<span class="fn">print</span>(<span class="fn">document_qa</span>(<span class="var">doc</span>, <span class="str">"文中提到了哪些具体数字？"</span>))  <span class="cm"># 第2次问题命中缓存，节省90%成本</span>
+  </div>
+
+  <h2>📦 相关资源</h2>
+  <ul>
+    <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener"><strong>Anthropic 官方文档</strong></a>：API 参考、模型列表、使用指南</li>
+    <li><a href="https://console.anthropic.com" target="_blank" rel="noopener"><strong>Anthropic Console</strong></a>：API Key 管理、用量监控、Playground</li>
+    <li><a href="https://github.com/anthropics/anthropic-sdk-python" target="_blank" rel="noopener"><strong>Python SDK GitHub</strong></a>：源码、Issues、示例代码</li>
+    <li><a href="https://github.com/anthropics/anthropic-sdk-typescript" target="_blank" rel="noopener"><strong>TypeScript SDK GitHub</strong></a>：Node.js / 浏览器端 SDK</li>
+    <li><a href="https://github.com/anthropics/anthropic-cookbook" target="_blank" rel="noopener"><strong>Anthropic Cookbook</strong></a>：官方最佳实践代码示例集（Jupyter Notebooks）</li>
+  </ul>
+
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid #2c2c2c">
+    <h3 style="margin-bottom:16px;font-size:16px;color:#9ca3af">相关文章</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <a href="/articles/cursor-vs-copilot-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">💻 Cursor vs GitHub Copilot 2025</div>
+        <div style="font-size:13px;color:#9ca3af">SWE-bench 49%，AI编程工具终极对比</div>
+      </a>
+      <a href="/articles/deepseek-review-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🇨🇳 DeepSeek R1 深度评测</div>
+        <div style="font-size:13px;color:#9ca3af">API $0.55/1M，挑战OpenAI？</div>
+      </a>
+      <a href="/articles/best-chatgpt-prompts-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">💬 50个顶级ChatGPT提示词</div>
+        <div style="font-size:13px;color:#9ca3af">编程/写作/数据分析全场景</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/">首页</a>
+  <a href="/about.html">关于</a>
+  <a href="/privacy.html">隐私政策</a>
+  <p style="margin-top:16px;font-size:12px">© 2025 AI Nav · 价格和 API 规格以 Anthropic 官方文档为准</p>
+</footer>
+</body>
+</html>
