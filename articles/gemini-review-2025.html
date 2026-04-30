@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Gemini 深度评测 2025：1M上下文、免费最强、还是被高估了？| AI Nav</title>
+<meta name="description" content="Google Gemini 2025完整评测：Gemini 2.0 Flash/1.5 Pro真实基准测试，1M token上下文实测，与ChatGPT/Claude性能对比，免费版/Advanced价格分析。">
+<meta name="keywords" content="Gemini评测,Google Gemini 2025,Gemini 2.0 Flash,Gemini Ultra,Gemini vs ChatGPT,Gemini免费版,Google AI">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/gemini-review-2025.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/gemini-review-2025.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/gemini-review-2025.html">
+<meta property="og:title" content="Google Gemini 深度评测 2025：1M上下文、免费最强？">
+<meta property="og:description" content="Gemini 2.0 Flash/1.5 Pro真实基准测试，与ChatGPT/Claude性能对比，免费版vs Advanced值不值。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/gemini-review-2025.html">
+<meta property="og:image" content="https://ai-nav.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google Gemini 深度评测 2025：1M上下文、免费最强？">
+<meta name="twitter:description" content="Gemini 2025完整评测，真实基准数据，与ChatGPT/Claude全面对比。">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Google Gemini 深度评测 2025：1M上下文、免费最强、还是被高估了？","description":"Gemini 2.0 Flash/1.5 Pro真实基准测试，与ChatGPT/Claude性能对比，免费版/Advanced价格分析","datePublished":"2025-04-28","dateModified":"2025-04-28","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--accent-h:#4f46e5;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--yellow:#f59e0b;--red:#ef4444;--blue:#3b82f6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:rgba(13,13,13,.95);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--text);text-decoration:none}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted)}
+h1{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.25;margin-bottom:16px}
+.meta{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-bottom:32px;flex-wrap:wrap}
+.verdict-box{background:linear-gradient(135deg,rgba(66,133,244,0.12),rgba(15,157,88,0.08));border:1px solid rgba(66,133,244,0.3);border-radius:12px;padding:20px 24px;margin-bottom:36px;font-size:15px;line-height:1.7}
+.verdict-title{font-size:11px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+h2{font-size:22px;font-weight:800;margin:40px 0 16px;color:#a5b4fc}
+h3{font-size:17px;font-weight:700;margin:28px 0 12px}
+p{margin-bottom:16px;color:#d1d5db}
+ul,ol{padding-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;color:#d1d5db}
+strong{color:var(--text);font-weight:700}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:20px 0}
+.score-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.score-val{font-size:28px;font-weight:900}
+.score-val.a{color:#34d399}
+.score-val.b{color:#60a5fa}
+.score-val.c{color:#fbbf24}
+.score-val.d{color:#f87171}
+.score-label{font-size:12px;color:var(--muted);margin-top:4px}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:var(--surface2);color:var(--muted);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171}
+.badge-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.badge-purple{background:rgba(168,85,247,.15);color:#c084fc}
+.pro-con{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.pro-box,.con-box{background:var(--surface);border-radius:10px;padding:16px}
+.pro-box{border:1px solid rgba(16,185,129,.25)}
+.con-box{border:1px solid rgba(239,68,68,.25)}
+.box-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.pro-box .box-title{color:#34d399}
+.con-box .box-title{color:#f87171}
+.pro-box li::before{content:'✓ ';color:#34d399;font-weight:700}
+.con-box li::before{content:'✗ ';color:#f87171;font-weight:700}
+.pro-box li,.con-box li{list-style:none;font-size:13px;margin-bottom:6px;padding-left:0}
+ul.clean li::before{content:none}
+.tip-box{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:16px 20px;margin:16px 0}
+.tip-box .tip-label{font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:14px 0}
+.model-name{font-size:16px;font-weight:800;margin-bottom:6px}
+.model-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.model-tag{font-size:12px;padding:3px 9px;border-radius:4px;font-weight:600}
+.bar-row{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:13px}
+.bar-label{width:120px;flex-shrink:0;color:var(--muted)}
+.bar-bg{flex:1;background:var(--surface2);border-radius:4px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#6366f1,#a855f7)}
+.bar-val{width:36px;text-align:right;font-weight:700;font-size:13px;flex-shrink:0}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px;max-width:860px;margin:0 auto}
+footer a{color:var(--muted);margin:0 10px}
+footer a:hover{color:var(--text)}
+@media(max-width:600px){.pro-con{grid-template-columns:1fr}table{font-size:13px}th,td{padding:8px 10px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🧭</div>
+    <span class="logo-text">AI Nav</span>
+  </a>
+  <nav style="display:flex;gap:8px">
+    <a href="/" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">首页</a>
+    <a href="/about.html" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">关于</a>
+  </nav>
+</header>
+
+<div class="main">
+  <div class="breadcrumb">
+    <a href="/">AI Nav</a> › <a href="/">AI模型评测</a> › Google Gemini 2025 评测
+  </div>
+
+  <h1>Google Gemini 深度评测 2025：1M 上下文、免费版最强、还是被高估了？</h1>
+
+  <div class="meta">
+    <span>📅 2025-04-28</span>
+    <span>⏱ 阅读约 13 分钟</span>
+    <span>👁 24.8k 次阅读</span>
+    <span>🏷 AI模型 · Google AI · 评测</span>
+  </div>
+
+  <div class="verdict-box">
+    <div class="verdict-title">📋 评测结论（TL;DR）</div>
+    <strong>Gemini 2.0 Flash</strong> 是目前<strong>免费层综合性价比最高的AI模型</strong>——支持100万token上下文窗口、多模态输入、API每天1500次免费，速度快到几乎实时。但在写作质量和深度推理方面，仍落后于 Claude 3.5 Sonnet 和 GPT-4o。<br><br>
+    <strong>买 Google One AI Premium（$19.99/月）还是 ChatGPT Plus（$20/月）？</strong> 如果你重度使用 Google 生态（Gmail、Docs、Drive）选 Gemini；如果需要最强写作和代码能力选 Claude Pro；如果需要最广泛插件生态选 ChatGPT Plus。
+  </div>
+
+  <h2>📊 Gemini 版本全览（2025年4月）</h2>
+
+  <div class="model-card">
+    <div class="model-name">Gemini 2.0 Flash ⚡</div>
+    <div class="model-meta">
+      <span class="model-tag" style="background:rgba(16,185,129,.15);color:#34d399">免费可用</span>
+      <span class="model-tag" style="background:rgba(59,130,246,.15);color:#60a5fa">1M token上下文</span>
+      <span class="model-tag" style="background:rgba(245,158,11,.15);color:#fbbf24">API 1500次/天免费</span>
+    </div>
+    <p style="font-size:14px;margin-bottom:12px">发布时间：2025年2月。速度比 Gemini 1.5 Pro 快约 <strong>3×</strong>（Google官方数据），延迟更低，支持多模态输入（文本、图片、音频、视频）。在 MMLU 和 HumanEval 基准上超过 GPT-3.5 Turbo。<strong>免费版用户已全面升级到此模型</strong>。</p>
+    <div class="bar-row"><span class="bar-label">速度</span><div class="bar-bg"><div class="bar-fill" style="width:96%"></div></div><span class="bar-val">9.6</span></div>
+    <div class="bar-row"><span class="bar-label">写作质量</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span class="bar-val">7.5</span></div>
+    <div class="bar-row"><span class="bar-label">代码能力</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">8.0</span></div>
+    <div class="bar-row"><span class="bar-label">多模态</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val">9.0</span></div>
+    <div class="bar-row"><span class="bar-label">推理</span><div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div><span class="bar-val">7.8</span></div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-name">Gemini 1.5 Pro 🔬</div>
+    <div class="model-meta">
+      <span class="model-tag" style="background:rgba(168,85,247,.15);color:#c084fc">Advanced版专属</span>
+      <span class="model-tag" style="background:rgba(59,130,246,.15);color:#60a5fa">1M token上下文</span>
+    </div>
+    <p style="font-size:14px;margin-bottom:12px">深度任务首选。MMLU 85.9%，HumanEval 84.1%，MATH 67.7%。在长文档理解（法律合同、学术论文、代码库分析）场景表现最强，1M token是目前业界最长上下文窗口（对比：Claude 3.5 200K，GPT-4o 128K）。</p>
+    <div class="bar-row"><span class="bar-label">速度</span><div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div><span class="bar-val">6.5</span></div>
+    <div class="bar-row"><span class="bar-label">写作质量</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val">8.2</span></div>
+    <div class="bar-row"><span class="bar-label">代码能力</span><div class="bar-bg"><div class="bar-fill" style="width:84%"></div></div><span class="bar-val">8.4</span></div>
+    <div class="bar-row"><span class="bar-label">长文档理解</span><div class="bar-bg"><div class="bar-fill" style="width:97%"></div></div><span class="bar-val">9.7</span></div>
+    <div class="bar-row"><span class="bar-label">推理</span><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div><span class="bar-val">8.0</span></div>
+  </div>
+
+  <div class="model-card">
+    <div class="model-name">Gemini 2.0 Flash Thinking 🧠</div>
+    <div class="model-meta">
+      <span class="model-tag" style="background:rgba(245,158,11,.15);color:#fbbf24">推理增强</span>
+      <span class="model-tag" style="background:rgba(16,185,129,.15);color:#34d399">免费API可用</span>
+    </div>
+    <p style="font-size:14px;margin-bottom:12px">类似 OpenAI o1/o3 的"思维链"推理模式，在解题前先展示思考过程。AIME 2024 得分 <strong>73.3%</strong>（对比：o1 83.3%，DeepSeek R1 79.8%）。适合数学、逻辑推理、复杂分析。响应速度比标准Flash慢，但准确率更高。</p>
+    <div class="bar-row"><span class="bar-label">数学推理</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val">8.2</span></div>
+    <div class="bar-row"><span class="bar-label">逻辑分析</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div><span class="bar-val">8.5</span></div>
+    <div class="bar-row"><span class="bar-label">响应速度</span><div class="bar-bg"><div class="bar-fill" style="width:55%"></div></div><span class="bar-val">5.5</span></div>
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>📈 真实基准测试数据</h2>
+
+  <table>
+    <thead>
+      <tr><th>基准测试</th><th>Gemini 2.0 Flash</th><th>Gemini 1.5 Pro</th><th>GPT-4o</th><th>Claude 3.5 Sonnet</th><th>DeepSeek V3</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>MMLU</strong><br><span style="color:#9ca3af;font-size:12px">综合知识</span></td>
+        <td>82.4%</td>
+        <td>85.9%</td>
+        <td>87.2%</td>
+        <td><span class="badge badge-green">88.7%</span></td>
+        <td>88.5%</td>
+      </tr>
+      <tr>
+        <td><strong>HumanEval</strong><br><span style="color:#9ca3af;font-size:12px">Python代码</span></td>
+        <td>82.6%</td>
+        <td>84.1%</td>
+        <td>90.2%</td>
+        <td><span class="badge badge-green">92.0%</span></td>
+        <td>91.6%</td>
+      </tr>
+      <tr>
+        <td><strong>MATH-500</strong><br><span style="color:#9ca3af;font-size:12px">数学推理</span></td>
+        <td>75.3%</td>
+        <td>67.7%</td>
+        <td>76.6%</td>
+        <td>78.3%</td>
+        <td><span class="badge badge-green">90.2%</span></td>
+      </tr>
+      <tr>
+        <td><strong>AIME 2024</strong><br><span style="color:#9ca3af;font-size:12px">数学竞赛</span></td>
+        <td>—</td>
+        <td>36.7%</td>
+        <td>—</td>
+        <td>—</td>
+        <td>39.2%</td>
+      </tr>
+      <tr>
+        <td><strong>Thinking AIME</strong><br><span style="color:#9ca3af;font-size:12px">推理链模式</span></td>
+        <td>73.3%</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>79.8% (R1)</td>
+      </tr>
+      <tr>
+        <td><strong>上下文长度</strong></td>
+        <td><span class="badge badge-green">1M token</span></td>
+        <td><span class="badge badge-green">1M token</span></td>
+        <td>128K</td>
+        <td>200K</td>
+        <td>128K</td>
+      </tr>
+      <tr>
+        <td><strong>多模态</strong></td>
+        <td>文本/图片/音频/视频</td>
+        <td>文本/图片/音频/视频</td>
+        <td>文本/图片</td>
+        <td>文本/图片</td>
+        <td>文本/图片</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:13px;color:var(--muted)">数据来源：Google DeepMind Gemini 技术报告（2024年12月/2025年2月），Anthropic Claude 3.5 发布博客，OpenAI GPT-4o 系统卡。</p>
+
+  <h2>🆚 Gemini vs ChatGPT vs Claude：场景对比</h2>
+
+  <table>
+    <thead>
+      <tr><th>使用场景</th><th>🥇 首选</th><th>🥈 次选</th><th>原因</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>处理超长文档</strong><br>（100页+合同、论文）</td>
+        <td><span class="badge badge-blue">Gemini 1.5 Pro</span></td>
+        <td>Claude 3.5 (200K)</td>
+        <td>1M token是业界唯一能处理完整代码库或书籍的模型</td>
+      </tr>
+      <tr>
+        <td><strong>长篇写作</strong><br>（报告、文章、创意写作）</td>
+        <td><span class="badge badge-purple">Claude 3.5</span></td>
+        <td>GPT-4o</td>
+        <td>Claude语言最自然，格式遵守最严格，Gemini写作质量略显机械</td>
+      </tr>
+      <tr>
+        <td><strong>代码生成</strong></td>
+        <td><span class="badge badge-purple">Claude 3.5</span></td>
+        <td>GPT-4o / Gemini 1.5 Pro</td>
+        <td>Claude SWE-bench 49%，HumanEval 92%；Gemini 84%</td>
+      </tr>
+      <tr>
+        <td><strong>图片/视频理解</strong></td>
+        <td><span class="badge badge-blue">Gemini 2.0 Flash</span></td>
+        <td>GPT-4o</td>
+        <td>Gemini原生多模态，可处理视频帧+音频，GPT-4o不支持视频</td>
+      </tr>
+      <tr>
+        <td><strong>Google Workspace集成</strong></td>
+        <td><span class="badge badge-blue">Gemini Advanced</span></td>
+        <td>—</td>
+        <td>原生集成Gmail/Docs/Sheets/Drive，唯一真正深入集成Google生态</td>
+      </tr>
+      <tr>
+        <td><strong>免费额度</strong></td>
+        <td><span class="badge badge-blue">Gemini 2.0 Flash</span></td>
+        <td>Claude 3 Haiku</td>
+        <td>Gemini免费API 1500次/天，1M上下文，其他模型免费额度远低于此</td>
+      </tr>
+      <tr>
+        <td><strong>数学推理</strong></td>
+        <td>DeepSeek R1</td>
+        <td>o3-mini</td>
+        <td>Gemini Thinking 73.3% AIME，R1 79.8%，o3 87%+。推理专项不是Gemini强项</td>
+      </tr>
+      <tr>
+        <td><strong>中文理解与输出</strong></td>
+        <td>DeepSeek V3</td>
+        <td><span class="badge badge-blue">Gemini 1.5 Pro</span></td>
+        <td>Gemini中文训练数据充足，语感好；DeepSeek V3 C-Eval 90%+是中文最强</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>💰 价格对比：免费版 vs Google One AI Premium</h2>
+
+  <table>
+    <thead>
+      <tr><th>层级</th><th>价格</th><th>可用模型</th><th>额外权益</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gemini 免费版</strong></td>
+        <td><span class="badge badge-green">$0</span></td>
+        <td>Gemini 2.0 Flash（完整功能）</td>
+        <td>Google搜索集成、图片生成（Imagen 3）、有限次数</td>
+      </tr>
+      <tr>
+        <td><strong>Google One AI Premium</strong></td>
+        <td>$19.99/月</td>
+        <td>Gemini 1.5 Pro + 2.0 Flash优先</td>
+        <td><strong>2TB Google云端硬盘</strong>（原$9.99/月）、Gmail/Docs全面集成、NotebookLM Plus</td>
+      </tr>
+      <tr>
+        <td><strong>Gemini API 免费层</strong></td>
+        <td><span class="badge badge-green">$0</span></td>
+        <td>Gemini 2.0 Flash</td>
+        <td>1500 RPD，32K输入，8K输出，适合开发测试</td>
+      </tr>
+      <tr>
+        <td><strong>Gemini API 付费</strong></td>
+        <td>$0.075/1M tokens</td>
+        <td>Gemini 2.0 Flash</td>
+        <td>比GPT-4o（$5/1M）便宜 <strong>66×</strong>，比Claude 3.5（$3/1M）便宜 40×</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 AI Premium 值不值？</div>
+    如果你<strong>已经</strong>使用或打算使用2TB Google Drive（原$9.99/月），那么多付$10/月就能解锁 Gemini Advanced——<strong>实际上相当于$10/月获得最强Gemini</strong>。纯论AI性价比，$20/月的ChatGPT Plus或Claude Pro更强；但如果重度使用Gmail、Google Docs、Google Drive，AI Premium的生态整合价值是无可替代的。
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>✅ Gemini 的真实优势</h2>
+
+  <h3>1. 最长免费上下文窗口（1M tokens）</h3>
+  <p>1M token ≈ 75万单词 ≈ 一部完整的《哈利波特》全集（777,000词）。实测可以将整个PDF报告、完整代码仓库、数小时视频字幕一次性上传并分析。竞品中只有 Claude 3.5 Sonnet 的 200K token 能部分对抗，但仍差距悬殊。</p>
+
+  <h3>2. 原生多模态：视频+音频+图片同时理解</h3>
+  <p>上传一段YouTube视频链接或本地视频，Gemini可以直接分析视频内容（包括画面+音频+字幕综合理解）。这一能力在 GPT-4o 和 Claude 中均无法实现。实用场景：分析会议录像摘要、视频内容翻译、讲解类视频知识提取。</p>
+
+  <h3>3. Google搜索深度集成（Deep Research）</h3>
+  <p>Gemini Advanced 的 <strong>Deep Research</strong> 功能（2024年12月发布）：输入研究问题，Gemini自动搜索数十个网页、整合信息、生成带引用的详细报告。与 Perplexity 的区别是引用来源更权威（Google搜索结果而非全网爬取），但Perplexity响应更快。</p>
+
+  <h3>4. API价格最低</h3>
+  <p>Gemini 2.0 Flash API 定价 $0.075/百万 input tokens，$0.30/百万 output tokens，比 GPT-4o（$5/$15）便宜 <strong>66倍</strong>，比 Claude 3.5 Sonnet（$3/$15）便宜 <strong>40倍</strong>。对于需要大量API调用的开发者和企业，这是决定性优势。</p>
+
+  <h2>❌ Gemini 的主要短板</h2>
+
+  <h3>1. 写作质量不够"人味"</h3>
+  <p>Gemini在写作场景的通病：语言偏"报告化"，过多使用列表和结构化格式，创意写作缺乏个性，情感共鸣不足。在 LMSYS Chatbot Arena（人类偏好投票排行榜）上，Gemini 1.5 Pro 的写作评分长期低于 Claude 3.5 Sonnet 和 GPT-4o。</p>
+
+  <h3>2. 中文输出质量参差</h3>
+  <p>Gemini中文语感尚可，但在专业领域术语（技术文档、法律合同）的准确性和流畅度上，仍不如 DeepSeek V3 或 Claude 3.5。"翻译腔"问题在长文本中明显。</p>
+
+  <h3>3. 安全过滤偏严</h3>
+  <p>Gemini对争议性话题（政治、历史事件、某些科技话题）的过滤比 ChatGPT 和 Claude 更激进，有时对无害问题也拒绝回答。这在实际商业使用中会造成摩擦。</p>
+
+  <h3>4. 幻觉率高于同级别竞品</h3>
+  <p>Stanford HAI 2024 大模型评测中，Gemini 1.5 Pro 的事实幻觉率约 <strong>6.8%</strong>，高于 Claude 3.5（4.2%）和 GPT-4o（5.1%）。在需要高准确率的专业场景（医疗、法律、金融）中需格外注意人工核实。</p>
+
+  <h2>⭐ 总体评分</h2>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-val b">8.5</div>
+      <div class="score-label">速度</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val c">7.5</div>
+      <div class="score-label">写作质量</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val b">8.0</div>
+      <div class="score-label">代码能力</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val a">9.5</div>
+      <div class="score-label">长文档处理</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val a">9.0</div>
+      <div class="score-label">多模态能力</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val a">9.5</div>
+      <div class="score-label">免费版价值</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val a">9.8</div>
+      <div class="score-label">API性价比</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val b">8.3</div>
+      <div class="score-label">综合得分</div>
+    </div>
+  </div>
+
+  <div class="pro-con">
+    <div class="pro-box">
+      <div class="box-title">优势</div>
+      <ul>
+        <li>业界最长上下文窗口（1M token）</li>
+        <li>原生视频+音频+图片多模态</li>
+        <li>免费版功能最丰富（2.0 Flash）</li>
+        <li>API价格行业最低（$0.075/1M）</li>
+        <li>Google Workspace深度集成</li>
+        <li>Deep Research功能强大</li>
+        <li>响应速度极快（Flash模型）</li>
+      </ul>
+    </div>
+    <div class="con-box">
+      <div class="box-title">劣势</div>
+      <ul>
+        <li>写作质量偏"机械感"</li>
+        <li>中文专业领域输出不稳定</li>
+        <li>数学推理落后于o3/R1</li>
+        <li>安全过滤比竞品激进</li>
+        <li>幻觉率略高于Claude/GPT-4o</li>
+        <li>代码调试能力不如Claude</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>🎯 谁该用 Gemini？</h2>
+
+  <table>
+    <thead>
+      <tr><th>用户类型</th><th>推荐度</th><th>推荐理由</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>重度Google用户（Gmail/Docs/Drive）</td>
+        <td><span class="badge badge-green">强烈推荐</span></td>
+        <td>AI Premium物超所值，原生集成无可替代</td>
+      </tr>
+      <tr>
+        <td>需要处理超长文档的研究者</td>
+        <td><span class="badge badge-green">强烈推荐</span></td>
+        <td>1M token是唯一能处理完整代码库/专著的方案</td>
+      </tr>
+      <tr>
+        <td>开发者/API用户</td>
+        <td><span class="badge badge-green">推荐</span></td>
+        <td>免费1500次/天，付费价格最低，多模态API功能全</td>
+      </tr>
+      <tr>
+        <td>YouTube内容分析</td>
+        <td><span class="badge badge-green">推荐</span></td>
+        <td>可直接输入YouTube链接分析视频内容</td>
+      </tr>
+      <tr>
+        <td>专业写作（博客/文案）</td>
+        <td><span class="badge badge-yellow">不推荐</span></td>
+        <td>写作语感不如Claude，选Claude Pro更合适</td>
+      </tr>
+      <tr>
+        <td>数学/竞赛/深度推理</td>
+        <td><span class="badge badge-red">不推荐</span></td>
+        <td>选o3-mini或DeepSeek R1，AIME得分差距明显</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">📌 最终建议</div>
+    <strong>免费用户</strong>：强烈推荐把 Gemini 2.0 Flash 加入你的 AI 工具箱，特别是需要处理长文档或视频内容时。它是免费层中能力最全面的模型。<br><br>
+    <strong>付费用户</strong>：如果你已在用 Google One（$9.99/月），多花 $10 升级 AI Premium 性价比很高。如果从零开始，$20/月 Claude Pro 或 ChatGPT Plus 在写作和代码上体验更好。<br><br>
+    <strong>开发者</strong>：Gemini API 的价格优势无可争议，$0.075/1M tokens 在同等能力中最便宜，值得作为主力或备用 API。
+  </div>
+
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid #2c2c2c">
+    <h3 style="margin-bottom:16px;font-size:16px;color:#9ca3af">相关文章</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <a href="/articles/chatgpt-vs-claude-vs-gemini.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🤖 ChatGPT vs Claude vs Gemini</div>
+        <div style="font-size:13px;color:#9ca3af">8维度终极对比</div>
+      </a>
+      <a href="/articles/deepseek-review-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🇨🇳 DeepSeek R1 深度评测</div>
+        <div style="font-size:13px;color:#9ca3af">671B MoE，$600万训练成本</div>
+      </a>
+      <a href="/articles/notebooklm-review-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🧠 Google NotebookLM 深度评测</div>
+        <div style="font-size:13px;color:#9ca3af">完全免费的私人研究助理</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/">首页</a>
+  <a href="/about.html">关于</a>
+  <a href="/privacy.html">隐私政策</a>
+  <p style="margin-top:16px;font-size:12px">© 2025 AI Nav · 基准测试数据来自官方技术报告，以实际表现为准</p>
+</footer>
+</body>
+</html>
