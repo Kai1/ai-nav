@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Llama 3 本地运行完全指南 2025：免费无限制，隐私保护最强 | AI Nav</title>
+<meta name="description" content="Llama 3完整本地部署教程：Meta Llama 3.1 405B/70B/8B参数对比，Ollama一键安装，Open WebUI界面，4GB显存可跑8B模型，完全免费无API费用，数据不出本地。">
+<meta name="keywords" content="Llama 3本地运行,Ollama教程,Llama 3.1 8B,本地AI大模型,免费AI不联网,llama.cpp,Open WebUI">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/llama-3-local-guide-2025.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/llama-3-local-guide-2025.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/llama-3-local-guide-2025.html">
+<meta property="og:title" content="Llama 3 本地运行完全指南 2025：免费无限制，隐私保护最强">
+<meta property="og:description" content="Llama 3完整本地部署教程，Ollama一键安装，4GB显存可运行8B模型，完全免费无API费用。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/llama-3-local-guide-2025.html">
+<meta property="og:image" content="https://ai-nav.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Llama 3 本地运行完全指南 2025">
+<meta name="twitter:description" content="Ollama一键安装，4GB显存跑8B，完全免费，数据不出本地。">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Llama 3 本地运行完全指南 2025：免费无限制，隐私保护最强","description":"Llama 3完整本地部署教程，Ollama一键安装，各参数版本显存要求，Open WebUI界面配置","datePublished":"2025-04-29","dateModified":"2025-04-29","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--yellow:#f59e0b;--red:#ef4444;--blue:#3b82f6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:rgba(13,13,13,.95);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800;color:var(--text);text-decoration:none}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:24px}
+.breadcrumb a{color:var(--muted)}
+h1{font-size:clamp(22px,4vw,34px);font-weight:900;line-height:1.25;margin-bottom:16px}
+.meta{display:flex;gap:16px;font-size:13px;color:var(--muted);margin-bottom:32px;flex-wrap:wrap}
+.intro-box{background:linear-gradient(135deg,rgba(99,102,241,0.12),rgba(168,85,247,0.08));border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:20px 24px;margin-bottom:36px;font-size:15px;line-height:1.7}
+h2{font-size:22px;font-weight:800;margin:40px 0 16px;color:#a5b4fc}
+h3{font-size:17px;font-weight:700;margin:24px 0 10px}
+p{margin-bottom:16px;color:#d1d5db}
+ul,ol{padding-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;color:#d1d5db}
+strong{color:var(--text);font-weight:700}
+.code-block{background:#0a0a14;border:1px solid #2a2a3e;border-radius:10px;padding:15px 18px;font-family:'Fira Code',Consolas,monospace;font-size:13px;line-height:1.7;overflow-x:auto;margin:14px 0;color:#a5f3fc}
+.code-block .cm{color:#546e7a;font-style:italic}
+table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+th{background:var(--surface2);color:var(--muted);padding:10px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-green{background:rgba(16,185,129,.15);color:#34d399}
+.badge-yellow{background:rgba(245,158,11,.15);color:#fbbf24}
+.badge-red{background:rgba(239,68,68,.15);color:#f87171}
+.badge-blue{background:rgba(59,130,246,.15);color:#60a5fa}
+.badge-purple{background:rgba(168,85,247,.15);color:#c084fc}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:20px 0}
+.spec-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.spec-val{font-size:22px;font-weight:900;color:var(--accent)}
+.spec-sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+.step-block{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 20px;margin:14px 0}
+.step-num{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.step-title{font-size:15px;font-weight:700;margin-bottom:8px}
+.tip-box{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:10px;padding:14px 18px;margin:14px 0}
+.tip-box .tip-label{font-size:11px;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.warn-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:14px 18px;margin:14px 0}
+.warn-box .warn-label{font-size:11px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center;color:var(--muted);font-size:13px;max-width:860px;margin:0 auto}
+footer a{color:var(--muted);margin:0 10px}
+footer a:hover{color:var(--text)}
+@media(max-width:600px){.spec-grid{grid-template-columns:1fr 1fr}table{font-size:13px}th,td{padding:8px 10px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><div class="logo-icon">🧭</div><span class="logo-text">AI Nav</span></a>
+  <nav style="display:flex;gap:8px">
+    <a href="/" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">首页</a>
+    <a href="/about.html" style="font-size:13px;color:#9ca3af;padding:6px 12px;border-radius:7px" onmouseover="this.style.color='#e5e7eb'" onmouseout="this.style.color='#9ca3af'">关于</a>
+  </nav>
+</header>
+
+<div class="main">
+  <div class="breadcrumb"><a href="/">AI Nav</a> › <a href="/">AI开发指南</a> › Llama 3 本地运行</div>
+
+  <h1>Llama 3 本地运行完全指南 2025：免费无限制，隐私保护最强</h1>
+
+  <div class="meta">
+    <span>📅 2025-04-29</span>
+    <span>⏱ 阅读约 14 分钟</span>
+    <span>👁 28.3k 次阅读</span>
+    <span>🏷 开源AI · 本地部署 · 隐私保护</span>
+  </div>
+
+  <div class="intro-box">
+    <strong>Meta Llama 3.1</strong>（2024年7月发布）是目前最强的开源大语言模型系列。最大版本 405B 参数在多项基准上与 GPT-4o 相当，而 <strong>8B 版本只需 4-6GB 显存</strong>即可在普通消费级显卡上流畅运行——<strong>完全免费，无 API 费用，数据完全不出本地</strong>。<br><br>
+    本指南使用 <strong>Ollama</strong>（GitHub Stars 90,000+，最易用的本地LLM运行工具）在 10 分钟内完成部署，并通过 <strong>Open WebUI</strong> 获得与 ChatGPT 类似的网页界面体验。
+  </div>
+
+  <h2>📊 Llama 3.1 版本参数与硬件要求</h2>
+
+  <table>
+    <thead>
+      <tr><th>模型版本</th><th>参数量</th><th>文件大小（Q4量化）</th><th>最低显存</th><th>推荐显存</th><th>速度参考</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Llama 3.1 8B</strong></td>
+        <td>8B</td>
+        <td>~4.7 GB</td>
+        <td>4 GB VRAM</td>
+        <td>6 GB</td>
+        <td><span class="badge badge-green">~50 tokens/s（RTX 3060）</span></td>
+      </tr>
+      <tr>
+        <td><strong>Llama 3.1 70B</strong></td>
+        <td>70B</td>
+        <td>~40 GB</td>
+        <td>40 GB VRAM</td>
+        <td>48 GB</td>
+        <td>~12 tokens/s（A100 80G）</td>
+      </tr>
+      <tr>
+        <td><strong>Llama 3.1 405B</strong></td>
+        <td>405B</td>
+        <td>~230 GB</td>
+        <td>220 GB VRAM</td>
+        <td>多GPU</td>
+        <td>企业级服务器</td>
+      </tr>
+      <tr>
+        <td><strong>Llama 3.2 3B</strong></td>
+        <td>3B</td>
+        <td>~2 GB</td>
+        <td>2 GB VRAM</td>
+        <td>4 GB</td>
+        <td><span class="badge badge-green">~80 tokens/s（RTX 3060）</span></td>
+      </tr>
+      <tr>
+        <td><strong>Llama 3.2 Vision 11B</strong></td>
+        <td>11B</td>
+        <td>~8 GB</td>
+        <td>8 GB VRAM</td>
+        <td>12 GB</td>
+        <td>支持图片输入</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 选哪个版本？</div>
+    <strong>入门首选：Llama 3.1 8B</strong>（4.7GB，6GB显卡流畅运行）——日常对话、写作、代码质量已相当于GPT-3.5水平，速度快。<br>
+    <strong>高质量需求：Llama 3.1 70B</strong>——需要40GB+ VRAM，普通用户可在云端运行（RunPod A100约$1.5/h）。<br>
+    <strong>无GPU（纯CPU）：Llama 3.2 3B</strong>——2GB内存可运行，速度慢（约5-10 tokens/s），但完全免费。
+  </div>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>⚡ 方法一：Ollama（推荐，10分钟部署）</h2>
+  <p>Ollama 是最简单的本地LLM运行工具，一行命令拉取并运行任何支持的模型，支持 Windows / macOS / Linux。</p>
+
+  <div class="step-block">
+    <div class="step-num">Step 1</div>
+    <div class="step-title">安装 Ollama</div>
+    <p>前往 <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a> 下载对应平台安装包：</p>
+    <div class="code-block"><span class="cm"># macOS（Homebrew）</span>
+brew install ollama
+
+<span class="cm"># Linux 一键安装</span>
+curl -fsSL https://ollama.com/install.sh | sh
+
+<span class="cm"># Windows：下载 .exe 安装程序</span>
+<span class="cm"># https://ollama.com/download/windows</span></div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 2</div>
+    <div class="step-title">拉取并运行 Llama 3.1 8B</div>
+    <p>打开终端，一行命令完成下载（约4.7GB）并进入对话：</p>
+    <div class="code-block"><span class="cm"># 拉取 + 运行 Llama 3.1 8B（推荐入门）</span>
+ollama run llama3.1
+
+<span class="cm"># 指定中文优化版（更好的中文理解）</span>
+ollama run qwen2.5:7b
+
+<span class="cm"># 代码专用模型</span>
+ollama run codellama:7b
+
+<span class="cm"># 查看所有本地模型</span>
+ollama list</div>
+    <p>下载完成后自动进入终端对话界面，直接输入问题即可。输入 <code>/bye</code> 退出，输入 <code>/clear</code> 清除上下文。</p>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">Step 3</div>
+    <div class="step-title">通过 API 调用（兼容 OpenAI 格式）</div>
+    <p>Ollama 运行后自动开启本地 API 服务（<code>http://localhost:11434</code>），<strong>完全兼容 OpenAI API 格式</strong>，可直接替换任何使用 OpenAI SDK 的项目：</p>
+    <div class="code-block"><span class="cm"># Python — 使用 OpenAI SDK 调用本地 Ollama</span>
+from openai import OpenAI
+
+client = OpenAI(
+    base_url='http://localhost:11434/v1',
+    api_key='ollama'  <span class="cm"># 任意字符串</span>
+)
+
+response = client.chat.completions.create(
+    model='llama3.1',
+    messages=[{'role': 'user', 'content': '用Python写个快速排序'}]
+)
+print(response.choices[0].message.content)</div>
+  </div>
+
+  <h2>🖥️ Open WebUI：获得 ChatGPT 风格界面</h2>
+  <p>Open WebUI（原 Ollama WebUI，GitHub Stars：50,000+）为本地 Ollama 提供完整的网页界面：多对话管理、模型切换、文件上传、Markdown渲染。</p>
+
+  <div class="step-block">
+    <div class="step-num">一行命令安装（需要 Docker）</div>
+    <div class="step-title">Docker 安装（推荐）</div>
+    <div class="code-block"><span class="cm"># 安装 Docker Desktop 后运行</span>
+docker run -d -p 3000:8080 \
+  --add-host=host.docker.internal:host-gateway \
+  -v open-webui:/app/backend/data \
+  --name open-webui \
+  --restart always \
+  ghcr.io/open-webui/open-webui:main
+
+<span class="cm"># 访问 http://localhost:3000</span>
+<span class="cm"># 第一个注册的用户自动成为管理员</span></div>
+  </div>
+
+  <div class="step-block">
+    <div class="step-num">无 Docker 方案（pip）</div>
+    <div class="step-title">pip 安装</div>
+    <div class="code-block">pip install open-webui
+open-webui serve
+<span class="cm"># 访问 http://localhost:8080</span></div>
+  </div>
+
+  <h2>🌟 Ollama 上其他推荐本地模型</h2>
+
+  <table>
+    <thead>
+      <tr><th>模型</th><th>大小</th><th>特长</th><th>拉取命令</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Qwen2.5 7B</strong></td>
+        <td>4.7 GB</td>
+        <td><span class="badge badge-green">中文最强</span> 阿里巴巴出品，中文理解和生成质量远超Llama中文能力</td>
+        <td><code>ollama run qwen2.5:7b</code></td>
+      </tr>
+      <tr>
+        <td><strong>Mistral 7B</strong></td>
+        <td>4.1 GB</td>
+        <td>综合能力强，英文写作质量高，比Llama 7B更稳定</td>
+        <td><code>ollama run mistral</code></td>
+      </tr>
+      <tr>
+        <td><strong>CodeLlama 7B</strong></td>
+        <td>3.8 GB</td>
+        <td>代码生成专用，支持填充中间代码（FIM），IDE插件友好</td>
+        <td><code>ollama run codellama:7b</code></td>
+      </tr>
+      <tr>
+        <td><strong>DeepSeek-R1 7B</strong></td>
+        <td>4.9 GB</td>
+        <td>推理链模型本地版，思考过程可见，数学/逻辑强</td>
+        <td><code>ollama run deepseek-r1:7b</code></td>
+      </tr>
+      <tr>
+        <td><strong>Phi-3 Mini</strong></td>
+        <td>2.4 GB</td>
+        <td>微软出品，3.8B参数，4GB RAM即可CPU运行，英文质量高</td>
+        <td><code>ollama run phi3:mini</code></td>
+      </tr>
+      <tr>
+        <td><strong>Llava 7B</strong></td>
+        <td>4.7 GB</td>
+        <td>多模态，支持图片输入，本地视觉理解</td>
+        <td><code>ollama run llava:7b</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- AD SLOT -->
+  <ins class="adsbygoogle" style="display:block;margin:24px 0" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <h2>📈 Llama 3.1 真实基准数据</h2>
+
+  <table>
+    <thead>
+      <tr><th>基准测试</th><th>Llama 3.1 8B</th><th>Llama 3.1 70B</th><th>GPT-4o</th><th>Claude 3.5 Sonnet</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>MMLU</strong></td><td>69.4%</td><td>83.6%</td><td>87.2%</td><td>88.7%</td></tr>
+      <tr><td><strong>HumanEval</strong></td><td>72.6%</td><td>80.5%</td><td>90.2%</td><td>92.0%</td></tr>
+      <tr><td><strong>GSM8K（数学）</strong></td><td>84.5%</td><td>95.1%</td><td>96.1%</td><td>96.4%</td></tr>
+      <tr><td><strong>上下文长度</strong></td><td>128K</td><td>128K</td><td>128K</td><td>200K</td></tr>
+      <tr><td><strong>API费用</strong></td><td><span class="badge badge-green">$0（本地）</span></td><td><span class="badge badge-green">$0（本地）</span></td><td>$5/1M tokens</td><td>$3/1M tokens</td></tr>
+    </tbody>
+  </table>
+
+  <p style="color:var(--muted);font-size:13px">数据来源：Meta AI Llama 3.1 技术报告（2024年7月），Llama 3.2 技术报告（2024年9月）。</p>
+
+  <h2>🔒 为什么选择本地运行？</h2>
+
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="spec-val">$0</div>
+      <div class="spec-sub">API费用<br>无使用限制</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">100%</div>
+      <div class="spec-sub">数据本地<br>不上传任何内容</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">无</div>
+      <div class="spec-sub">内容审查<br>完全自由使用</div>
+    </div>
+    <div class="spec-card">
+      <div class="spec-val">离线</div>
+      <div class="spec-sub">可用性<br>无网络也可运行</div>
+    </div>
+  </div>
+
+  <p><strong>最适合本地运行的场景</strong>：</p>
+  <ul>
+    <li><strong>处理敏感数据</strong>：医疗记录、法律合同、财务数据——绝对不能上传到第三方服务器</li>
+    <li><strong>企业内部知识库</strong>：公司内部文档问答，数据保密要求严格</li>
+    <li><strong>高频 API 调用</strong>：每月调用量大（比如每天10万次），云API费用高达数千美元</li>
+    <li><strong>无网络环境</strong>：飞机上、偏远地区、内网隔离环境</li>
+    <li><strong>开发测试</strong>：调试AI应用时无需担心费用，随意测试</li>
+  </ul>
+
+  <h2>⚡ 性能优化技巧</h2>
+
+  <h3>量化级别选择</h3>
+  <div class="code-block"><span class="cm"># Q4_K_M：推荐（质量/速度平衡，默认）</span>
+ollama run llama3.1:8b-instruct-q4_K_M
+
+<span class="cm"># Q8_0：更高质量，文件更大（约9GB）</span>
+ollama run llama3.1:8b-instruct-q8_0
+
+<span class="cm"># Q2_K：极小体积（约2.7GB），质量损失较大</span>
+ollama run llama3.1:8b-instruct-q2_K</div>
+
+  <h3>GPU 加速配置</h3>
+  <div class="code-block"><span class="cm"># 确认 GPU 被正确识别</span>
+ollama run llama3.1 --verbose
+<span class="cm"># 输出中查找 "gpu layers" > 0 表示GPU加速已启用</span>
+
+<span class="cm"># AMD GPU（ROCm）：确保安装 ROCm 驱动</span>
+<span class="cm"># 英特尔 Arc GPU：需要 OneAPI 环境</span>
+<span class="cm"># Apple Silicon：自动使用 Metal GPU，无需额外配置</span></div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 中文模型推荐</div>
+    如果主要用于中文场景，<strong>不要用 Llama 3.1</strong>（中文训练数据有限）。改用：<br>
+    • <strong>Qwen2.5 7B</strong>：<code>ollama run qwen2.5:7b</code>——阿里巴巴出品，中文理解和生成是开源模型最强<br>
+    • <strong>GLM4 9B</strong>：<code>ollama run glm4:9b</code>——清华智谱AI，中文对话极为流畅<br>
+    • <strong>DeepSeek-V2.5</strong>：API版$0.14/1M tokens，性价比极高
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">⚠️ 已知限制</div>
+    <strong>首次下载慢</strong>：8B模型约4.7GB，取决于网速。国内用户建议使用 <a href="https://hf-mirror.com" target="_blank" rel="noopener">HuggingFace镜像</a>。<br>
+    <strong>CPU模式极慢</strong>：无显卡时CPU推理约2-5 tokens/秒，不适合实时对话。<br>
+    <strong>质量仍有差距</strong>：8B本地模型与GPT-4o/Claude 3.5 Sonnet的质量差距明显，复杂推理任务建议使用云API。
+  </div>
+
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid #2c2c2c">
+    <h3 style="margin-bottom:16px;font-size:16px;color:#9ca3af">相关文章</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <a href="/articles/claude-api-guide-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🔌 Claude API 完整使用指南</div>
+        <div style="font-size:13px;color:#9ca3af">提示缓存节省90%费用，代码示例</div>
+      </a>
+      <a href="/articles/deepseek-review-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🇨🇳 DeepSeek R1 深度评测</div>
+        <div style="font-size:13px;color:#9ca3af">671B MoE，API $0.55/1M tokens</div>
+      </a>
+      <a href="/articles/free-ai-tools-no-signup-2025.html" style="background:#181818;border:1px solid #2c2c2c;border-radius:10px;padding:16px;display:block;color:inherit;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#6366f1'" onmouseout="this.style.borderColor='#2c2c2c'">
+        <div style="font-weight:700;margin-bottom:6px">🚀 12个无需注册的AI工具</div>
+        <div style="font-size:13px;color:#9ca3af">打开即用，零门槛</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/">首页</a>
+  <a href="/about.html">关于</a>
+  <a href="/privacy.html">隐私政策</a>
+  <p style="margin-top:16px;font-size:12px">© 2025 AI Nav · 基准数据来自Meta官方技术报告，实际性能因硬件而异</p>
+</footer>
+</body>
+</html>
