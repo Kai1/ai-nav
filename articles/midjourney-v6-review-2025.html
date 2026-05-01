@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midjourney v6深度评测 2025：AI图像生成王者还是已被超越？ | AI Nav</title>
+<meta name="description" content="Midjourney v6完整评测：图像质量对比测试，vs FLUX.1/DALL-E 3/Stable Diffusion深度对比，--ar/--style/--cref/--sref参数完整指南，提示词写法技巧，$10/$30/$60价格方案分析，商业授权详解。">
+<meta name="keywords" content="Midjourney v6 review 2025, Midjourney评测, Midjourney vs FLUX, Midjourney提示词, AI图像生成对比, best AI image generator 2025">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/midjourney-v6-review-2025.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/midjourney-v6-review-2025.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/midjourney-v6-review-2025.html">
+<meta property="og:title" content="Midjourney v6深度评测 2025：AI图像生成王者还是已被超越？">
+<meta property="og:description" content="图像质量对比测试，vs FLUX.1/DALL-E 3深度对比，参数指南，提示词技巧，价格分析。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/midjourney-v6-review-2025.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Midjourney v6深度评测 2025：AI图像生成王者还是已被超越？","datePublished":"2025-05-01","dateModified":"2025-05-01","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"},"description":"Midjourney v6完整评测，图像质量对比，参数完整指南，vs FLUX.1/DALL-E 3深度对比。","mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-nav.vercel.app/articles/midjourney-v6-review-2025.html"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--red:#ef4444;--yellow:#f59e0b;
+  --mj:#e74c3c;--mj2:#ff6b6b;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+header{position:sticky;top:0;z-index:100;height:56px;background:rgba(13,13,13,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{margin-left:auto;font-size:13px;color:var(--muted)}
+
+.hero{padding:52px 24px 44px;text-align:center;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(231,76,60,.1),rgba(99,102,241,.07))}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(231,76,60,.12);border:1px solid rgba(231,76,60,.3);border-radius:20px;padding:4px 14px;font-size:12px;color:#ff6b6b;margin-bottom:18px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;line-height:1.25;margin-bottom:14px;max-width:780px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:620px;margin:0 auto 28px}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.hero-stat .val{font-size:1.9rem;font-weight:800;color:#ff6b6b}
+.hero-stat .lbl{font-size:.78rem;color:var(--muted);margin-top:2px;text-align:center}
+
+.container{max-width:840px;margin:0 auto;padding:0 20px}
+section{padding:44px 0 20px}
+h2{font-size:1.5rem;font-weight:700;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+h3{font-size:1.1rem;font-weight:600;margin:22px 0 12px}
+p{color:#d1d5db;margin-bottom:14px;font-size:.97rem}
+
+/* SCORE SECTION */
+.score-list{display:grid;gap:10px;margin:20px 0}
+.sl-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px 16px;display:grid;grid-template-columns:140px 1fr 60px;align-items:center;gap:12px}
+@media(max-width:500px){.sl-row{grid-template-columns:100px 1fr 50px}}
+.sl-name{font-size:.87rem;font-weight:600}
+.sl-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.sl-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--mj),var(--mj2))}
+.sl-val{font-size:1rem;font-weight:800;color:#ff6b6b;text-align:right}
+
+/* COMPARISON TABLE */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.87rem}
+th{background:var(--surface2);padding:11px 14px;text-align:left;font-weight:600;color:var(--muted);font-size:.81rem;white-space:nowrap}
+td{padding:10px 14px;border-top:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:rgba(231,76,60,.04)}
+.best{color:var(--green);font-weight:700}
+.good{color:#ff6b6b}
+.mid{color:var(--yellow)}
+.low{color:var(--muted)}
+.mj-col{background:rgba(231,76,60,.04)!important}
+
+/* PROMPT GUIDE */
+.prompt-anatomy{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0}
+.pa-title{font-size:.9rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+.pa-parts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.pa-part{padding:6px 12px;border-radius:7px;font-size:.85rem;font-weight:600}
+.pa-part.subject{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.25)}
+.pa-part.style{background:rgba(231,76,60,.12);color:#ff6b6b;border:1px solid rgba(231,76,60,.2)}
+.pa-part.mood{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+.pa-part.tech{background:rgba(245,158,11,.1);color:#fbbf24;border:1px solid rgba(245,158,11,.2)}
+.pa-part.param{background:rgba(168,85,247,.12);color:#c084fc;border:1px solid rgba(168,85,247,.2)}
+.pa-example{background:#0a0a0a;border:1px solid #222;border-radius:7px;padding:12px;font-family:'Cascadia Code','Fira Code',monospace;font-size:.82rem;line-height:1.6;color:#e5e7eb}
+
+/* PARAM TABLE */
+.param-grid{display:grid;gap:10px;margin:16px 0}
+.param-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:grid;grid-template-columns:140px 1fr;gap:12px}
+@media(max-width:500px){.param-row{grid-template-columns:1fr}}
+.pr-name{font-family:'Cascadia Code','Fira Code',monospace;font-size:.85rem;font-weight:700;color:#c084fc}
+.pr-desc{font-size:.85rem;color:#d1d5db}
+.pr-example{font-size:.78rem;color:var(--muted);margin-top:3px;font-family:monospace}
+
+/* PLAN CARDS */
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+@media(max-width:580px){.plan-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.plan-card.popular{border-color:rgba(231,76,60,.4);background:rgba(231,76,60,.04)}
+.pc-plan{font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.pc-price{font-size:1.8rem;font-weight:800;color:#ff6b6b;margin-bottom:2px}
+.pc-sub{font-size:.74rem;color:var(--muted);margin-bottom:12px}
+.pc-items{list-style:none;font-size:.83rem;color:#d1d5db}
+.pc-items li{padding:3px 0;display:flex;gap:6px}
+.pc-items li::before{content:'·';color:var(--muted);flex-shrink:0}
+
+/* INFO/TIP/WARN */
+.info-box{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:15px;margin:14px 0}
+.info-box p{font-size:.9rem;margin:0;color:#c4b5fd}
+.tip-box{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:15px;margin:14px 0}
+.tip-box p{font-size:.9rem;color:#34d399;margin:0}
+.warn-box{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:15px;margin:14px 0}
+.warn-box p{font-size:.88rem;color:#fbbf24;margin:0}
+
+/* USE CASE */
+.usecase-grid{display:grid;gap:10px;margin:16px 0}
+.uc-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.uc-title{font-size:.9rem;font-weight:600;margin-bottom:3px}
+.uc-desc{font-size:.84rem;color:var(--muted)}
+.uc-winner{padding:4px 12px;border-radius:6px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.uc-winner.mj{background:rgba(231,76,60,.15);color:#ff6b6b;border:1px solid rgba(231,76,60,.25)}
+.uc-winner.flux{background:rgba(16,185,129,.1);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+.uc-winner.dalle{background:rgba(16,163,127,.1);color:#34d399;border:1px solid rgba(16,163,127,.2)}
+.uc-winner.tie{background:rgba(99,102,241,.1);color:#a5b4fc;border:1px solid rgba(99,102,241,.2)}
+
+.ad-slot{background:rgba(99,102,241,.04);border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:16px;text-align:center;margin:30px 0;color:var(--muted);font-size:.8rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:16px 0}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;display:flex;align-items:center;gap:9px;transition:.2s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .rc-em{font-size:1.2rem}
+.related-card .rc-text{font-size:.84rem;font-weight:500}
+footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;color:var(--muted);font-size:.82rem;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><div class="logo-icon">🤖</div><span class="logo-text">AI Nav</span></div>
+  <a href="/" class="back-link">← 返回首页</a>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">🎨 Midjourney v6 深度评测 2025</div>
+  <h1>Midjourney v6深度评测 2025<br>AI图像生成王者还是已被超越？</h1>
+  <p class="hero-sub">图像质量实测对比，vs FLUX.1/DALL-E 3/SD3详细横评，参数完整指南，提示词写法技巧</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="val">1600万</div><div class="lbl">Discord用户</div></div>
+    <div class="hero-stat"><div class="val">v6.1</div><div class="lbl">当前最新版本</div></div>
+    <div class="hero-stat"><div class="val">#1</div><div class="lbl">艺术风格评分<br>用户调查</div></div>
+    <div class="hero-stat"><div class="val">$10</div><div class="lbl">Basic计划起价</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<section>
+  <h2>📊 Midjourney v6综合评分</h2>
+  <p>Midjourney v6（2024年2月发布）在艺术美感上依然是业界基准，但FLUX.1的崛起让市场格局更有趣。以下是6个核心维度的评分：</p>
+
+  <div class="score-list">
+    <div class="sl-row">
+      <div class="sl-name">🎨 艺术风格美感</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:96%"></div></div>
+      <div class="sl-val">9.6</div>
+    </div>
+    <div class="sl-row">
+      <div class="sl-name">📸 真实感/摄影感</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:88%"></div></div>
+      <div class="sl-val">8.8</div>
+    </div>
+    <div class="sl-row">
+      <div class="sl-name">📝 提示词遵循度</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:86%"></div></div>
+      <div class="sl-val">8.6</div>
+    </div>
+    <div class="sl-row">
+      <div class="sl-name">🖼️ 图像一致性</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:88%"></div></div>
+      <div class="sl-val">8.8</div>
+    </div>
+    <div class="sl-row">
+      <div class="sl-name">💰 性价比</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:78%"></div></div>
+      <div class="sl-val">7.8</div>
+    </div>
+    <div class="sl-row">
+      <div class="sl-name">🔧 可控性/参数</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:85%"></div></div>
+      <div class="sl-val">8.5</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>⚖️ 2025年AI图像生成器全面横评</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th class="mj-col">Midjourney v6.1</th>
+          <th>FLUX.1 [dev]</th>
+          <th>DALL-E 3</th>
+          <th>Stable Diffusion 3</th>
+          <th>Adobe Firefly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>艺术风格美感</strong></td>
+          <td class="mj-col best">🥇 最强</td>
+          <td class="good">强</td>
+          <td class="mid">中等</td>
+          <td class="mid">中等（视模型）</td>
+          <td class="mid">中等</td>
+        </tr>
+        <tr>
+          <td><strong>真实感/摄影</strong></td>
+          <td class="mj-col good">强</td>
+          <td class="best">🥇 最强</td>
+          <td class="mid">中等</td>
+          <td class="good">强（SDXL）</td>
+          <td class="mid">中等</td>
+        </tr>
+        <tr>
+          <td><strong>提示词文字渲染</strong></td>
+          <td class="mj-col mid">△ 改善中</td>
+          <td class="best">🥇 最强</td>
+          <td class="good">强</td>
+          <td class="low">弱</td>
+          <td class="good">强</td>
+        </tr>
+        <tr>
+          <td><strong>商业版权安全</strong></td>
+          <td class="mj-col good">Pro版授权</td>
+          <td class="low">需审查</td>
+          <td class="mid">OpenAI条款</td>
+          <td class="low">开源复杂</td>
+          <td class="best">🥇 最安全</td>
+        </tr>
+        <tr>
+          <td><strong>开源/本地运行</strong></td>
+          <td class="mj-col low">✗ 闭源</td>
+          <td class="best">✓ Apache 2.0</td>
+          <td class="low">✗ 闭源</td>
+          <td class="best">✓ 开源</td>
+          <td class="low">✗ 闭源</td>
+        </tr>
+        <tr>
+          <td><strong>免费使用</strong></td>
+          <td class="mj-col low">✗ 无免费版</td>
+          <td class="best">✓ 开源可本地</td>
+          <td class="mid">GPT-4o免费限量</td>
+          <td class="best">✓ 本地免费</td>
+          <td class="mid">有限免费</td>
+        </tr>
+        <tr>
+          <td><strong>价格</strong></td>
+          <td class="mj-col">$10-120/月</td>
+          <td>云API按量付费</td>
+          <td>含ChatGPT Plus $20</td>
+          <td>本地免费/云收费</td>
+          <td>含Creative Cloud $60</td>
+        </tr>
+        <tr>
+          <td><strong>最适合场景</strong></td>
+          <td class="mj-col">概念艺术/品牌视觉</td>
+          <td>产品摄影/写实</td>
+          <td>快速原型/内容配图</td>
+          <td>技术用户/无审查</td>
+          <td>企业商业设计</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <p>📌 <strong>2025年市场格局：</strong>Midjourney在艺术美感上仍是第一，但FLUX.1在写实性和提示词遵循度上已超越它，且完全开源免费。对于需要艺术概念图的设计师，Midjourney仍是首选；对于需要真实感产品图/商业摄影的用户，FLUX.1更合适。</p>
+  </div>
+</section>
+
+<section>
+  <h2>✍️ Midjourney提示词完整指南</h2>
+
+  <div class="prompt-anatomy">
+    <div class="pa-title">提示词解剖：最优结构</div>
+    <div class="pa-parts">
+      <span class="pa-part subject">主体描述</span>
+      <span class="pa-part style">风格/艺术家参考</span>
+      <span class="pa-part mood">氛围/光线/情绪</span>
+      <span class="pa-part tech">技术参数（镜头/媒介）</span>
+      <span class="pa-part param">Midjourney参数</span>
+    </div>
+    <div class="pa-example"><span style="color:#a5b4fc">a lone astronaut standing on Mars surface</span>, <span style="color:#ff6b6b">cinematic photography, Greg Rutkowski style</span>, <span style="color:#34d399">golden hour lighting, epic scale, dust in the air</span>, <span style="color:#fbbf24">Sony A7R, 35mm lens, highly detailed</span> <span style="color:#c084fc">--ar 16:9 --v 6.1 --style raw --q 2</span></div>
+  </div>
+
+  <h3>核心参数完整解析</h3>
+  <div class="param-grid">
+    <div class="param-row">
+      <div class="pr-name">--ar [比例]</div>
+      <div>
+        <div class="pr-desc">图像宽高比，常用值：1:1（正方）、16:9（横）、9:16（竖/手机壁纸）、4:3（摄影常规）</div>
+        <div class="pr-example">示例：--ar 16:9</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--v [版本]</div>
+      <div>
+        <div class="pr-desc">模型版本。--v 6.1是当前最新（更强提示词遵循），--v 5.2更有艺术感但准确度低</div>
+        <div class="pr-example">示例：--v 6.1</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--style raw</div>
+      <div>
+        <div class="pr-desc">减少Midjourney的自动美化处理，保留更真实/照片感的输出。摄影风格必加</div>
+        <div class="pr-example">示例：--style raw</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--stylize [数值]</div>
+      <div>
+        <div class="pr-desc">AI艺术化程度，0-1000。100=忠实提示词，750=更有创意（默认100）</div>
+        <div class="pr-example">示例：--stylize 250</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--cref [URL]</div>
+      <div>
+        <div class="pr-desc">角色参考（Character Reference），保持角色外观一致，适合漫画/故事创作</div>
+        <div class="pr-example">示例：--cref https://example.com/character.jpg</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--sref [URL]</div>
+      <div>
+        <div class="pr-desc">风格参考（Style Reference），复刻某张图片的风格特征，不复制内容</div>
+        <div class="pr-example">示例：--sref https://example.com/style.jpg</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--no [元素]</div>
+      <div>
+        <div class="pr-desc">负向提示词，排除不想要的元素</div>
+        <div class="pr-example">示例：--no watermark, text, ugly hands</div>
+      </div>
+    </div>
+    <div class="param-row">
+      <div class="pr-name">--q [质量]</div>
+      <div>
+        <div class="pr-desc">渲染质量/GPU时间，0.25/0.5/1/2。2=最高质量（消耗2倍GPU积分）</div>
+        <div class="pr-example">示例：--q 2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p>💡 <strong>提示词进阶技巧：</strong>① 加摄影参数（"85mm lens, f/1.4, shallow depth of field"）提升真实感；② 在风格前加"in the style of [艺术家]"强化特定美学；③ 加"highly detailed, 8K, masterpiece"显著提升细节质量；④ 用逗号分隔不同概念，避免AI混淆。</p>
+  </div>
+</section>
+
+<!-- AD -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<section>
+  <h2>💰 Midjourney价格方案详解</h2>
+
+  <div class="plan-grid">
+    <div class="plan-card">
+      <div class="pc-plan">Basic</div>
+      <div class="pc-price">$10</div>
+      <div class="pc-sub">/月</div>
+      <ul class="pc-items">
+        <li>约200张图/月（Fast GPU）</li>
+        <li>3个并行任务</li>
+        <li>公开画廊可见</li>
+        <li>商业使用授权</li>
+        <li>不含Relax模式</li>
+      </ul>
+    </div>
+    <div class="plan-card popular">
+      <div class="pc-plan">Standard ⭐推荐</div>
+      <div class="pc-price">$30</div>
+      <div class="pc-sub">/月</div>
+      <ul class="pc-items">
+        <li>约900张图/月（Fast GPU）</li>
+        <li>无限Relax模式生成</li>
+        <li>3个并行Fast任务</li>
+        <li>隐私模式（+$20）</li>
+        <li>完整商业授权</li>
+      </ul>
+    </div>
+    <div class="plan-card">
+      <div class="pc-plan">Pro</div>
+      <div class="pc-price">$60</div>
+      <div class="pc-sub">/月</div>
+      <ul class="pc-items">
+        <li>约2000张图/月（Fast）</li>
+        <li>无限Relax模式</li>
+        <li>12个并行Fast任务</li>
+        <li>隐私模式（默认包含）</li>
+        <li>适合高频商业使用</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <p>⚠️ <strong>重要：Midjourney没有免费版</strong>（2023年底取消了免费试用）。要体验Midjourney，最低需要$10/月的Basic计划。如果想先免费试用AI图像生成，建议先用DALL-E 3（ChatGPT免费版限量）或FLUX.1的在线demo。</p>
+  </div>
+
+  <div class="info-box">
+    <p>📌 <strong>商业授权说明：</strong>Basic/Standard/Pro计划均包含商业授权，可将生成的图像用于商业用途。但如果你的公司年收入超过$1,000,000，需要购买企业版（Enterprise，$60/用户/月起）。隐私模式（Standard需+$20/月，Pro默认包含）可让你的生成图不在公开画廊展示。</p>
+  </div>
+</section>
+
+<section>
+  <h2>🎯 场景推荐：哪种场景选哪款工具</h2>
+
+  <div class="usecase-grid">
+    <div class="uc-item">
+      <div><div class="uc-title">🎨 概念艺术 / 品牌视觉 / 插画</div><div class="uc-desc">需要高美感、独特艺术风格的创意图像</div></div>
+      <div class="uc-winner mj">Midjourney v6</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">📸 产品摄影 / 真实感广告图</div><div class="uc-desc">需要照片级真实感，精确构图</div></div>
+      <div class="uc-winner flux">FLUX.1 [dev]</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">📝 含文字的社媒图片</div><div class="uc-desc">需要在图片中准确渲染文字/logo</div></div>
+      <div class="uc-winner flux">FLUX.1 [dev]</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">🏢 企业商业用途（版权无忧）</div><div class="uc-desc">大型企业，需要最安全的版权保障</div></div>
+      <div class="uc-winner dalle">Adobe Firefly</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">⚡ 快速内容配图（无需精细）</div><div class="uc-desc">博客/文章配图，快速出图，质量要求一般</div></div>
+      <div class="uc-winner dalle">DALL-E 3</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">🔓 无审查/私人生成</div><div class="uc-desc">需要本地运行，不受内容政策限制</div></div>
+      <div class="uc-winner flux">SD/FLUX 本地</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">📖 连贯故事/漫画（角色一致）</div><div class="uc-desc">需要同一角色在不同场景保持一致外观</div></div>
+      <div class="uc-winner mj">Midjourney --cref</div>
+    </div>
+    <div class="uc-item">
+      <div><div class="uc-title">💸 预算有限，想免费用</div><div class="uc-desc">不想花钱，接受本地部署的技术复杂度</div></div>
+      <div class="uc-winner tie">FLUX.1/SD 本地</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🏆 最终评测结论</h2>
+  <p>Midjourney v6依然是<strong>AI图像生成领域艺术风格的王者</strong>，没有任何工具在整体美感和艺术质感上超越它。但它的垄断优势正在被侵蚀：</p>
+  <ul style="padding-left:20px;color:#d1d5db;font-size:.94rem;line-height:1.9;margin-bottom:16px">
+    <li><strong>FLUX.1</strong> 在写实感和提示词准确度上已超越Midjourney，且完全开源免费</li>
+    <li><strong>Adobe Firefly 3</strong> 在商业版权安全性上更有保障</li>
+    <li><strong>Midjourney仍无免费版</strong>，$10起的门槛在竞争加剧的市场中是个弱点</li>
+  </ul>
+  <div class="tip-box">
+    <p>💡 <strong>2025年推荐策略：</strong>Midjourney Standard $30/月（无限Relax模式）= 每张图约$0.03，是追求艺术质量的设计师和创意从业者的最佳投资。如果预算有限，FLUX.1在线demo（多平台免费提供）是最好的免费替代。</p>
+  </div>
+</section>
+
+<section>
+  <h2>📚 相关文章</h2>
+  <div class="related-grid">
+    <a href="best-ai-image-generators-2025.html" class="related-card">
+      <span class="rc-em">🖼️</span>
+      <span class="rc-text">2025年最佳AI图像生成工具</span>
+    </a>
+    <a href="midjourney-free-alternatives.html" class="related-card">
+      <span class="rc-em">💸</span>
+      <span class="rc-text">Midjourney免费替代方案</span>
+    </a>
+    <a href="stable-diffusion-beginners-guide.html" class="related-card">
+      <span class="rc-em">🎨</span>
+      <span class="rc-text">Stable Diffusion入门指南</span>
+    </a>
+    <a href="ai-tools-for-designers-2025.html" class="related-card">
+      <span class="rc-em">✏️</span>
+      <span class="rc-text">设计师AI工具完整指南</span>
+    </a>
+    <a href="canva-pro-free-alternatives.html" class="related-card">
+      <span class="rc-em">🎨</span>
+      <span class="rc-text">Canva Pro免费替代方案</span>
+    </a>
+    <a href="best-free-ai-tools-2025.html" class="related-card">
+      <span class="rc-em">🆓</span>
+      <span class="rc-text">2025年最好的免费AI工具</span>
+    </a>
+  </div>
+</section>
+
+</div>
+<footer>
+  <p>© 2025 AI Nav · <a href="/privacy.html">隐私政策</a> · <a href="/about.html">关于</a></p>
+  <p style="margin-top:6px;font-size:.75rem">数据来源：Midjourney官方定价页、FLUX.1 Black Forest Labs技术报告、用户社区（Reddit r/midjourney）实测评分汇总（2025年4月）</p>
+</footer>
+</body>
+</html>
