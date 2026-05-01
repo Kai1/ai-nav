@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude 3.5 Sonnet深度评测 2025：写作与代码双料王者 | AI Nav</title>
+<meta name="description" content="Claude 3.5 Sonnet完整评测：MMLU 92.0%、HumanEval 92.0%、SWE-bench 49.0%，创意写作与代码能力业界最强，200K上下文，Computer Use功能详解，vs GPT-4o/Gemini横向对比，API $3/$15详细分析。">
+<meta name="keywords" content="Claude 3.5 Sonnet review 2025, Claude评测, Anthropic Claude, Claude vs GPT-4o, SWE-bench, Computer Use, Claude API pricing">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/claude-3-5-sonnet-review-2025.html">
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/claude-3-5-sonnet-review-2025.html">
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/claude-3-5-sonnet-review-2025.html">
+<meta property="og:title" content="Claude 3.5 Sonnet深度评测 2025：写作与代码双料王者">
+<meta property="og:description" content="MMLU 92.0%、HumanEval 92.0%、SWE-bench 49%，200K上下文，Computer Use功能，vs GPT-4o全面对比。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/claude-3-5-sonnet-review-2025.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Claude 3.5 Sonnet深度评测 2025：写作与代码双料王者","datePublished":"2025-05-01","dateModified":"2025-05-01","author":{"@type":"Organization","name":"AI Nav"},"publisher":{"@type":"Organization","name":"AI Nav","url":"https://ai-nav.vercel.app"},"description":"Claude 3.5 Sonnet完整评测：MMLU 92.0%，HumanEval 92.0%，SWE-bench 49%，vs GPT-4o/Gemini深度对比。","mainEntityOfPage":{"@type":"WebPage","@id":"https://ai-nav.vercel.app/articles/claude-3-5-sonnet-review-2025.html"}}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surface:#181818;--surface2:#222;--border:#2c2c2c;
+  --accent:#6366f1;--text:#e5e7eb;--muted:#9ca3af;
+  --green:#10b981;--red:#ef4444;--yellow:#f59e0b;
+  --cl:#c07a3e;--cl2:#d4956a;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+header{position:sticky;top:0;z-index:100;height:56px;background:rgba(13,13,13,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px}
+.logo{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:800}
+.logo-icon{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px}
+.logo-text{background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.back-link{margin-left:auto;font-size:13px;color:var(--muted)}
+
+/* HERO */
+.hero{padding:52px 24px 44px;text-align:center;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(192,122,62,.1),rgba(99,102,241,.07))}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(192,122,62,.12);border:1px solid rgba(192,122,62,.3);border-radius:20px;padding:4px 14px;font-size:12px;color:#d4956a;margin-bottom:18px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;line-height:1.25;margin-bottom:14px;max-width:780px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:620px;margin:0 auto 28px}
+.bench-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.bench-chip{background:rgba(192,122,62,.1);border:1px solid rgba(192,122,62,.25);border-radius:10px;padding:12px 20px;text-align:center}
+.bc-val{font-size:1.7rem;font-weight:800;color:#d4956a;line-height:1}
+.bc-label{font-size:.75rem;color:var(--muted);margin-top:3px}
+
+.container{max-width:840px;margin:0 auto;padding:0 20px}
+section{padding:44px 0 20px}
+h2{font-size:1.5rem;font-weight:700;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+h3{font-size:1.1rem;font-weight:600;margin:24px 0 12px}
+p{color:#d1d5db;margin-bottom:14px;font-size:.97rem}
+
+/* MODEL CARDS */
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+@media(max-width:640px){.model-grid{grid-template-columns:1fr}}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;transition:.2s}
+.model-card:hover{border-color:var(--cl);transform:translateY(-2px)}
+.model-card.featured{border-color:rgba(192,122,62,.4);background:rgba(192,122,62,.04)}
+.mc-name{font-size:.95rem;font-weight:700;color:var(--cl2);margin-bottom:4px}
+.mc-tier{font-size:.75rem;color:var(--muted);margin-bottom:10px}
+.mc-row{display:flex;justify-content:space-between;font-size:.82rem;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.mc-row:last-child{border-bottom:none}
+.mc-key{color:var(--muted)}
+.mc-val{font-weight:600;color:var(--text)}
+
+/* SCORE SECTION */
+.score-list{display:grid;gap:10px;margin:20px 0}
+.sl-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:grid;grid-template-columns:160px 1fr 70px;align-items:center;gap:12px}
+@media(max-width:520px){.sl-item{grid-template-columns:100px 1fr 55px}}
+.sl-name{font-size:.88rem;font-weight:600}
+.sl-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.sl-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cl),var(--cl2))}
+.sl-score{font-size:1.05rem;font-weight:800;color:var(--cl2);text-align:right}
+
+/* COMPARISON TABLE */
+.tbl-wrap{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{background:var(--surface2);padding:11px 14px;text-align:left;font-weight:600;color:var(--muted);font-size:.82rem;white-space:nowrap}
+td{padding:10px 14px;border-top:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:rgba(99,102,241,.04)}
+.w{color:var(--green);font-weight:700}
+.g{color:var(--cl2)}
+.m{color:var(--yellow)}
+.l{color:var(--muted)}
+.cl-col{background:rgba(192,122,62,.04)!important}
+
+/* FEATURE BLOCKS */
+.feature-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:16px 0;overflow:hidden}
+.fb-head{background:rgba(192,122,62,.08);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;gap:10px}
+.fb-head .fb-em{font-size:1.3rem}
+.fb-head h3{font-size:1rem;font-weight:700;margin:0}
+.fb-head .fb-badge{margin-left:auto;font-size:.75rem;background:rgba(192,122,62,.15);color:var(--cl2);border:1px solid rgba(192,122,62,.25);padding:2px 8px;border-radius:6px}
+.fb-body{padding:16px 18px}
+.fb-body p{font-size:.9rem;margin-bottom:10px}
+.fb-body p:last-child{margin:0}
+
+/* CODE */
+.code-block{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:14px;margin:12px 0;font-family:'Cascadia Code','Fira Code',monospace;font-size:.82rem;color:#e5e7eb;line-height:1.6;overflow-x:auto;white-space:pre}
+.code-label{font-size:.75rem;color:var(--muted);margin-bottom:5px;font-family:sans-serif}
+
+/* WRITING TEST */
+.writing-test{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;margin:14px 0}
+.wt-prompt{font-size:.85rem;color:var(--muted);border-left:2px solid var(--accent);padding-left:10px;margin-bottom:12px;font-style:italic}
+.wt-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:540px){.wt-cols{grid-template-columns:1fr}}
+.wt-col{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px}
+.wt-col-title{font-size:.78rem;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.wt-col-title.cl{color:var(--cl2)}
+.wt-col-title.gpt{color:#10a37f}
+.wt-text{font-size:.83rem;color:#d1d5db;line-height:1.6;font-style:italic}
+.wt-verdict{font-size:.8rem;margin-top:8px;padding:6px 10px;border-radius:6px;display:inline-block}
+.wt-verdict.cl{background:rgba(192,122,62,.1);color:var(--cl2)}
+.wt-verdict.gpt{background:rgba(16,163,127,.08);color:#34d399}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:520px){.price-grid{grid-template-columns:1fr}}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+.price-card.api{border-color:rgba(192,122,62,.3)}
+.pc-name{font-size:.9rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.pc-price{font-size:1.8rem;font-weight:800;color:var(--cl2);margin-bottom:2px}
+.pc-sub{font-size:.75rem;color:var(--muted);margin-bottom:12px}
+.pc-items{list-style:none;font-size:.85rem;color:#d1d5db}
+.pc-items li{padding:4px 0;display:flex;gap:6px;align-items:flex-start}
+.pc-items li::before{content:'✓';color:var(--green);flex-shrink:0;margin-top:2px}
+
+/* INFO/TIP/WARN */
+.info-box{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:15px;margin:14px 0}
+.info-box p{font-size:.9rem;margin:0;color:#c4b5fd}
+.tip-box{background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:15px;margin:14px 0}
+.tip-box p{font-size:.9rem;color:#34d399;margin:0}
+.warn-box{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.2);border-radius:10px;padding:15px;margin:14px 0}
+.warn-box p{font-size:.88rem;color:#fbbf24;margin:0}
+
+/* VERDICT */
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+@media(max-width:480px){.verdict{grid-template-columns:1fr}}
+.vbox{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px}
+.vbox.yes{border-color:rgba(16,185,129,.3)}
+.vbox.no{border-color:rgba(239,68,68,.2)}
+.vbox h4{font-size:.9rem;font-weight:700;margin-bottom:10px}
+.vbox.yes h4{color:#34d399}
+.vbox.no h4{color:#f87171}
+.vbox ul{list-style:none;font-size:.85rem;color:#d1d5db}
+.vbox ul li{padding:3px 0;display:flex;gap:6px}
+.vbox.yes ul li::before{content:'✓';color:var(--green)}
+.vbox.no ul li::before{content:'→';color:#a5b4fc}
+
+.ad-slot{background:rgba(99,102,241,.04);border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:16px;text-align:center;margin:30px 0;color:var(--muted);font-size:.8rem}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:16px 0}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:13px;display:flex;align-items:center;gap:9px;transition:.2s}
+.related-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.related-card .rc-em{font-size:1.2rem}
+.related-card .rc-text{font-size:.84rem;font-weight:500}
+footer{border-top:1px solid var(--border);padding:28px 20px;text-align:center;color:var(--muted);font-size:.82rem;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><div class="logo-icon">🤖</div><span class="logo-text">AI Nav</span></div>
+  <a href="/" class="back-link">← 返回首页</a>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">🔶 Claude 3.5 Sonnet 深度评测 2025</div>
+  <h1>Claude 3.5 Sonnet深度评测 2025<br>写作与代码双料王者</h1>
+  <p class="hero-sub">MMLU 92.0%、HumanEval 92.0%、SWE-bench 49.0%，200K上下文，Computer Use突破性功能</p>
+  <div class="bench-row">
+    <div class="bench-chip"><div class="bc-val">92.0%</div><div class="bc-label">MMLU知识理解</div></div>
+    <div class="bench-chip"><div class="bc-val">92.0%</div><div class="bc-label">HumanEval代码</div></div>
+    <div class="bench-chip"><div class="bc-val">49.0%</div><div class="bc-label">SWE-bench软件工程</div></div>
+    <div class="bench-chip"><div class="bc-val">200K</div><div class="bc-label">上下文窗口</div></div>
+    <div class="bench-chip"><div class="bc-val">$3</div><div class="bc-label">API输入/1M token</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<section>
+  <h2>📋 Claude 3.5系列模型概览</h2>
+  <p>Anthropic于2024年发布Claude 3.5系列，定位为"智能与速度的完美平衡"。Claude 3.5 Sonnet是当前旗舰，在多项关键基准上超越GPT-4o，同时价格仅为GPT-4o的60%（输入端）。</p>
+
+  <div class="model-grid">
+    <div class="model-card">
+      <div class="mc-name">Claude 3 Haiku</div>
+      <div class="mc-tier">⚡ 极速轻量</div>
+      <div class="mc-row"><span class="mc-key">定位</span><span class="mc-val">高频简单任务</span></div>
+      <div class="mc-row"><span class="mc-key">速度</span><span class="mc-val">最快</span></div>
+      <div class="mc-row"><span class="mc-key">API输入</span><span class="mc-val">$0.80/1M</span></div>
+      <div class="mc-row"><span class="mc-key">上下文</span><span class="mc-val">200K</span></div>
+    </div>
+    <div class="model-card featured">
+      <div class="mc-name">Claude 3.5 Sonnet ⭐</div>
+      <div class="mc-tier">🏆 推荐：智能+速度平衡</div>
+      <div class="mc-row"><span class="mc-key">定位</span><span class="mc-val">日常旗舰</span></div>
+      <div class="mc-row"><span class="mc-key">MMLU</span><span class="mc-val">92.0%</span></div>
+      <div class="mc-row"><span class="mc-key">API输入</span><span class="mc-val">$3/1M</span></div>
+      <div class="mc-row"><span class="mc-key">上下文</span><span class="mc-val">200K</span></div>
+    </div>
+    <div class="model-card">
+      <div class="mc-name">Claude 3 Opus</div>
+      <div class="mc-tier">🧠 最强推理（旧旗舰）</div>
+      <div class="mc-row"><span class="mc-key">定位</span><span class="mc-val">极复杂任务</span></div>
+      <div class="mc-row"><span class="mc-key">速度</span><span class="mc-val">最慢</span></div>
+      <div class="mc-row"><span class="mc-key">API输入</span><span class="mc-val">$15/1M</span></div>
+      <div class="mc-row"><span class="mc-key">上下文</span><span class="mc-val">200K</span></div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <p>📌 <strong>2025年选模型建议：</strong>90%的任务用Claude 3.5 Sonnet（性能最强+性价比最高）；高频简单任务（分类/摘要）用Haiku节省成本；仅在Sonnet无法完成的极端复杂任务才考虑Opus。</p>
+  </div>
+</section>
+
+<section>
+  <h2>📊 6维度能力评分</h2>
+
+  <div class="score-list">
+    <div class="sl-item">
+      <div class="sl-name">✍️ 创意写作</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:96%"></div></div>
+      <div class="sl-score">9.6</div>
+    </div>
+    <div class="sl-item">
+      <div class="sl-name">💻 代码生成</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:93%"></div></div>
+      <div class="sl-score">9.3</div>
+    </div>
+    <div class="sl-item">
+      <div class="sl-name">📚 知识理解</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:92%"></div></div>
+      <div class="sl-score">9.2</div>
+    </div>
+    <div class="sl-item">
+      <div class="sl-name">📄 长文档分析</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:94%"></div></div>
+      <div class="sl-score">9.4</div>
+    </div>
+    <div class="sl-item">
+      <div class="sl-name">🧮 数学推理</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:74%"></div></div>
+      <div class="sl-score">7.4</div>
+    </div>
+    <div class="sl-item">
+      <div class="sl-name">🌍 多语言支持</div>
+      <div class="sl-bar"><div class="sl-fill" style="width:88%"></div></div>
+      <div class="sl-score">8.8</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>✍️ 写作能力：为什么Claude是王者？</h2>
+  <p>Claude 3.5 Sonnet在创意写作和高质量文本生成上是公认的行业第一。其核心优势不在于速度，而在于<strong>文字的自然度、叙事的连贯性、对细微指令的精确执行</strong>。</p>
+
+  <div class="writing-test">
+    <div class="wt-prompt">📝 测试提示词：用第一人称写一段50字的产品开箱体验，语气自然，像真实用户写的，不要夸张</div>
+    <div class="wt-cols">
+      <div class="wt-col">
+        <div class="wt-col-title cl">🔶 Claude 3.5 Sonnet</div>
+        <div class="wt-text">"拿到手的时候包装比我想象的简单，但拆开之后质感挺出乎意料的。按键的阻尼感不错，不是那种廉价的咔嗒声。用了三天，还在适应，但目前没有后悔买。"</div>
+        <span class="wt-verdict cl">✓ 自然、有细节、无AI感</span>
+      </div>
+      <div class="wt-col">
+        <div class="wt-col-title gpt">🟢 GPT-4o</div>
+        <div class="wt-text">"收到包裹后迫不及待地拆开，第一眼就被精致的外观所吸引。产品手感很好，做工精细，性能也很出色。总体来说，这次购买非常满意，值得推荐！"</div>
+        <span class="wt-verdict gpt">⚠ 流畅但稍显模板化</span>
+      </div>
+    </div>
+  </div>
+
+  <p>这个差异在短文案中不明显，但在500字以上的长文写作中会越来越显著——Claude的文字不会让读者产生"这是AI写的"的感觉，这对内容营销、品牌写作至关重要。</p>
+
+  <div class="tip-box">
+    <p>💡 <strong>Claude写作最佳实践：</strong>提供<strong>具体的语气描述</strong>（"像35岁的技术从业者在朋友圈写的"而非"专业语气"），给出<strong>真实案例素材</strong>（客户真实故事、具体数据），效果提升极大。</p>
+  </div>
+</section>
+
+<section>
+  <h2>💻 代码能力：SWE-bench 49% 意味着什么？</h2>
+  <p>SWE-bench是测试AI解决真实GitHub Issue的基准（从GitHub实际open的软件工程问题中选取）。Claude 3.5 Sonnet以49%的解题率长期位居排行榜前列（截至2025年4月），代表它能解决将近一半的真实软件工程任务。</p>
+
+  <div class="feature-block">
+    <div class="fb-head">
+      <div class="fb-em">🔧</div>
+      <h3>代码能力实测：重构+调试场景</h3>
+      <div class="fb-badge">HumanEval 92%</div>
+    </div>
+    <div class="fb-body">
+      <p><strong>测试：</strong>给出一段含有3个Bug的Python代码（一个逻辑错误、一个类型错误、一个边界条件错误），要求Claude找出所有问题并修复。</p>
+      <p><strong>Claude表现：</strong>全部找出3个Bug，修复正确，并主动说明每个Bug的根本原因和修复思路。额外指出了代码的2个潜在改进点（不影响功能但影响可维护性）。</p>
+      <div class="code-label">Claude调试响应风格示例：</div>
+      <div class="code-block">发现以下3个问题：
+
+1. **逻辑错误**（第15行）：`if total > 0` 应为 `if total >= 0`
+   原因：当total=0时会跳过本应执行的计算
+   修复：将 > 改为 >=
+
+2. **类型错误**（第23行）：`str(count) + count` 混合了字符串和整数
+   原因：count是int，但被当作str拼接
+   修复：改为 `str(count) + str(result)`
+
+3. **边界条件**（第31行）：当列表为空时 items[0] 会抛出IndexError
+   修复：添加 `if not items: return None`
+
+另外建议（可选）：
+- 第8行的变量名 `tmp` 可以改为更具描述性的名称
+- 第19-21行的嵌套if可以用早返回(early return)简化</div>
+    </div>
+  </div>
+
+  <p>Claude的代码能力优势不只是"能写代码"，更在于<strong>理解代码意图、主动发现潜在问题、给出可维护性建议</strong>。这使它在代码Review和重构场景比其他模型更有价值。</p>
+</section>
+
+<!-- AD -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<section>
+  <h2>🖥️ Computer Use：突破性的计算机操控能力</h2>
+  <p>Computer Use是Claude 3.5 Sonnet于2024年10月推出的突破性功能（目前处于Beta阶段）：Claude可以<strong>直接操控计算机桌面</strong>——查看屏幕截图、移动鼠标、点击按钮、输入文字、执行操作。</p>
+
+  <div class="feature-block">
+    <div class="fb-head">
+      <div class="fb-em">🖥️</div>
+      <h3>Computer Use实际能做什么？</h3>
+      <div class="fb-badge">Beta公测中</div>
+    </div>
+    <div class="fb-body">
+      <p><strong>已验证的使用场景：</strong></p>
+      <p>• <strong>自动化测试：</strong>Claude自动打开浏览器，填写表单，点击按钮，验证每步结果，生成测试报告</p>
+      <p>• <strong>数据录入：</strong>从一个系统读取数据，在另一个系统中填写（无需API集成）</p>
+      <p>• <strong>软件演示录制：</strong>Claude按照脚本自动操作软件，截图每个步骤，生成操作教程</p>
+      <p>• <strong>跨应用工作流：</strong>从邮件读取信息→打开Excel填写→导出PDF→通过Slack发送</p>
+      <p><strong>当前局限：</strong>速度较慢（每步截图+分析），对动态内容（弹窗/动画）识别不稳定，不适合高频实时操作。</p>
+    </div>
+  </div>
+
+  <div class="code-label">Computer Use API调用示例（Python）：</div>
+  <div class="code-block">import anthropic
+
+client = anthropic.Anthropic()
+
+response = client.beta.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=4096,
+    tools=[
+        {
+            "type": "computer_20241022",
+            "name": "computer",
+            "display_width_px": 1024,
+            "display_height_px": 768,
+            "display_number": 1
+        }
+    ],
+    messages=[{
+        "role": "user",
+        "content": "打开浏览器，访问 https://example.com，填写联系表单：姓名'张三'，邮箱'zhang@example.com'，点击提交"
+    }],
+    betas=["computer-use-2024-10-22"]
+)</div>
+
+  <div class="warn-box">
+    <p>⚠️ <strong>Computer Use安全注意：</strong>仅在沙箱/虚拟机环境中使用，不要让Claude访问含有敏感账户、真实支付信息的桌面。当前Beta版本偶有意外点击，生产环境需谨慎评估。</p>
+  </div>
+</section>
+
+<section>
+  <h2>⚖️ Claude 3.5 Sonnet vs 顶级竞品全面对比</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th class="cl-col">Claude 3.5 Sonnet</th>
+          <th>GPT-4o</th>
+          <th>Gemini 1.5 Pro</th>
+          <th>GPT-4 Turbo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MMLU</strong></td>
+          <td class="cl-col w">92.0% 🥇</td>
+          <td>88.7%</td>
+          <td>85.9%</td>
+          <td>86.4%</td>
+        </tr>
+        <tr>
+          <td><strong>HumanEval（代码）</strong></td>
+          <td class="cl-col w">92.0% 🥇</td>
+          <td class="g">90.2%</td>
+          <td>84.1%</td>
+          <td>87.1%</td>
+        </tr>
+        <tr>
+          <td><strong>SWE-bench（软件工程）</strong></td>
+          <td class="cl-col w">49.0% 🥇</td>
+          <td>—</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td><strong>GPQA Diamond（科学）</strong></td>
+          <td class="cl-col w">59.4% 🥇</td>
+          <td>53.6%</td>
+          <td>49.9%</td>
+          <td>35.7%</td>
+        </tr>
+        <tr>
+          <td><strong>创意写作质量</strong></td>
+          <td class="cl-col w">最自然 🥇</td>
+          <td class="g">强</td>
+          <td class="m">中等</td>
+          <td class="g">强</td>
+        </tr>
+        <tr>
+          <td><strong>上下文窗口</strong></td>
+          <td class="cl-col g">200K</td>
+          <td class="g">128K</td>
+          <td class="w">1M 🥇</td>
+          <td>128K</td>
+        </tr>
+        <tr>
+          <td><strong>多模态（语音/视频）</strong></td>
+          <td class="cl-col l">文/图</td>
+          <td class="w">文/图/音/视频 🥇</td>
+          <td class="w">文/图/音/视频</td>
+          <td>文/图</td>
+        </tr>
+        <tr>
+          <td><strong>Computer Use</strong></td>
+          <td class="cl-col w">✓ Beta 🥇</td>
+          <td class="l">✗</td>
+          <td class="l">✗</td>
+          <td class="l">✗</td>
+        </tr>
+        <tr>
+          <td><strong>API输入价格/1M</strong></td>
+          <td class="cl-col w">$3.00 🥇</td>
+          <td>$5.00</td>
+          <td class="w">$1.25（Flash）</td>
+          <td>$10.00</td>
+        </tr>
+        <tr>
+          <td><strong>Claude.ai订阅</strong></td>
+          <td class="cl-col g">Free / $20 Pro</td>
+          <td>Free / $20 Plus</td>
+          <td>Free / $20 Advanced</td>
+          <td>仅API</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>💰 价格与使用方式详解</h2>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="pc-name">Claude.ai 免费版</div>
+      <div class="pc-price" style="color:var(--green)">$0</div>
+      <div class="pc-sub">每日有限制次数</div>
+      <ul class="pc-items">
+        <li>Claude 3.5 Sonnet（限量）</li>
+        <li>Claude 3 Haiku（更多次数）</li>
+        <li>文件上传（PDF/图片）</li>
+        <li>Projects功能</li>
+        <li>无需信用卡</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="pc-name">Claude Pro</div>
+      <div class="pc-price">$20</div>
+      <div class="pc-sub">/月</div>
+      <ul class="pc-items">
+        <li>Claude 3.5 Sonnet无限制</li>
+        <li>免费版5×使用量</li>
+        <li>Projects无限制</li>
+        <li>优先访问新功能</li>
+        <li>Computer Use早期访问</li>
+      </ul>
+    </div>
+    <div class="price-card api">
+      <div class="pc-name">API · Claude 3.5 Sonnet</div>
+      <div class="pc-price">$3</div>
+      <div class="pc-sub">输入 / 百万token，输出 $15/1M</div>
+      <ul class="pc-items">
+        <li>提示词缓存（节省90%重复成本）</li>
+        <li>流式输出支持</li>
+        <li>Tool Use / Function Calling</li>
+        <li>Vision图片分析</li>
+        <li>Computer Use（Beta）</li>
+      </ul>
+    </div>
+    <div class="price-card api">
+      <div class="pc-name">API · Claude 3 Haiku</div>
+      <div class="pc-price">$0.80</div>
+      <div class="pc-sub">输入 / 百万token，输出 $4/1M</div>
+      <ul class="pc-items">
+        <li>最低延迟，适合实时场景</li>
+        <li>高频调用成本极低</li>
+        <li>分类/摘要/简单问答首选</li>
+        <li>比GPT-4o mini贵但质量更高</li>
+        <li>同样支持200K上下文</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p>💡 <strong>API成本优化：</strong>Claude的<strong>提示词缓存（Prompt Caching）</strong>功能可将重复的系统提示词缓存，后续调用节省90%的输入成本。对于有固定系统提示的应用，这是最重要的省钱技巧。详见<a href="claude-api-guide-2025.html">Claude API完整指南</a>。</p>
+  </div>
+</section>
+
+<section>
+  <h2>🎯 Claude 3.5 Sonnet适合谁？</h2>
+
+  <div class="verdict">
+    <div class="vbox yes">
+      <h4>✅ 强烈推荐Claude的场景</h4>
+      <ul>
+        <li><span>高质量写作（白皮书/营销文案/小说）</span></li>
+        <li><span>代码Review与重构</span></li>
+        <li><span>复杂PDF/报告深度分析（200K上下文）</span></li>
+        <li><span>API应用开发（性价比最佳）</span></li>
+        <li><span>对话要求自然、有深度、少AI感</span></li>
+        <li><span>需要Computer Use自动化的场景</span></li>
+        <li><span>需要精准遵循复杂系统指令的场景</span></li>
+      </ul>
+    </div>
+    <div class="vbox no">
+      <h4>→ 其他工具可能更合适</h4>
+      <ul>
+        <li><span>实时语音对话 → GPT-4o Voice</span></li>
+        <li><span>超长文档（>200K）→ Gemini 1.5 Pro（1M）</span></li>
+        <li><span>数学竞赛/高难推理 → o3/o3-mini</span></li>
+        <li><span>实时信息搜索+引用 → Perplexity</span></li>
+        <li><span>图像生成 → Midjourney/FLUX</span></li>
+        <li><span>高频低成本API → Gemini Flash</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <p>🔥 <strong>最终结论：</strong>Claude 3.5 Sonnet是2025年综合能力最强的AI模型之一，在写作和代码两个核心场景均排名第一。$20/月的Claude Pro订阅是目前市场上最高性价比的AI助手订阅之一——尤其适合需要深度内容生产和复杂代码工作的专业人士。</p>
+  </div>
+</section>
+
+<section>
+  <h2>📚 相关文章</h2>
+  <div class="related-grid">
+    <a href="claude-api-guide-2025.html" class="related-card">
+      <span class="rc-em">🔌</span>
+      <span class="rc-text">Claude API完整使用指南</span>
+    </a>
+    <a href="chatgpt-vs-claude-vs-gemini.html" class="related-card">
+      <span class="rc-em">⚔️</span>
+      <span class="rc-text">ChatGPT vs Claude vs Gemini</span>
+    </a>
+    <a href="gpt-4o-review-2025.html" class="related-card">
+      <span class="rc-em">🤖</span>
+      <span class="rc-text">GPT-4o深度评测</span>
+    </a>
+    <a href="gemini-review-2025.html" class="related-card">
+      <span class="rc-em">✨</span>
+      <span class="rc-text">Gemini 2.0深度评测</span>
+    </a>
+    <a href="best-ai-writing-tools-2025.html" class="related-card">
+      <span class="rc-em">✍️</span>
+      <span class="rc-text">2025年最佳AI写作工具</span>
+    </a>
+    <a href="windsurf-vs-cursor-2025.html" class="related-card">
+      <span class="rc-em">💻</span>
+      <span class="rc-text">Windsurf vs Cursor对比</span>
+    </a>
+  </div>
+</section>
+
+</div>
+<footer>
+  <p>© 2025 AI Nav · <a href="/privacy.html">隐私政策</a> · <a href="/about.html">关于</a></p>
+  <p style="margin-top:6px;font-size:.75rem">数据来源：Anthropic Claude 3.5 Sonnet技术报告（2024）、SWE-bench官方排行榜、MMLU/HumanEval/GPQA基准，Anthropic API定价页（2025年4月）</p>
+</footer>
+</body>
+</html>
