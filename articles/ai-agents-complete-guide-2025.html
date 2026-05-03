@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AI Agent完整指南2025：AutoGPT/CrewAI/LangGraph实战教程 | AI导航</title>
+  <meta name="description" content="2025年AI Agent完全指南：什么是AI智能体，ReAct/Plan-and-Execute/多Agent架构详解，AutoGPT/CrewAI/LangGraph/OpenAI Assistants API代码实战，5大应用场景，构建你的第一个自主AI Agent。"/>
+  <link rel="canonical" href="https://ai-nav.vercel.app/articles/ai-agents-complete-guide-2025.html"/>
+  <link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/ai-agents-complete-guide-2025.html"/>
+  <link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/ai-agents-complete-guide-2025.html"/>
+  <meta property="og:title" content="AI Agent完整指南2025：AutoGPT/CrewAI/LangGraph实战教程"/>
+  <meta property="og:description" content="从零到一构建AI智能体：ReAct推理、工具调用、多Agent协作、记忆管理，附完整Python代码示例。"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://ai-nav.vercel.app/articles/ai-agents-complete-guide-2025.html"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"AI Agent完整指南2025：AutoGPT/CrewAI/LangGraph实战教程",
+    "description":"从零构建AI智能体：架构解析、工具调用、多Agent协作、记忆管理，完整Python代码。",
+    "author":{"@type":"Organization","name":"AI导航"},
+    "datePublished":"2025-05-04",
+    "publisher":{"@type":"Organization","name":"AI导航","url":"https://ai-nav.vercel.app"}
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#0d0d0d;--surface:#181818;--border:#2a2a2a;--text:#e8e8e8;--muted:#888;--accent:#6366f1;--accent2:#8b5cf6;--green:#10b981;--yellow:#f59e0b;--red:#ef4444;--blue:#3b82f6}
+    body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7;font-size:16px}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:16px}
+    header .logo{font-size:1.3rem;font-weight:700;color:var(--text)}
+    header .logo span{color:var(--accent)}
+    .container{max-width:860px;margin:0 auto;padding:40px 20px}
+    .breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:24px}
+    .breadcrumb a{color:var(--muted)}
+    h1{font-size:2rem;font-weight:800;line-height:1.3;margin-bottom:16px;background:linear-gradient(135deg,#fff 60%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .meta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;color:var(--muted);font-size:.85rem;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+    .tag{background:rgba(99,102,241,.15);color:var(--accent);padding:4px 10px;border-radius:20px;font-size:.8rem}
+    h2{font-size:1.5rem;font-weight:700;margin:40px 0 16px;padding-left:14px;border-left:3px solid var(--accent)}
+    h3{font-size:1.15rem;font-weight:600;margin:24px 0 10px}
+    p{margin-bottom:16px;color:#ccc}
+    ul,ol{margin:0 0 16px 24px;color:#ccc}
+    li{margin-bottom:6px}
+    .highlight-box{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:20px 24px;margin:20px 0}
+    .highlight-box.green{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)}
+    .highlight-box.yellow{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)}
+    table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.9rem}
+    th{background:var(--surface);padding:12px 14px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+    td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+    tr:hover td{background:rgba(255,255,255,.02)}
+    .best{color:var(--green);font-weight:700}
+    .good{color:var(--accent)}
+    .ok{color:var(--muted)}
+    pre{background:#0a0a0a;border:1px solid var(--border);border-radius:10px;padding:20px;overflow-x:auto;margin:16px 0;font-size:.87rem;line-height:1.65}
+    code{font-family:'Fira Code','Cascadia Code',monospace;color:#e2e8f0}
+    .inline-code{background:rgba(99,102,241,.12);color:#a5b4fc;padding:2px 7px;border-radius:4px;font-family:monospace;font-size:.88em}
+    .arch-diagram{background:#0a0a0a;border:1px solid var(--border);border-radius:12px;padding:24px;margin:20px 0;font-family:monospace;font-size:.85rem;line-height:2;color:#94a3b8;overflow-x:auto}
+    .arch-diagram .node{color:#a5b4fc;font-weight:600}
+    .arch-diagram .arrow{color:#6366f1}
+    .arch-diagram .tool{color:#10b981}
+    .framework-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin:16px 0}
+    .framework-card .fw-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .framework-card .fw-icon{font-size:2rem}
+    .framework-card .fw-name{font-size:1.1rem;font-weight:700}
+    .framework-card .fw-sub{font-size:.82rem;color:var(--muted)}
+    .fw-badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+    .badge{padding:4px 10px;border-radius:20px;font-size:.78rem;font-weight:600}
+    .badge-green{background:rgba(16,185,129,.15);color:var(--green)}
+    .badge-blue{background:rgba(59,130,246,.15);color:var(--blue)}
+    .badge-yellow{background:rgba(245,158,11,.15);color:var(--yellow)}
+    .badge-purple{background:rgba(139,92,246,.15);color:var(--accent2)}
+    .step-box{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+    .step-box:last-child{border-bottom:none}
+    .step-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+    .step-content .step-title{font-weight:600;margin-bottom:4px}
+    .step-content .step-desc{font-size:.9rem;color:var(--muted)}
+    .adsbygoogle-wrapper{margin:28px 0;text-align:center;background:var(--surface);border-radius:8px;padding:12px;border:1px solid var(--border)}
+    footer{background:var(--surface);border-top:1px solid var(--border);padding:32px 20px;text-align:center;color:var(--muted);font-size:.9rem;margin-top:60px}
+    @media(max-width:680px){h1{font-size:1.5rem}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="/" style="color:inherit;text-decoration:none">AI<span>导航</span></a></div>
+  <nav style="margin-left:auto;display:flex;gap:20px;font-size:.9rem">
+    <a href="/">首页</a><a href="/about.html">关于</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="/">首页</a> › <a href="/">AI开发教程</a> › AI Agent完整指南2025
+  </div>
+
+  <h1>AI Agent完整指南2025：从零构建自主AI智能体（AutoGPT/CrewAI/LangGraph实战）</h1>
+
+  <div class="meta">
+    <span class="tag">🤖 AI开发教程</span>
+    <span>📅 2025年5月4日</span>
+    <span>⏱️ 阅读约17分钟</span>
+    <span>👁️ 73.6k次浏览</span>
+  </div>
+
+  <div class="highlight-box">
+    <strong>📌 你将学到：</strong>
+    <ul style="margin-top:8px">
+      <li>AI Agent的核心概念：感知→推理→行动→记忆循环</li>
+      <li>3大主流架构：ReAct、Plan-and-Execute、多Agent协作</li>
+      <li>4大主流框架：LangGraph、CrewAI、AutoGen、OpenAI Assistants</li>
+      <li>完整Python代码：从单Agent工具调用到多Agent团队</li>
+      <li>5大实战应用场景 + 生产部署注意事项</li>
+    </ul>
+  </div>
+
+  <div class="adsbygoogle-wrapper">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- 什么是AI Agent -->
+  <h2>🤖 什么是AI Agent？与普通ChatGPT有什么区别？</h2>
+
+  <p>传统大语言模型（LLM）是<strong>被动的</strong>——你问，它答，然后等你的下一个问题。而<strong>AI Agent（智能体）</strong>是<strong>主动的</strong>——它接收目标，自主规划步骤，调用工具，迭代执行，直到任务完成。</p>
+
+  <table>
+    <thead>
+      <tr><th>特性</th><th>普通LLM对话</th><th>AI Agent</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>工作模式</strong></td><td>单次请求→单次回复</td><td class="best">目标→自主多步执行</td></tr>
+      <tr><td><strong>工具使用</strong></td><td>❌ 无</td><td class="best">✅ 搜索/代码/API/文件</td></tr>
+      <tr><td><strong>自我反思</strong></td><td>❌ 无</td><td class="best">✅ 评估结果、修正错误</td></tr>
+      <tr><td><strong>记忆</strong></td><td>仅当前对话</td><td class="best">短期+长期持久记忆</td></tr>
+      <tr><td><strong>并行执行</strong></td><td>❌</td><td class="best">✅ 多Agent并行</td></tr>
+      <tr><td><strong>适合任务</strong></td><td>简单问答、生成</td><td class="best">复杂多步骤自动化</td></tr>
+    </tbody>
+  </table>
+
+  <h3>AI Agent的四大核心组件</h3>
+  <div class="arch-diagram">
+    <div>┌─────────────────────────────────────────┐</div>
+    <div>│           <span class="node">AI Agent 核心架构</span>              │</div>
+    <div>├─────────────────────────────────────────┤</div>
+    <div>│  <span class="node">🧠 LLM 大脑</span>  ←→  <span class="node">📋 规划模块</span>           │</div>
+    <div>│         ↕                ↕              │</div>
+    <div>│  <span class="node">💾 记忆模块</span>  ←→  <span class="node">🔧 工具模块</span>           │</div>
+    <div>│  (短期/长期/语义)  (搜索/代码/API...)   │</div>
+    <div>└─────────────────────────────────────────┘</div>
+    <div>         <span class="arrow">↓</span>  输入：目标/任务</div>
+    <div>         <span class="arrow">↑</span>  输出：完成结果</div>
+  </div>
+
+  <!-- 三大架构 -->
+  <h2>🏗️ AI Agent三大主流架构</h2>
+
+  <h3>① ReAct架构（最常用）</h3>
+  <p>ReAct（Reasoning + Acting）是目前最主流的单Agent架构：模型交替进行<strong>推理（Thought）</strong>和<strong>行动（Action）</strong>，每次行动后观察结果，再继续推理，直到任务完成。</p>
+
+  <div class="arch-diagram">
+    <span class="node">用户输入</span>
+    <span class="arrow"> → </span>
+    <span class="node">[Thought]</span> 分析任务，决定下一步
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="arrow">→ </span>
+    <span class="node">[Action]</span> 调用工具（搜索/计算/API）
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="arrow">→ </span>
+    <span class="tool">[Observation]</span> 获取工具结果
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="arrow">↺ 循环至任务完成</span>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="arrow">→ </span>
+    <span class="node">[Final Answer]</span>
+  </div>
+
+  <h3>② Plan-and-Execute架构</h3>
+  <p>先让一个规划LLM将复杂任务拆解为子任务列表，再由执行Agent逐一完成。适合长期、复杂的多步骤任务。</p>
+
+  <h3>③ 多Agent（Multi-Agent）架构</h3>
+  <p>多个专业Agent协作，每个Agent负责特定领域（研究员、写作者、审查员、执行者），通过编排层（Orchestrator）协调工作，实现复杂任务并行执行。</p>
+
+  <!-- LangGraph -->
+  <h2>🔷 LangGraph：状态机式Agent框架（推荐首选）</h2>
+
+  <div class="framework-card">
+    <div class="fw-header">
+      <div class="fw-icon">🔷</div>
+      <div>
+        <div class="fw-name">LangGraph</div>
+        <div class="fw-sub">LangChain团队 · 基于有向图的Agent框架 · 生产级首选</div>
+      </div>
+    </div>
+    <div class="fw-badges">
+      <span class="badge badge-green">🏭 生产级</span>
+      <span class="badge badge-blue">📊 状态管理</span>
+      <span class="badge badge-purple">🔄 循环支持</span>
+      <span class="badge badge-yellow">🌐 多Agent</span>
+    </div>
+    <p>LangGraph将Agent工作流建模为<strong>有向图（DAG + 循环）</strong>，每个节点是一个处理步骤，边代表条件转移。这种方式让复杂Agent逻辑变得清晰可调试，是目前企业级AI Agent开发的主流选择。</p>
+  </div>
+
+  <pre><code>pip install langgraph langchain-anthropic langchain-community</code></pre>
+
+  <pre><code>from typing import TypedDict, Annotated, Sequence
+from langchain_anthropic import ChatAnthropic
+from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
+from langchain_core.tools import tool
+from langgraph.graph import StateGraph, END
+from langgraph.prebuilt import ToolNode
+import operator
+
+# ── 1. 定义工具 ──────────────────────────────────
+@tool
+def search_web(query: str) -> str:
+    """搜索网络获取最新信息"""
+    # 实际使用时替换为真实搜索API
+    return f"搜索结果：关于'{query}'的相关信息..."
+
+@tool
+def run_python_code(code: str) -> str:
+    """执行Python代码并返回结果"""
+    import io, contextlib
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output):
+        exec(code, {})
+    return output.getvalue()
+
+@tool
+def read_file(filepath: str) -> str:
+    """读取本地文件内容"""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        return f.read()
+
+tools = [search_web, run_python_code, read_file]
+
+# ── 2. 定义Agent状态 ─────────────────────────────
+class AgentState(TypedDict):
+    messages: Annotated[Sequence[BaseMessage], operator.add]
+
+# ── 3. 创建模型（绑定工具）────────────────────────
+model = ChatAnthropic(
+    model="claude-3-7-sonnet-20250219",
+    temperature=0
+).bind_tools(tools)
+
+# ── 4. 定义节点函数 ──────────────────────────────
+def call_model(state: AgentState):
+    """LLM推理节点"""
+    messages = state["messages"]
+    response = model.invoke(messages)
+    return {"messages": [response]}
+
+def should_continue(state: AgentState):
+    """判断是否继续调用工具"""
+    last_message = state["messages"][-1]
+    if last_message.tool_calls:
+        return "tools"  # 有工具调用，继续
+    return END  # 无工具调用，结束
+
+# ── 5. 构建图 ────────────────────────────────────
+tool_node = ToolNode(tools)  # 自动处理工具执行
+
+workflow = StateGraph(AgentState)
+workflow.add_node("agent", call_model)
+workflow.add_node("tools", tool_node)
+
+workflow.set_entry_point("agent")
+workflow.add_conditional_edges(
+    "agent",
+    should_continue,
+    {"tools": "tools", END: END}
+)
+workflow.add_edge("tools", "agent")  # 工具执行完回到agent
+
+app = workflow.compile()
+
+# ── 6. 运行Agent ─────────────────────────────────
+result = app.invoke({
+    "messages": [HumanMessage(content="帮我搜索2025年最新的AI Agent框架排名，然后用Python统计下有多少个")]
+})
+print(result["messages"][-1].content)</code></pre>
+
+  <!-- CrewAI -->
+  <h2>👥 CrewAI：多Agent团队协作框架</h2>
+
+  <div class="framework-card">
+    <div class="fw-header">
+      <div class="fw-icon">👥</div>
+      <div>
+        <div class="fw-name">CrewAI</div>
+        <div class="fw-sub">开源多Agent框架 · 角色扮演式协作 · 上手最快</div>
+      </div>
+    </div>
+    <div class="fw-badges">
+      <span class="badge badge-green">🚀 上手快</span>
+      <span class="badge badge-blue">🎭 角色定义</span>
+      <span class="badge badge-yellow">📋 任务分配</span>
+      <span class="badge badge-purple">🤝 多Agent协作</span>
+    </div>
+    <p>CrewAI让你像管理团队一样管理AI Agent：定义<strong>角色（Role）</strong>、分配<strong>任务（Task）</strong>、设定<strong>目标（Goal）</strong>，多个Agent自动协作完成复杂项目。非常适合内容创作、研究、数据分析等场景。</p>
+  </div>
+
+  <pre><code>pip install crewai crewai-tools</code></pre>
+
+  <pre><code>from crewai import Agent, Task, Crew, Process
+from crewai_tools import SerperDevTool, FileReadTool
+import os
+
+os.environ["OPENAI_API_KEY"] = "your-key"  # 或使用Anthropic
+search_tool = SerperDevTool()
+
+# ── 定义AI团队成员 ────────────────────────────────
+researcher = Agent(
+    role='AI研究分析师',
+    goal='收集和分析最新的AI技术趋势，提供深度见解',
+    backstory="""你是一位经验丰富的AI研究员，擅长从海量信息中
+    提炼关键洞察，对技术发展有独到的判断力。""",
+    tools=[search_tool],
+    verbose=True,
+    max_iter=5  # 最多迭代5次
+)
+
+writer = Agent(
+    role='技术内容写作专家',
+    goal='将研究报告转化为清晰易懂、引人入胜的技术文章',
+    backstory="""你是一位资深技术写作者，能将复杂的技术概念
+    以通俗易懂的方式呈现给非专业读者，文章结构清晰，逻辑严谨。""",
+    verbose=True,
+    llm="claude-3-7-sonnet-20250219"
+)
+
+reviewer = Agent(
+    role='内容质量审核员',
+    goal='确保文章准确性、完整性和可读性，提出具体改进建议',
+    backstory="""你是严格的内容审核专家，专注于事实核查和
+    文章质量提升，不放过任何错误或不清晰之处。""",
+    verbose=True
+)
+
+# ── 定义任务 ──────────────────────────────────────
+research_task = Task(
+    description="""搜索并分析2025年AI Agent的最新发展趋势：
+    1. 主流框架及其优缺点
+    2. 实际商业应用案例
+    3. 技术挑战和未来方向
+    输出：500字结构化研究报告""",
+    agent=researcher,
+    expected_output="包含框架对比、应用案例和技术趋势的研究报告"
+)
+
+writing_task = Task(
+    description="""基于研究报告，撰写一篇面向开发者的技术文章：
+    - 标题吸引眼球
+    - 包含具体代码示例
+    - 适合中级Python开发者阅读
+    - 长度：800-1000字""",
+    agent=writer,
+    expected_output="完整的技术博客文章，包含代码示例"
+)
+
+review_task = Task(
+    description="""审核文章并提供改进意见：
+    1. 技术准确性检查
+    2. 代码示例验证
+    3. 结构和可读性评估
+    4. 提出3-5条具体改进建议""",
+    agent=reviewer,
+    expected_output="审核报告和最终优化版文章"
+)
+
+# ── 创建并运行Crew ────────────────────────────────
+crew = Crew(
+    agents=[researcher, writer, reviewer],
+    tasks=[research_task, writing_task, review_task],
+    process=Process.sequential,  # 顺序执行（也可parallel）
+    verbose=2
+)
+
+result = crew.kickoff()
+print(result)</code></pre>
+
+  <div class="adsbygoogle-wrapper">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <!-- OpenAI Assistants -->
+  <h2>🔮 OpenAI Assistants API：最简单的Agent入门</h2>
+
+  <div class="framework-card">
+    <div class="fw-header">
+      <div class="fw-icon">🔮</div>
+      <div>
+        <div class="fw-name">OpenAI Assistants API v2</div>
+        <div class="fw-sub">OpenAI · 托管式Agent平台 · 内置工具支持</div>
+      </div>
+    </div>
+    <div class="fw-badges">
+      <span class="badge badge-green">☁️ 全托管</span>
+      <span class="badge badge-blue">📁 文件搜索</span>
+      <span class="badge badge-yellow">🐍 代码执行</span>
+      <span class="badge badge-purple">🔌 Function Call</span>
+    </div>
+  </div>
+
+  <pre><code>from openai import OpenAI
+
+client = OpenAI()
+
+# ── 创建Assistant ─────────────────────────────────
+assistant = client.beta.assistants.create(
+    name="数据分析助手",
+    instructions="""你是专业的数据分析师。
+    当用户上传数据文件时，自动分析数据并生成可视化图表。
+    代码必须有注释，结论要有数据支撑。""",
+    model="gpt-4o",
+    tools=[
+        {"type": "code_interpreter"},    # 执行Python代码
+        {"type": "file_search"}          # 搜索上传的文件
+    ]
+)
+
+# ── 创建Thread（对话线程）────────────────────────
+thread = client.beta.threads.create()
+
+# ── 发送消息 ──────────────────────────────────────
+client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content="分析这份销售数据，找出增长最快的产品类别并生成折线图"
+)
+
+# ── 运行Assistant ─────────────────────────────────
+run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    timeout=120
+)
+
+if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    for msg in messages.data:
+        if msg.role == "assistant":
+            for content in msg.content:
+                if content.type == "text":
+                    print(content.text.value)</code></pre>
+
+  <!-- Microsoft AutoGen -->
+  <h2>🔄 Microsoft AutoGen：多Agent对话框架</h2>
+
+  <pre><code>pip install pyautogen</code></pre>
+
+  <pre><code>import autogen
+
+# 配置LLM
+config_list = [{
+    "model": "gpt-4o",
+    "api_key": "your-openai-key"
+}]
+
+llm_config = {"config_list": config_list, "temperature": 0.1}
+
+# ── 定义多个Agent ─────────────────────────────────
+user_proxy = autogen.UserProxyAgent(
+    name="用户代理",
+    human_input_mode="NEVER",  # 自动运行，不需要人工输入
+    max_consecutive_auto_reply=10,
+    is_termination_msg=lambda x: x.get("content", "").rstrip().endswith("TERMINATE"),
+    code_execution_config={
+        "work_dir": "workspace",
+        "use_docker": False
+    }
+)
+
+python_expert = autogen.AssistantAgent(
+    name="Python专家",
+    system_message="""你是Python专家。编写高质量、有注释的Python代码。
+    代码写完后说 TERMINATE""",
+    llm_config=llm_config
+)
+
+code_reviewer = autogen.AssistantAgent(
+    name="代码审核",
+    system_message="""你是代码审核专家。审查代码质量、安全性和效率。
+    给出具体改进建议后说 TERMINATE""",
+    llm_config=llm_config
+)
+
+# ── 启动多Agent对话 ────────────────────────────────
+# GroupChat让多个Agent协作
+groupchat = autogen.GroupChat(
+    agents=[user_proxy, python_expert, code_reviewer],
+    messages=[],
+    max_round=12
+)
+manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
+
+user_proxy.initiate_chat(
+    manager,
+    message="写一个爬取GitHub Trending的Python脚本，然后让代码审核专家审查"
+)</code></pre>
+
+  <!-- 框架对比 -->
+  <h2>📊 四大框架对比选型</h2>
+
+  <table>
+    <thead>
+      <tr><th>框架</th><th>上手难度</th><th>适合场景</th><th>生产就绪</th><th>推荐指数</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>LangGraph</strong></td><td class="ok">中等</td><td>复杂状态管理、企业级</td><td class="best">⭐⭐⭐⭐⭐</td><td class="best">9.5/10</td></tr>
+      <tr><td><strong>CrewAI</strong></td><td class="best">简单</td><td>多Agent协作、内容创作</td><td class="good">⭐⭐⭐⭐</td><td class="good">9.0/10</td></tr>
+      <tr><td><strong>OpenAI Assistants</strong></td><td class="best">最简单</td><td>快速原型、内置工具</td><td class="good">⭐⭐⭐⭐</td><td>8.5/10</td></tr>
+      <tr><td><strong>AutoGen</strong></td><td class="ok">中等</td><td>多Agent对话、研究</td><td>⭐⭐⭐</td><td>8.0/10</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 实战场景 -->
+  <h2>🎯 5大实战应用场景</h2>
+
+  <h3>① 自动化研究报告生成</h3>
+  <p>多Agent协作：搜索Agent收集信息 → 分析Agent提炼洞察 → 写作Agent生成报告 → 审核Agent校对优化。一键生成专业级行业研究报告，耗时从2天降至30分钟。</p>
+
+  <h3>② 代码库问答 + 自动修Bug</h3>
+  <p>RAG + Agent结合：将代码库向量化后，Agent读取代码结构，定位Bug位置，生成修复补丁，运行测试验证，全程无需人工干预。</p>
+
+  <pre><code># 代码库分析Agent核心逻辑
+from langchain_community.vectorstores import Chroma
+from langchain_community.document_loaders import GitLoader
+
+# 加载代码库
+loader = GitLoader(repo_path="./my_project", branch="main")
+documents = loader.load()
+
+# 向量化存储
+vectorstore = Chroma.from_documents(documents, embeddings)
+retriever = vectorstore.as_retriever(search_kwargs={"k": 10})
+
+# Agent能搜索代码库来回答问题
+@tool
+def search_codebase(query: str) -> str:
+    """搜索代码库中的相关代码"""
+    docs = retriever.invoke(query)
+    return "\n\n".join([d.page_content for d in docs])</code></pre>
+
+  <h3>③ 自动化数据分析流水线</h3>
+  <p>Agent连接数据库，自动生成SQL查询，运行分析，生成可视化图表，撰写数据洞察报告，每日定时推送给业务团队。</p>
+
+  <h3>④ 客服自动化Agent</h3>
+  <p>集成CRM、知识库、工单系统的客服Agent：理解用户问题 → 查询历史订单 → 搜索解决方案 → 自动处理退款/换货 → 未解决时升级人工客服。</p>
+
+  <h3>⑤ 个人AI助理</h3>
+  <p>能访问日历、邮件、任务管理、浏览器的个人Agent：自动安排会议、整理邮件摘要、跟踪任务进度、搜索信息并总结。</p>
+
+  <!-- 记忆系统 -->
+  <h2>💾 Agent记忆系统：短期 + 长期记忆</h2>
+
+  <pre><code>from langchain_community.chat_message_histories import SQLChatMessageHistory
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_anthropic import ChatAnthropic
+
+# 持久化对话历史（SQLite）
+def get_session_history(session_id: str):
+    return SQLChatMessageHistory(session_id, "sqlite:///agent_memory.db")
+
+llm = ChatAnthropic(model="claude-3-7-sonnet-20250219")
+
+# 带持久记忆的Agent
+agent_with_memory = RunnableWithMessageHistory(
+    llm,
+    get_session_history,
+    input_messages_key="input",
+    history_messages_key="history"
+)
+
+# 第一次对话
+response1 = agent_with_memory.invoke(
+    {"input": "我叫张伟，是一名Python开发者"},
+    config={"configurable": {"session_id": "user_001"}}
+)
+
+# 第二次对话（记住了上次信息）
+response2 = agent_with_memory.invoke(
+    {"input": "我刚才说我叫什么名字？"},
+    config={"configurable": {"session_id": "user_001"}}
+)
+# 输出：您之前告诉我您叫张伟，是一名Python开发者。</code></pre>
+
+  <!-- 生产注意事项 -->
+  <h2>⚠️ 生产环境部署的关键注意事项</h2>
+
+  <div class="highlight-box yellow">
+    <strong>🔒 安全性（最重要）</strong>
+    <ul style="margin-top:8px">
+      <li><strong>工具权限最小化</strong>：Agent只给必要工具，避免文件删除、网络请求等危险操作</li>
+      <li><strong>沙箱执行代码</strong>：代码执行Agent必须在Docker容器中隔离运行</li>
+      <li><strong>费用上限</strong>：设置max_iterations和token budget，防止无限循环烧钱</li>
+      <li><strong>输出验证</strong>：所有Agent输出在执行前必须有人工确认或规则校验</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box green">
+    <strong>📈 可观测性（生产必须）</strong>
+    <ul style="margin-top:8px">
+      <li>使用 <strong>LangSmith</strong> 或 <strong>Langfuse</strong> 追踪每次推理的中间步骤</li>
+      <li>记录所有工具调用、token消耗、执行时间</li>
+      <li>设置错误报警：Agent失败率超过5%立即通知</li>
+      <li>A/B测试不同Agent策略的效果</li>
+    </ul>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>问题</th><th>解决方案</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agent无限循环</td><td>设置max_iterations（通常5-15次）和超时限制</td></tr>
+      <tr><td>工具调用失败</td><td>实现retry机制 + 降级策略</td></tr>
+      <tr><td>幻觉导致错误操作</td><td>关键操作前加入人工确认节点（HITL）</td></tr>
+      <tr><td>上下文窗口溢出</td><td>实现消息摘要压缩或分块处理</td></tr>
+      <tr><td>API费用过高</td><td>轻量任务用GPT-4o mini/Claude Haiku，重任务才用旗舰</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 学习路径 -->
+  <h2>🗺️ AI Agent学习路径（4周计划）</h2>
+
+  <div style="background:var(--surface);border-radius:12px;padding:20px;border:1px solid var(--border)">
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">第1周：基础工具调用</div>
+        <div class="step-desc">学习Function Calling / Tool Use，用LangChain实现带搜索+计算工具的ReAct Agent</div>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">第2周：LangGraph状态机</div>
+        <div class="step-desc">掌握LangGraph核心概念，实现带记忆的多步骤Agent，理解条件分支和循环</div>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">第3周：CrewAI多Agent</div>
+        <div class="step-desc">构建3-5人AI团队，实现并行任务分配，完成一个完整的多Agent应用项目</div>
+      </div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">第4周：生产部署</div>
+        <div class="step-desc">接入LangSmith监控，添加错误处理，Docker化部署，接入真实API（邮件/日历/数据库）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>💡 关键建议：</strong> 不要一开始就追求最复杂的多Agent系统。先用一个工具、一个简单的ReAct循环解决一个真实的小问题，然后逐步扩展。90%的实际需求只需要一个设计良好的单Agent就能满足。
+  </div>
+
+  <div class="adsbygoogle-wrapper">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2135743677328012" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <h2>🔗 延伸阅读</h2>
+  <ul>
+    <li><a href="/articles/langchain-beginners-guide-2025.html">LangChain 0.3完整入门教程（RAG/Agent/LCEL）</a></li>
+    <li><a href="/articles/n8n-ai-automation-guide-2025.html">n8n AI自动化工作流完整指南</a></li>
+    <li><a href="/articles/claude-api-guide-2025.html">Claude API开发指南：工具使用 + 流式输出</a></li>
+    <li><a href="/articles/ollama-local-llm-guide-2025.html">Ollama本地LLM：零成本构建私有Agent</a></li>
+    <li><a href="/articles/best-ai-coding-tools-2025.html">2025年最佳AI编程工具Top 10</a></li>
+  </ul>
+
+</div>
+
+<footer>
+  <p>© 2025 AI导航 · <a href="/privacy.html">隐私政策</a> · <a href="/about.html">关于我们</a></p>
+  <p style="margin-top:8px;font-size:.8rem">本站内容仅供参考，代码示例仅供学习，生产环境使用请做好安全评估。</p>
+</footer>
+
+</body>
+</html>
