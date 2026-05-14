@@ -91,15 +91,7 @@ export default async function ToolPage({ params }: PageProps) {
       {/* Action buttons */}
       <div style={{ display: "flex", gap: "12px", marginBottom: "40px", flexWrap: "wrap" }}>
         {tool.website_url && (
-          <a href={tool.website_url} target="_blank" rel="noopener noreferrer" style={{
-            background: "var(--accent)", color: "#fff",
-            padding: "10px 22px", borderRadius: "10px",
-            fontSize: "14px", fontWeight: 700,
-            textDecoration: "none", transition: "background .2s",
-          }}
-            onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--accent-h)")}
-            onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--accent)")}
-          >
+          <a href={tool.website_url} target="_blank" rel="noopener noreferrer" className="btn-accent">
             访问官网 ↗
           </a>
         )}

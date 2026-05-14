@@ -31,7 +31,6 @@ export default async function HomePage() {
     articles = (latestArticles ?? []) as Article[];
   } catch (err) {
     console.error("[HomePage] Supabase error:", err);
-    // Render page without data rather than crash
   }
 
   return (
@@ -39,6 +38,7 @@ export default async function HomePage() {
       <Header />
       <main style={{ flex: 1 }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+
           {/* ── HERO ── */}
           <section style={{ textAlign: "center", padding: "80px 0 60px" }}>
             <div style={{
@@ -63,18 +63,23 @@ export default async function HomePage() {
               <SearchBar placeholder="搜索 AI 工具或评测文章..." />
             </div>
             <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/tools" style={{ background: "var(--accent)", color: "#fff", padding: "12px 28px", borderRadius: "10px", fontSize: "14px", fontWeight: 700, textDecoration: "none" }}>
-                🔧 浏览工具库
-              </Link>
-              <Link href="/articles" style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--text)", padding: "12px 28px", borderRadius: "10px", fontSize: "14px", fontWeight: 700, textDecoration: "none" }}>
-                📖 查看评测文章
-              </Link>
+              <Link href="/tools" className="btn-accent">🔧 浏览工具库</Link>
+              <Link href="/articles" className="btn-outline">📖 查看评测文章</Link>
             </div>
           </section>
 
           {/* ── STATS ── */}
-          <section style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px", padding: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", marginBottom: "64px", textAlign: "center" }}>
-            {[{ num: "110+", label: "深度评测" }, { num: "50+", label: "精选工具" }, { num: "12", label: "工具类别" }, { num: "每周", label: "持续更新" }].map((stat, i) => (
+          <section style={{
+            background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px",
+            padding: "24px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+            marginBottom: "64px", textAlign: "center",
+          }}>
+            {[
+              { num: "110+", label: "深度评测" },
+              { num: "50+",  label: "精选工具" },
+              { num: "12",   label: "工具类别" },
+              { num: "每周", label: "持续更新" },
+            ].map((stat, i) => (
               <div key={i} style={{ padding: "8px 16px", borderRight: i < 3 ? "1px solid var(--border)" : "none" }}>
                 <div style={{ fontSize: "26px", fontWeight: 900, color: "var(--accent)", marginBottom: "4px" }}>{stat.num}</div>
                 <div style={{ fontSize: "12px", color: "var(--faint)" }}>{stat.label}</div>
@@ -87,7 +92,7 @@ export default async function HomePage() {
             <SectionHeader title="🗂 工具分类" href="/tools" linkLabel="查看全部 →" />
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: "12px" }}>
               {CATEGORIES.map(cat => (
-                <Link key={cat.key} href={`/tools?category=${cat.key}`} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "12px", padding: "16px 12px", textAlign: "center", textDecoration: "none", color: "inherit" }}>
+                <Link key={cat.key} href={`/tools?category=${cat.key}`} className="cat-card">
                   <div style={{ fontSize: "26px", marginBottom: "6px" }}>{cat.icon}</div>
                   <div style={{ fontSize: "12.5px", fontWeight: 600, color: "var(--muted)" }}>{cat.label_zh}</div>
                 </Link>
@@ -116,17 +121,24 @@ export default async function HomePage() {
           )}
 
           {/* ── SUBMIT CTA ── */}
-          <section style={{ background: "linear-gradient(135deg, rgba(99,102,241,.15), rgba(192,132,252,.1))", border: "1px solid rgba(99,102,241,.25)", borderRadius: "20px", padding: "48px 32px", textAlign: "center", marginBottom: "80px" }}>
-            <h2 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 900, marginBottom: "12px", background: "linear-gradient(135deg, var(--grad-from), var(--grad-to))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+          <section style={{
+            background: "linear-gradient(135deg, rgba(99,102,241,.15), rgba(192,132,252,.1))",
+            border: "1px solid rgba(99,102,241,.25)", borderRadius: "20px",
+            padding: "48px 32px", textAlign: "center", marginBottom: "80px",
+          }}>
+            <h2 style={{
+              fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 900, marginBottom: "12px",
+              background: "linear-gradient(135deg, var(--grad-from), var(--grad-to))",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>
               发现好工具？告诉我们！
             </h2>
             <p style={{ color: "var(--muted)", fontSize: "14.5px", marginBottom: "24px" }}>
               我们会在 3 个工作日内审核，优质工具将被收录并发布深度评测。
             </p>
-            <Link href="/submit" style={{ background: "var(--accent)", color: "#fff", padding: "12px 28px", borderRadius: "10px", fontSize: "14px", fontWeight: 700, textDecoration: "none", display: "inline-block" }}>
-              🔧 提交工具推荐
-            </Link>
+            <Link href="/submit" className="btn-accent">🔧 提交工具推荐</Link>
           </section>
+
         </div>
       </main>
       <Footer />
@@ -139,7 +151,7 @@ function SectionHeader({ title, href, linkLabel }: { title: string; href: string
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "20px" }}>
       <h2 style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 800, color: "var(--text)" }}>{title}</h2>
-      <Link href={href} style={{ fontSize: "13px", color: "var(--accent)", fontWeight: 600, textDecoration: "none" }}>{linkLabel}</Link>
+      <Link href={href} style={{ fontSize: "13px", color: "var(--accent)", fontWeight: 600 }}>{linkLabel}</Link>
     </div>
   );
 }

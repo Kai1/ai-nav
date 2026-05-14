@@ -37,20 +37,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         </Link>
         <nav style={{ flex: 1 }}>
           {adminLinks.map(link => (
-            <Link key={link.href} href={link.href} style={{
-              display: "block",
-              color: "var(--muted)",
-              fontSize: "13.5px",
-              fontWeight: 600,
-              padding: "9px 12px",
-              borderRadius: "8px",
-              marginBottom: "2px",
-              textDecoration: "none",
-              transition: "background .15s, color .15s",
-            }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "var(--surface2)"; el.style.color = "var(--text)"; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = "transparent"; el.style.color = "var(--muted)"; }}
-            >
+            <Link key={link.href} href={link.href} className="admin-nav-link">
               {link.label}
             </Link>
           ))}

@@ -71,11 +71,7 @@ export default function ContactPage() {
           <div key={r.title} style={{
             background: "var(--surface)", border: "1px solid var(--border)",
             borderRadius: "14px", padding: "20px",
-            transition: "border-color .2s",
-          }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--accent)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--border)")}
-          >
+          }}>
             <div style={{ fontSize: "26px", marginBottom: "10px" }}>{r.icon}</div>
             <h3 style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--text)", marginBottom: "6px" }}>{r.title}</h3>
             <p style={{ fontSize: "13px", color: "var(--subtle)", lineHeight: 1.6, marginBottom: "12px" }}>{r.desc}</p>
