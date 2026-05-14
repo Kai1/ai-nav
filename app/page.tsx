@@ -12,7 +12,6 @@ export default function RootPage() {
     <>
       <Header />
       <main style={{ flex: 1 }}>
-        {/* @ts-expect-error async RSC */}
         <SitePage />
       </main>
       <Footer />
