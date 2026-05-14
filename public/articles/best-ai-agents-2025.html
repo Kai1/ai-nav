@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>2025年最佳AI Agent工具：10款自主AI代理深度评测 | AI导航</title>
+<meta name="description" content="2025年最佳AI Agent深度评测：Claude Code、Devin、AutoGPT、CrewAI、n8n AI Agent、Microsoft AutoGen等10款自主AI代理横评——含编程Agent、工作流自动化、多Agent协作框架详细对比。"/>
+<meta name="keywords" content="AI Agent,AI代理,自主AI,Devin AI,AutoGPT,CrewAI,Claude Code,AI自动化2025,AI工作流"/>
+<link rel="canonical" href="https://ai-nav.vercel.app/articles/best-ai-agents-2025.html"/>
+<link rel="alternate" hreflang="zh-CN" href="https://ai-nav.vercel.app/articles/best-ai-agents-2025.html"/>
+<link rel="alternate" hreflang="en" href="https://ai-nav.vercel.app/articles/best-ai-agents-2025.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="2025年最佳AI Agent工具：10款自主AI代理深度评测"/>
+<meta property="og:description" content="Claude Code、Devin、AutoGPT、CrewAI等10款AI Agent横评，含编程Agent、工作流自动化、多Agent框架对比。"/>
+<meta property="og:url" content="https://ai-nav.vercel.app/articles/best-ai-agents-2025.html"/>
+<meta property="og:site_name" content="AI导航"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Best AI Agents 2025: 10 Autonomous AI Tools Reviewed"/>
+<meta name="twitter:description" content="Claude Code vs Devin vs AutoGPT vs CrewAI: 10 AI agents tested. Coding agents, workflow automation, multi-agent frameworks compared."/>
+<!-- Google Consent Mode v2 -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",wait_for_update:500});
+(function(){var c=localStorage.getItem("ai_nav_consent");if(c==="granted"){gtag("consent","update",{ad_storage:"granted",ad_user_data:"granted",ad_personalization:"granted",analytics_storage:"granted"});}})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2135743677328012" crossorigin="anonymous"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "headline":"2025年最佳AI Agent工具：10款自主AI代理深度评测",
+  "description":"Claude Code、Devin、AutoGPT、CrewAI、n8n等10款AI Agent深度评测，含编程Agent、工作流自动化、多Agent框架全面对比",
+  "author":{"@type":"Organization","name":"AI导航"},
+  "publisher":{"@type":"Organization","name":"AI导航","url":"https://ai-nav.vercel.app"},
+  "datePublished":"2026-05-08",
+  "dateModified":"2026-05-08",
+  "url":"https://ai-nav.vercel.app/articles/best-ai-agents-2025.html",
+  "inLanguage":["zh-CN","en"],
+  "about":{"@type":"Thing","name":"AI Agents"}
+}
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d0d0d;color:#e5e5e5;line-height:1.7}
+a{color:#a78bfa;text-decoration:none}
+a:hover{text-decoration:underline}
+
+nav{background:#111;border-bottom:1px solid #222;padding:0 24px;display:flex;align-items:center;gap:16px;height:56px;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:1.2rem;font-weight:700;color:#fff;text-decoration:none}
+.nav-logo span{color:#a78bfa}
+.nav-back{font-size:.85rem;color:#aaa;margin-left:auto}
+
+.hero{background:linear-gradient(135deg,#0a0010 0%,#130020 50%,#0a0010 100%);padding:64px 24px 48px;text-align:center;border-bottom:1px solid #2a1540}
+.hero-badge{display:inline-block;background:#a78bfa20;border:1px solid #a78bfa40;color:#a78bfa;font-size:.8rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em}
+.hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:#fff;max-width:860px;margin:0 auto 16px;line-height:1.2}
+.hero-en{font-size:1rem;color:#aaa;max-width:760px;margin:0 auto 24px}
+.hero-meta{display:flex;align-items:center;justify-content:center;gap:20px;font-size:.85rem;color:#777;flex-wrap:wrap}
+
+.container{max-width:880px;margin:0 auto;padding:48px 24px}
+.toc{background:#181818;border:1px solid #2a2a2a;border-radius:12px;padding:24px;margin-bottom:40px}
+.toc h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:12px}
+.toc ol{padding-left:20px;display:grid;gap:6px}
+.toc li a{font-size:.9rem;color:#a78bfa}
+
+h2{font-size:1.6rem;font-weight:800;color:#fff;margin:48px 0 20px;padding-top:8px;border-top:2px solid #a78bfa20}
+h3{font-size:1.15rem;font-weight:700;color:#e5e5e5;margin:28px 0 12px}
+p{margin-bottom:16px;color:#ccc}
+ul,ol{color:#ccc;padding-left:20px;margin-bottom:16px}
+li{margin-bottom:6px}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:28px 0}
+.stat-card{background:#181818;border:1px solid #2a2a2a;border-radius:12px;padding:20px;text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:#a78bfa;display:block}
+.stat-label{font-size:.82rem;color:#888;margin-top:4px}
+
+.tool-card{background:#181818;border:1px solid #2a2a2a;border-radius:14px;padding:28px;margin:24px 0;position:relative}
+.tool-card.champion{border-color:#a78bfa;box-shadow:0 0 28px #a78bfa18}
+.rank-num{position:absolute;top:18px;right:20px;font-size:2rem;font-weight:900;color:#a78bfa10;font-style:italic}
+.tool-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.tool-name{font-size:1.25rem;font-weight:800;color:#fff}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.b-champ{background:#a78bfa20;color:#a78bfa;border:1px solid #a78bfa40}
+.b-free{background:#10b98120;color:#10b981;border:1px solid #10b98140}
+.b-code{background:#3b82f620;color:#3b82f6;border:1px solid #3b82f640}
+.b-nocode{background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40}
+.b-open{background:#22c55e20;color:#22c55e;border:1px solid #22c55e40}
+.score-box{display:flex;flex-direction:column;align-items:center;background:#0d0d0d;border:2px solid #a78bfa;border-radius:10px;padding:10px 18px;min-width:72px}
+.score-num{font-size:1.6rem;font-weight:900;color:#a78bfa;line-height:1}
+.score-label{font-size:.65rem;color:#888;margin-top:3px;text-transform:uppercase}
+.tool-desc{color:#ccc;margin-bottom:16px;line-height:1.7}
+.tool-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
+.spec{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:8px;padding:10px 14px}
+.spec-l{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.spec-v{font-size:.9rem;color:#e5e5e5;font-weight:600}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.pros,.cons{background:#0d0d0d;border-radius:8px;padding:14px 16px}
+.pros{border-left:3px solid #10b981}
+.cons{border-left:3px solid #ef4444}
+.pros h4{color:#10b981;font-size:.8rem;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.cons h4{color:#ef4444;font-size:.8rem;font-weight:700;margin-bottom:8px;text-transform:uppercase}
+.pros li,.cons li{font-size:.88rem;color:#ccc;margin-bottom:5px;padding-left:14px;position:relative;list-style:none}
+.pros li::before{content:'✓';position:absolute;left:0;color:#10b981;font-weight:700}
+.cons li::before{content:'✗';position:absolute;left:0;color:#ef4444;font-weight:700}
+
+.type-section{background:#181818;border:1px solid #a78bfa30;border-left:4px solid #a78bfa;border-radius:8px;padding:16px 20px;margin:36px 0 20px}
+.type-section h3{margin:0;color:#a78bfa;font-size:1rem}
+.type-section p{margin:6px 0 0;color:#aaa;font-size:.88rem}
+
+.compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:.85rem}
+.compare-table th{background:#181818;color:#a78bfa;font-weight:700;padding:11px 12px;text-align:left;border-bottom:2px solid #2a2a2a}
+.compare-table td{padding:10px 12px;border-bottom:1px solid #1e1e1e;color:#ccc}
+.compare-table tr:hover td{background:#181818}
+.tc{color:#fff;font-weight:600}
+.yes{color:#10b981;font-weight:700}
+.no{color:#ef4444}
+.partial{color:#f59e0b}
+
+.use-case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.uc-card{background:#181818;border:1px solid #2a2a2a;border-radius:12px;padding:20px}
+.uc-icon{font-size:1.8rem;margin-bottom:10px}
+.uc-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px}
+.uc-desc{font-size:.85rem;color:#aaa;line-height:1.6}
+.uc-rec{margin-top:10px;font-size:.82rem;font-weight:700;color:#a78bfa}
+
+.warning-box{background:#130020;border:1px solid #a78bfa30;border-left:4px solid #a78bfa;border-radius:8px;padding:16px 20px;margin:24px 0}
+.warning-box p{color:#ccc;font-size:.9rem;margin:0}
+.warning-box strong{color:#a78bfa}
+
+.verdict-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.verdict-item{background:#181818;border-radius:8px;padding:14px 16px}
+.vl{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.vp{font-size:.95rem;font-weight:700;color:#fff}
+.vw{font-size:.8rem;color:#aaa;margin-top:4px}
+
+footer{background:#111;border-top:1px solid #222;padding:40px 24px;text-align:center}
+footer p{color:#555;font-size:.85rem;margin-bottom:8px}
+
+@media(max-width:600px){.pros-cons{grid-template-columns:1fr}.tool-header{flex-direction:column}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><span>AI</span>导航</a>
+  <a class="nav-back" href="/">← 返回首页</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🤖 AI Agent评测 2025</div>
+  <h1>2025年最佳AI Agent工具：10款自主AI代理深度评测</h1>
+  <p class="hero-en">Best AI Agents 2025: Claude Code, Devin, AutoGPT, CrewAI, n8n & More — 10 Autonomous AI Agents Reviewed</p>
+  <div class="hero-meta">
+    <span>📅 2026年5月更新</span>
+    <span>⏱ 阅读约16分钟</span>
+    <span>🤖 10款Agent全部测试</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>📋 目录</h3>
+    <ol>
+      <li><a href="#what">什么是AI Agent？</a></li>
+      <li><a href="#coding">编程Agent（3款）</a></li>
+      <li><a href="#workflow">工作流自动化Agent（3款）</a></li>
+      <li><a href="#framework">多Agent框架（2款）</a></li>
+      <li><a href="#general">通用自主Agent（2款）</a></li>
+      <li><a href="#compare">横向对比表</a></li>
+      <li><a href="#usecases">使用场景指南</a></li>
+      <li><a href="#verdict">选购建议</a></li>
+    </ol>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><span class="stat-num">10</span><div class="stat-label">Agent工具评测</div></div>
+    <div class="stat-card"><span class="stat-num">4类</span><div class="stat-label">Agent类型</div></div>
+    <div class="stat-card"><span class="stat-num">5款</span><div class="stat-label">含免费/开源方案</div></div>
+    <div class="stat-card"><span class="stat-num">2025</span><div class="stat-label">AI Agent元年</div></div>
+  </div>
+
+  <h2 id="what">什么是AI Agent？与普通AI有何不同？</h2>
+  <p>普通AI（如ChatGPT聊天）是"问答式"的：你问一句，它回答一句。<strong>AI Agent（AI代理）</strong>则不同——它能自主规划、连续执行多个步骤，直到完成一个复杂目标，过程中不需要你每步都介入。</p>
+  <p>举例说明：你告诉一个编程Agent"帮我把这个Python脚本改成支持多线程，并写单元测试"，它会自行分析代码→修改代码→运行测试→修复bug→确认通过，整个过程无需你每步确认。</p>
+
+  <div class="warning-box">
+    <p>⚡ <strong>2025年是AI Agent元年：</strong>OpenAI发布Operator Agent、Anthropic推出Claude Code、微软深化Copilot Agent能力、Google推出Gemini Agent——各大AI公司同时押注"自主代理"赛道，技术成熟度已达到实用水平。</p>
+  </div>
+
+  <h3>AI Agent的3个核心能力</h3>
+  <ul>
+    <li><strong>工具使用（Tool Use）</strong>：调用搜索、代码执行、文件读写、API等外部工具</li>
+    <li><strong>记忆（Memory）</strong>：在对话/任务中保持上下文，跨步骤记住之前做了什么</li>
+    <li><strong>自主规划（Planning）</strong>：将大目标拆解为子任务，自主决定执行顺序</li>
+  </ul>
+
+  <!-- CODING AGENTS -->
+  <h2 id="coding">💻 编程Agent（3款）</h2>
+
+  <div class="type-section">
+    <h3>编程Agent核心能力：理解整个代码库、自主修复Bug、生成测试</h3>
+    <p>2025年编程Agent是AI Agent中最成熟的类别，已被数万开发者用于实际生产项目</p>
+  </div>
+
+  <div class="tool-card champion" id="claude-code">
+    <div class="rank-num">#1</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Claude Code <span style="color:#a78bfa">🏆</span></div>
+        <div class="badges">
+          <span class="badge b-champ">编程Agent第一</span>
+          <span class="badge b-code">需要终端</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">9.5</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">Anthropic官方推出的命令行编程Agent，基于Claude 3.7 Sonnet，是目前公认最强的编程Agent。核心能力：理解整个代码库（@codebase）、自主完成端到端任务（从需求→代码→测试→部署）、在真实终端环境中执行命令。Claude Code在SWE-bench（真实软件工程任务基准）上的得分领先所有竞品。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">访问方式</div><div class="spec-v">CLI命令行工具</div></div>
+      <div class="spec"><div class="spec-l">底层模型</div><div class="spec-v">Claude 3.7 Sonnet</div></div>
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">按API使用量计费</div></div>
+      <div class="spec"><div class="spec-l">SWE-bench得分</div><div class="spec-v">~62%（行业领先）</div></div>
+      <div class="spec"><div class="spec-l">上下文窗口</div><div class="spec-v">200K tokens</div></div>
+      <div class="spec"><div class="spec-l">IDE集成</div><div class="spec-v">VS Code / Cursor</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>SWE-bench得分业界最高</li>
+        <li>真实代码库级别理解</li>
+        <li>自主端到端任务执行</li>
+        <li>支持CLAUDE.md自定义规则</li>
+        <li>Hook系统可定制行为</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>需要终端使用，有技术门槛</li>
+        <li>成本按API计费（可能较贵）</li>
+        <li>复杂任务需要监督</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="cursor-agent">
+    <div class="rank-num">#2</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Cursor Agent Mode</div>
+        <div class="badges">
+          <span class="badge b-code">IDE内Agent</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">9.2</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">Cursor编辑器内置的Agent模式（Composer Agent），是最流行的GUI版编程Agent。在IDE界面内直接运行，支持多文件同时修改、终端命令执行、错误自动修复循环。相比Claude Code的纯CLI模式，Cursor Agent对普通开发者更友好——不需要学习命令行，鼠标操作即可。Pro版$20/月含无限Agent使用。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">访问方式</div><div class="spec-v">IDE内GUI</div></div>
+      <div class="spec"><div class="spec-l">底层模型</div><div class="spec-v">Claude / GPT-4o / Gemini</div></div>
+      <div class="spec"><div class="spec-l">Pro定价</div><div class="spec-v">$20/月</div></div>
+      <div class="spec"><div class="spec-l">免费版</div><div class="spec-v">有限次Agent</div></div>
+      <div class="spec"><div class="spec-l">多文件编辑</div><div class="spec-v">✓ 支持</div></div>
+      <div class="spec"><div class="spec-l">终端集成</div><div class="spec-v">✓ 自动执行命令</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>GUI界面，上手最简单</li>
+        <li>多文件协调修改</li>
+        <li>错误自动修复循环</li>
+        <li>固定月费更可预期</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>依赖Cursor编辑器生态</li>
+        <li>复杂任务仍需介入</li>
+        <li>自主性低于Claude Code</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="devin">
+    <div class="rank-num">#3</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Devin（Cognition AI）</div>
+        <div class="badges">
+          <span class="badge b-code">最自主编程Agent</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">8.8</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">定位为"第一个AI软件工程师"，Devin可以独立完成从GitHub Issue到PR提交的完整开发流程：克隆仓库→分析问题→写代码→运行测试→提交PR，全程无需人工介入。在真实SWE-bench任务中解决率~13.86%（早期数据）。$500/月的高价使其主要面向有明确ROI需求的企业团队。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">定位</div><div class="spec-v">AI软件工程师</div></div>
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">$500/月起</div></div>
+      <div class="spec"><div class="spec-l">自主性</div><div class="spec-v">极高（端到端）</div></div>
+      <div class="spec"><div class="spec-l">GitHub集成</div><div class="spec-v">✓ Issue→PR</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>自主性最强（端到端开发）</li>
+        <li>GitHub工作流深度集成</li>
+        <li>并行处理多个任务</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>$500/月门槛极高</li>
+        <li>实测成功率仍有限</li>
+        <li>需要明确任务描述</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- WORKFLOW AGENTS -->
+  <h2 id="workflow">⚙️ 工作流自动化Agent（3款）</h2>
+
+  <div class="type-section">
+    <h3>工作流Agent：连接多个应用，自动化重复业务流程</h3>
+    <p>无需编程，通过可视化界面构建跨应用自动化工作流，AI负责处理非结构化数据的理解和决策</p>
+  </div>
+
+  <div class="tool-card champion" id="n8n">
+    <div class="rank-num">#4</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">n8n AI Agent节点 🏆</div>
+        <div class="badges">
+          <span class="badge b-champ">工作流Agent首选</span>
+          <span class="badge b-open">开源免费</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">9.3</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">n8n是最强大的开源工作流自动化平台，内置AI Agent节点可接入任意LLM（Claude/GPT-4o/Gemini），配合400+集成节点构建真正的"AI+工作流"混合系统。AI Agent节点支持工具调用（Tool Use）、记忆（Memory）、多步推理，可处理"根据邮件内容判断优先级→更新CRM→发Slack通知→如紧急则创建Jira工单"这类需要智能判断的复杂流程。自托管完全免费。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">自托管免费 / 云版$20/月</div></div>
+      <div class="spec"><div class="spec-l">集成数量</div><div class="spec-v">400+节点</div></div>
+      <div class="spec"><div class="spec-l">LLM支持</div><div class="spec-v">Claude/GPT/Gemini等任意</div></div>
+      <div class="spec"><div class="spec-l">部署方式</div><div class="spec-v">自托管 / n8n Cloud</div></div>
+      <div class="spec"><div class="spec-l">开源协议</div><div class="spec-v">Fair-code（可商用）</div></div>
+      <div class="spec"><div class="spec-l">技术要求</div><div class="spec-v">低代码（可视化）</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>自托管完全免费</li>
+        <li>400+集成覆盖最广</li>
+        <li>AI+工作流混合能力最强</li>
+        <li>支持任意LLM</li>
+        <li>可视化低代码界面</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>自托管需要服务器配置</li>
+        <li>复杂工作流学习曲线较陡</li>
+        <li>云版本价格随用量增长</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="make-ai">
+    <div class="rank-num">#5</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Make (Integromat) + AI模块</div>
+        <div class="badges">
+          <span class="badge b-nocode">无代码</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">8.6</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">可视化自动化平台Make内置AI模块（Claude/GPT-4o调用），上手比n8n更快，界面更直观，有大量预制模板（1000+）。对不想自托管服务器的用户，Make的云端托管更省心。免费版每月1000操作次数；付费版$9/月起。Make的路由（Router）节点支持根据AI输出结果分支执行不同路径。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">免费额度</div><div class="spec-v">1000操作/月</div></div>
+      <div class="spec"><div class="spec-l">付费起价</div><div class="spec-v">$9/月</div></div>
+      <div class="spec"><div class="spec-l">模板数量</div><div class="spec-v">1000+预制模板</div></div>
+      <div class="spec"><div class="spec-l">上手难度</div><div class="spec-v">★☆☆ 极低</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>1000+预制模板</li>
+        <li>无需自托管</li>
+        <li>界面最直观</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>免费额度有限</li>
+        <li>AI功能深度低于n8n</li>
+        <li>高级用量成本较高</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="zapier-agent">
+    <div class="rank-num">#6</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Zapier AI Actions / Agents</div>
+        <div class="badges">
+          <span class="badge b-nocode">无代码</span>
+          <span class="badge b-free">免费可用</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">8.2</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">Zapier推出了AI Actions功能，允许在ChatGPT/Claude中直接触发Zapier工作流（如"帮我给这个人发邮件"→直接通过Zapier执行Gmail操作）。Zapier Agents则是独立的AI对话界面，可连接6000+应用。对已有大量Zapier工作流的团队，无缝接入AI能力。免费版5个Zap；付费版$19.99/月起。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">集成数量</div><div class="spec-v">6000+应用</div></div>
+      <div class="spec"><div class="spec-l">免费额度</div><div class="spec-v">5个Zap</div></div>
+      <div class="spec"><div class="spec-l">付费起价</div><div class="spec-v">$19.99/月</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>6000+集成最广泛</li>
+        <li>品牌知名度高，文档完善</li>
+        <li>AI Actions创新体验</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>同等功能比n8n/Make贵</li>
+        <li>复杂逻辑能力有限</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- MULTI-AGENT FRAMEWORKS -->
+  <h2 id="framework">🧠 多Agent框架（2款）</h2>
+
+  <div class="type-section">
+    <h3>多Agent框架：让多个AI互相协作，分工完成复杂任务</h3>
+    <p>适合开发者构建复杂AI系统——一个"主Agent"调度多个"专家Agent"，类似公司分工协作</p>
+  </div>
+
+  <div class="tool-card" id="crewai">
+    <div class="rank-num">#7</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">CrewAI</div>
+        <div class="badges">
+          <span class="badge b-open">开源免费</span>
+          <span class="badge b-code">Python框架</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">9.0</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">目前最流行的多Agent协作框架（GitHub 30K+ Stars），用Python代码定义"Agent角色→任务分工→执行流程"。典型场景：定义一个"研究员Agent"负责搜索信息、一个"写作Agent"负责撰写报告、一个"审核Agent"负责质检，三者协作完成一篇完整报告。支持顺序/并行任务模式，可集成任意LLM。开源免费，企业版提供可视化界面。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">GitHub Stars</div><div class="spec-v">30K+</div></div>
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">开源免费</div></div>
+      <div class="spec"><div class="spec-l">技术要求</div><div class="spec-v">Python（中等）</div></div>
+      <div class="spec"><div class="spec-l">LLM兼容</div><div class="spec-v">OpenAI/Claude/本地LLM</div></div>
+      <div class="spec"><div class="spec-l">任务模式</div><div class="spec-v">顺序/并行/层级</div></div>
+      <div class="spec"><div class="spec-l">企业版</div><div class="spec-v">提供（可视化）</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>开源社区活跃</li>
+        <li>角色分工设计自然</li>
+        <li>兼容任意LLM</li>
+        <li>学习资源丰富</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>需要Python编程</li>
+        <li>调试复杂Agent链困难</li>
+        <li>长任务Token消耗大</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="autogen">
+    <div class="rank-num">#8</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">Microsoft AutoGen 0.4</div>
+        <div class="badges">
+          <span class="badge b-open">微软开源</span>
+          <span class="badge b-code">Python框架</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">8.7</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">微软研究院推出的多Agent框架，0.4版本完全重写，引入异步Actor模型，支持大规模并发Agent执行。与CrewAI相比，AutoGen的架构更接近分布式系统，适合需要高并发、低延迟的生产级Agent系统。内置Human-in-the-loop（人机协作），支持在Agent执行中途人工介入。开源免费，Azure OpenAI原生支持。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">开发者</div><div class="spec-v">微软研究院</div></div>
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">开源免费</div></div>
+      <div class="spec"><div class="spec-l">并发能力</div><div class="spec-v">异步Actor模型</div></div>
+      <div class="spec"><div class="spec-l">Human-loop</div><div class="spec-v">✓ 内置</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>高并发生产级架构</li>
+        <li>人机协作内置</li>
+        <li>微软Azure原生集成</li>
+        <li>社区和文档质量高</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>0.4版API变动较大</li>
+        <li>学习曲线陡于CrewAI</li>
+        <li>非Azure用户配置复杂</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- GENERAL AGENTS -->
+  <h2 id="general">🌐 通用自主Agent（2款）</h2>
+
+  <div class="type-section">
+    <h3>通用Agent：给目标就能自主规划并执行，无需指定步骤</h3>
+    <p>最接近"AI助手自主完成任务"的类别——你只需告诉它"做什么"，不需要告诉它"怎么做"</p>
+  </div>
+
+  <div class="tool-card" id="openai-operator">
+    <div class="rank-num">#9</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">OpenAI Operator</div>
+        <div class="badges">
+          <span class="badge b-champ">浏览器自动化</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">8.5</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">OpenAI 2025年初发布的"计算机使用"Agent，可以像真人一样操作浏览器——填表单、订餐厅、购票、搜索整合信息。基于CUA（Computer Use Agent）模型，通过截图理解页面并执行点击/输入操作。目前主要面向ChatGPT Pro用户（$200/月），是最接近"数字助手真正帮你完成网页任务"的产品。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">核心能力</div><div class="spec-v">浏览器自主操作</div></div>
+      <div class="spec"><div class="spec-l">访问方式</div><div class="spec-v">ChatGPT Pro内置</div></div>
+      <div class="spec"><div class="spec-l">月费</div><div class="spec-v">$200（Pro版）</div></div>
+      <div class="spec"><div class="spec-l">支持任务</div><div class="spec-v">订购、表单、研究</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>真正的"计算机使用"能力</li>
+        <li>无需API或代码</li>
+        <li>对话式操控体验</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>$200/月门槛极高</li>
+        <li>复杂页面操作仍不稳定</li>
+        <li>不支持中国大陆访问</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="tool-card" id="autogpt">
+    <div class="rank-num">#10</div>
+    <div class="tool-header">
+      <div>
+        <div class="tool-name">AutoGPT / AgentGPT</div>
+        <div class="badges">
+          <span class="badge b-open">开源免费</span>
+          <span class="badge b-free">可本地运行</span>
+        </div>
+      </div>
+      <div class="score-box"><div class="score-num">7.8</div><div class="score-label">综合评分</div></div>
+    </div>
+    <p class="tool-desc">2023年爆红的开源通用Agent框架，奠定了现代AI Agent的基础概念。虽然2025年已有更强的竞品，AutoGPT依然有其价值：完全开源（GitHub 170K+ Stars）、可本地运行、社区生态丰富、学习资源最多。适合学习AI Agent原理、做低成本实验的开发者和研究者。自托管需要OpenAI API Key。</p>
+    <div class="tool-specs">
+      <div class="spec"><div class="spec-l">GitHub Stars</div><div class="spec-v">170K+（史上最多之一）</div></div>
+      <div class="spec"><div class="spec-l">定价</div><div class="spec-v">开源免费</div></div>
+      <div class="spec"><div class="spec-l">适合用途</div><div class="spec-v">学习/实验</div></div>
+      <div class="spec"><div class="spec-l">API需求</div><div class="spec-v">需要OpenAI API Key</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h4>优点</h4><ul>
+        <li>开源社区最大</li>
+        <li>学习资源最丰富</li>
+        <li>可完全本地控制</li>
+      </ul></div>
+      <div class="cons"><h4>缺点</h4><ul>
+        <li>执行稳定性低于新竞品</li>
+        <li>长任务经常"卡死"</li>
+        <li>2025年已显老态</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <h2 id="compare">横向对比表</h2>
+  <div style="overflow-x:auto">
+  <table class="compare-table">
+    <thead>
+      <tr><th>工具</th><th>类别</th><th>评分</th><th>免费方案</th><th>付费起价</th><th>技术门槛</th><th>最适合场景</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="tc">🏆 Claude Code</td><td>编程Agent</td><td style="color:#a78bfa"><strong>9.5</strong></td><td class="no">按API计费</td><td>API用量</td><td>中（需CLI）</td><td>专业开发者</td></tr>
+      <tr><td class="tc">🏆 n8n AI Agent</td><td>工作流</td><td style="color:#a78bfa"><strong>9.3</strong></td><td class="yes">自托管免费</td><td>$20/月云版</td><td>低（可视化）</td><td>业务自动化</td></tr>
+      <tr><td class="tc">Cursor Agent</td><td>编程Agent</td><td>9.2</td><td class="partial">有限免费</td><td>$20/月</td><td>低（IDE内）</td><td>开发者日常</td></tr>
+      <tr><td class="tc">CrewAI</td><td>多Agent框架</td><td>9.0</td><td class="yes">开源免费</td><td>免费</td><td>中（Python）</td><td>AI系统构建</td></tr>
+      <tr><td class="tc">Devin</td><td>编程Agent</td><td>8.8</td><td class="no">无</td><td>$500/月</td><td>低（托管）</td><td>企业工程团队</td></tr>
+      <tr><td class="tc">AutoGen</td><td>多Agent框架</td><td>8.7</td><td class="yes">开源免费</td><td>免费</td><td>高（Python）</td><td>生产级系统</td></tr>
+      <tr><td class="tc">Make + AI</td><td>工作流</td><td>8.6</td><td class="yes">1000次/月</td><td>$9/月</td><td>极低（无代码）</td><td>非技术用户</td></tr>
+      <tr><td class="tc">OpenAI Operator</td><td>通用Agent</td><td>8.5</td><td class="no">无</td><td>$200/月</td><td>极低</td><td>网页任务自动化</td></tr>
+      <tr><td class="tc">Zapier AI</td><td>工作流</td><td>8.2</td><td class="yes">5个Zap</td><td>$19.99/月</td><td>极低（无代码）</td><td>已有Zapier用户</td></tr>
+      <tr><td class="tc">AutoGPT</td><td>通用Agent</td><td>7.8</td><td class="yes">开源免费</td><td>免费</td><td>中（需配置）</td><td>学习/实验</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="usecases">使用场景指南</h2>
+  <div class="use-case-grid">
+    <div class="uc-card">
+      <div class="uc-icon">👨‍💻</div>
+      <div class="uc-title">独立开发者</div>
+      <div class="uc-desc">需要AI帮助写代码、debug、写测试，预算有限</div>
+      <div class="uc-rec">推荐：Cursor Agent（$20/月固定费）</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-icon">🏢</div>
+      <div class="uc-title">工程团队</div>
+      <div class="uc-desc">需要处理大型代码库，自主完成复杂编程任务</div>
+      <div class="uc-rec">推荐：Claude Code（最强SWE-bench）</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-icon">🔄</div>
+      <div class="uc-title">运营/市场团队</div>
+      <div class="uc-desc">无编程背景，需要自动化重复业务流程</div>
+      <div class="uc-rec">推荐：Make（无代码）或 n8n（更强大）</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-icon">🧪</div>
+      <div class="uc-title">AI开发者/研究者</div>
+      <div class="uc-desc">构建多Agent系统，实验各种Agent架构</div>
+      <div class="uc-rec">推荐：CrewAI（易用）或 AutoGen（生产级）</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-icon">💼</div>
+      <div class="uc-title">企业IT部门</div>
+      <div class="uc-desc">需要合规、可控的AI自动化，已有微软生态</div>
+      <div class="uc-rec">推荐：AutoGen + Azure OpenAI</div>
+    </div>
+    <div class="uc-card">
+      <div class="uc-icon">🎓</div>
+      <div class="uc-title">学习AI Agent原理</div>
+      <div class="uc-desc">想理解AI Agent工作原理，探索LLM应用开发</div>
+      <div class="uc-rec">推荐：AutoGPT（开源，资料最多）</div>
+    </div>
+  </div>
+
+  <h2 id="verdict">选购建议</h2>
+  <div style="background:linear-gradient(135deg,#0d0018,#130020);border:1px solid #a78bfa30;border-radius:14px;padding:28px;margin:24px 0">
+    <h3 style="color:#a78bfa;margin-bottom:16px">🎯 按需求快速选择</h3>
+    <div class="verdict-grid">
+      <div class="verdict-item"><div class="vl">编程任务最强</div><div class="vp">🏆 Claude Code</div><div class="vw">SWE-bench第一，适合专业开发者</div></div>
+      <div class="verdict-item"><div class="vl">业务自动化性价比最高</div><div class="vp">🏆 n8n AI Agent</div><div class="vw">自托管免费，400+集成，AI+工作流最强</div></div>
+      <div class="verdict-item"><div class="vl">最易上手的编程Agent</div><div class="vp">Cursor Agent</div><div class="vw">GUI界面，$20固定费，开发者首选</div></div>
+      <div class="verdict-item"><div class="vl">多Agent系统构建</div><div class="vp">CrewAI</div><div class="vw">开源免费，社区最活跃</div></div>
+      <div class="verdict-item"><div class="vl">零代码自动化</div><div class="vp">Make</div><div class="vw">1000+模板，无需服务器，$9起</div></div>
+      <div class="verdict-item"><div class="vl">学习AI Agent原理</div><div class="vp">AutoGPT</div><div class="vw">开源，GitHub 170K Stars，资料最全</div></div>
+    </div>
+  </div>
+
+  <h3>2025年AI Agent趋势预判</h3>
+  <p><strong>编程Agent将成标配</strong>：到2025年底，超过50%的职业开发者将在日常工作中使用某种AI编程Agent（Cursor/Claude Code）。</p>
+  <p><strong>工作流Agent替代RPA</strong>：n8n/Make/Zapier的AI Agent节点正在逐步取代传统RPA（机器人流程自动化）工具，成本更低、灵活性更高。</p>
+  <p><strong>多Agent框架进入企业</strong>：CrewAI和AutoGen在2025年将从"开发者玩具"升级为企业AI系统的基础设施。</p>
+  <p><strong>本地Agent崛起</strong>：随着Llama 3/Qwen等本地模型能力提升，"数据不出本机"的本地Agent将成为隐私敏感企业的首选。</p>
+
+</div>
+
+<footer>
+  <p>© 2026 AI导航 · ai-nav.vercel.app</p>
+  <p>内容仅供参考，工具定价及功能以官方最新页面为准。</p>
+  <p style="margin-top:12px;font-size:.8rem"><a href="/about.html" style="color:#a78bfa;margin:0 6px">关于我们</a> · <a href="/contact.html" style="color:#a78bfa;margin:0 6px">联系我们</a> · <a href="/privacy.html" style="color:#a78bfa;margin:0 6px">隐私政策</a> · <a href="/terms.html" style="color:#a78bfa;margin:0 6px">服务条款</a></p>
+</footer>
+
+
+<!-- Cookie Consent Banner -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(24,24,24,0.98);border-top:1px solid #2c2c2c;padding:14px 20px;gap:14px;align-items:center;flex-wrap:wrap;backdrop-filter:blur(8px);transition:opacity .3s">
+  <div style="flex:1;min-width:240px"><p style="font-size:13px;color:#d1d5db;line-height:1.6;margin:0">🍪 我们使用Cookie展示广告（Google AdSense）并分析流量。详见<a href="/privacy.html" style="color:#818cf8">隐私政策</a>。</p></div>
+  <div style="display:flex;gap:9px;flex-shrink:0">
+    <button onclick="(function(){localStorage.setItem('ai_nav_consent','denied');var b=document.getElementById('cookieBanner');b.style.opacity='0';setTimeout(function(){b.style.display='none';},300);})()" style="background:#374151;color:#d1d5db;border:none;padding:8px 16px;border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer">仅必要</button>
+    <button onclick="(function(){localStorage.setItem('ai_nav_consent','granted');gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});var b=document.getElementById('cookieBanner');b.style.opacity='0';setTimeout(function(){b.style.display='none';},300);})()" style="background:#6366f1;color:#fff;border:none;padding:8px 18px;border-radius:7px;font-size:12.5px;font-weight:700;cursor:pointer">接受全部</button>
+  </div>
+</div>
+<script>if(!localStorage.getItem('ai_nav_consent')){var cb=document.getElementById('cookieBanner');if(cb)cb.style.display='flex';}</script>
+</body>
+</html>
