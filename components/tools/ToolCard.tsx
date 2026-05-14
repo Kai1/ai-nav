@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Badge from "@/components/ui/Badge";
 import BookmarkButton from "@/components/tools/BookmarkButton";
