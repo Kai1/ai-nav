@@ -18,15 +18,21 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const supabase = await createClient();
+  let tools: Tool[] = [];
+  let articles: Article[] = [];
 
-  const [{ data: featuredTools }, { data: latestArticles }] = await Promise.all([
-    supabase.from("tools").select("*").eq("published", true).eq("featured", true).order("rating", { ascending: false }).limit(6),
-    supabase.from("articles").select("*").eq("published", true).order("published_at", { ascending: false }).limit(8),
-  ]);
-
-  const tools = (featuredTools ?? []) as Tool[];
-  const articles = (latestArticles ?? []) as Article[];
+  try {
+    const supabase = await createClient();
+    const [{ data: featuredTools }, { data: latestArticles }] = await Promise.all([
+      supabase.from("tools").select("*").eq("published", true).eq("featured", true).order("rating", { ascending: false }).limit(6),
+      supabase.from("articles").select("*").eq("published", true).order("published_at", { ascending: false }).limit(8),
+    ]);
+    tools = (featuredTools ?? []) as Tool[];
+    articles = (latestArticles ?? []) as Article[];
+  } catch (err) {
+    console.error("[HomePage] Supabase error:", err);
+    // Render page without data rather than crash
+  }
 
   return (
     <>
